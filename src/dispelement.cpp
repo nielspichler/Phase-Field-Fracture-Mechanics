@@ -122,7 +122,6 @@ void DispElement::GetStiffnessAndRes(Matrix & Ke, std::vector<double> & res)
 		
 		// We compute the contribution of the node to res
 		res += B_T * sig * ((1-d)*(1-d)+k) * det * w;// 8x1 = 8x3*3x1
-		
 	}
 }
 
