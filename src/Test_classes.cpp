@@ -1,6 +1,6 @@
 #include "matrix.cpp"
-#include "phaseelement.cpp"
-#include "dispelement.cpp"
+//#include "phaseelement.cpp"
+//#include "dispelement.cpp"
 
 int main(/*int argc, char *argv[]*/) {
 
@@ -39,12 +39,35 @@ int main(/*int argc, char *argv[]*/) {
 	std::cout<<"A = \n"<<A<<"\n";
 	Matrix A1 = A*3.;
 	std::cout<<"A1 = \n"<<A1<<"\n";
+	Matrix A1A = A1 + A;
+	std::cout<<"A1 + A = \n"<<A1A<<"\n";
 	
-	
+	Matrix A1mA = A1 - A;
+	std::cout<<"A1 - A = \n"<<A1mA<<"\n";
 	A += A1;
 	std::cout<<"A = \n"<<A<<"\n";
 	
 	std::cout<<"c1+x1 = \n"<<(C1+x1)<<"\n";
+	
+	Matrix productA = A*A1;
+	std::cout<<"A*A1 = \n"<<productA<<"\n";
+	
+	A.resize(2,3);
+	A(0,0) = 1; A(0, 1) = 0.5; A(0, 2) = -0.5; 
+	A(1,0) = 1; A(1, 1) = 2; A(1, 2) = -1;
+	
+	A1.resize(3,4); 
+	A1(0,0) = 1; A1(0, 1) = 0.5; A1(0, 2) = 0; A1(0,3) = -1; 
+	A1(1,0) = 0; A1(1, 1) = 0; A1(1, 2) = 0; A1(1,3) = 1; 
+	A1(2,0) = -1; A1(2, 1) = -0.5; A1(2, 2) = 2; A1(2,3) = 0; 
+	
+	std::cout<<"A = \n"<<A<<"\n";
+	std::cout<<"A1 = \n"<<A1<<"\n";
+	
+	Matrix product2A = A*A1;
+	std::cout<<"A*A1 = \n"<<product2A<<"\n";
+	
+	std::cout<<"A*x1 = \n"<<A*x1<<"\n";
 	
 	Matrix C2;
 	
@@ -55,7 +78,7 @@ int main(/*int argc, char *argv[]*/) {
 	std::cout<<"toVect= \n"<<C1.toVector()<<"\n";
 	
 	// test element constructors
-	
+	/*
 	Matrix loc_coordinates(4,2);
 	loc_coordinates(0,0) = 0.; loc_coordinates(0,1) = 0.;
 	loc_coordinates(1,0) = 1.; loc_coordinates(1,1) = 0.;
@@ -84,7 +107,7 @@ int main(/*int argc, char *argv[]*/) {
 	std::cout<<"res_d = \n"<<res_d<<"\n";
 	std::cout<<"Ke_u = \n"<<Ke_u<<"\n";
 	std::cout<<"res_u = \n"<<res_u<<"\n";
-
+*/
 	
 return 0;
 }

@@ -1,6 +1,10 @@
 #include "matrix.hpp"
 
 
+	/* ------------------------------------------------------------------------ */
+	/* Methods                                                                  */
+	/* ------------------------------------------------------------------------ */
+
 double Matrix::determinant() {
 
   assert(this->rows == this->cols);
@@ -87,4 +91,81 @@ Matrix Matrix::col(UInt colNb){
 	a(i, 0) = (*this)(i, colNb);
 	}
 	return a;
+	}
+
+	/* ------------------------------------------------------------------------ */
+	/* Operator Overloading                                                     */
+	/* ------------------------------------------------------------------------ */
+	
+	// matrix matrix addition
+Matrix Matrix::operator+(const Matrix& a){
+  assert(a.nbRows() == this->nbRows() && a.nbCols() == this->nbCols());
+
+  Matrix c(a.nbRows(), a.nbCols());
+    c.storage = a.storage+this->storage;
+  return c;
+}
+
+	// matrix matrix substraction
+Matrix Matrix::operator-(const Matrix& a){
+  assert(a.nbRows() == this->nbRows() && a.nbCols() == this->nbCols());
+
+  Matrix c(a.nbRows(), a.nbCols());
+    c.storage = this->storage-a.storage;
+  return c;
+}
+
+	// matrix multiply matrix 
+
+Matrix Matrix::operator*(Matrix& b){
+  assert(b.nbRows() == this->nbCols());
+
+  Matrix c(this->nbRows(), b.nbCols());
+    
+  for(UInt i=0; i < this->nbRows(); i++) { // rows of a
+    for(UInt j=0; j < b.nbCols(); j++) { // columns of b
+      for(UInt k = 0; k < this->nbCols(); k++) { // columns of a
+	c(i, j) += (*this)(i, k) * b(k, j);
+      }
+    }
+  }
+  return c;
+}
+
+	// Matrix multiply vector
+std::vector<double> Matrix::operator*(std::vector<double>& v){
+	assert(this->nbCols() == v.size());
+	
+	std::vector<double> p;
+	p.resize(this->nbRows());
+	
+	for(UInt i=0; i < this->nbRows(); i++) { // rows of a
+		for(UInt j=0; j < this->nbCols(); j++) { // columns of a
+			p[i] += (*this)(i, j)  *  v[j];
+		}
+	}
+	return p;
+	}
+
+	// Addition of 1d matrix and vector
+std::vector<double> Matrix::operator+(std::vector<double>& v){
+	
+	assert((this->nbCols()==1)||(this->nbRows()==1));
+	assert((this->nbCols()==v.size())||(this->nbRows()==v.size()));
+	std::vector<double> c;
+	c.resize(v.size());
+	if (this->nbCols()==1){
+		for(UInt i =0;i<v.size();i++)
+			{
+				c[i]=v[i] + (*this)(i,0);
+			}
+		}
+	else // nbRows==1 
+	{
+		for(UInt i =0;i<v.size();i++)
+			{
+				c[i]=v[i] + (*this)(0,i);
+			}
+	}
+    return c;
 	}

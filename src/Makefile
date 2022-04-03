@@ -1,4 +1,7 @@
-all : Element.o PhaseElement.o DispElement.o TestClasses.o TestClasses
+all : Matrix.o Element.o PhaseElement.o DispElement.o TestClasses.o TestClasses
+Matrix.o : matrix.cpp matrix.hpp
+	echo ''step0''
+	g++ -c -O -g matrix.cpp
 Element.o : element.cpp element.hpp
 	echo ''step1''
 	g++ -c -O -g element.cpp
@@ -13,4 +16,4 @@ TestClasses.o : Test_classes.cpp phaseelement.hpp dispelement.hpp
 	g++ -c -O -g Test_classes.cpp
 TestClasses : phaseelement.o dispelement.o Test_classes.o 
 	echo ''step4''
-	g++ -O -o TestClasses phaseelement.o dispelement.o Test_classes.o 
+	g++ -O -o TestClasses phaseelement.o dispelement.o matrix.o Test_classes.o 
