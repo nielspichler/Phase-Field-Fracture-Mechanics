@@ -25,18 +25,17 @@
 #include "phaseelement.hpp"
 
 
-PhaseElement::PhaseElement(Matrix & loc_coordinates, std::vector<double> & loc_d, std::vector<double> & loc_H)
+PhaseElement::PhaseElement(Matrix<double> & loc_coordinates, std::vector<double> & loc_d, std::vector<double> & loc_H, std::vector<double> & prop)
 {
 	coordinates = loc_coordinates;
 	nodal_d = loc_d;
 	nodal_H = loc_H;
 	
-	std::vector<double> prop = {1., 0.1}; // prop[0] is gc, prop[1] is lc
 	int dim = 2;
 	
 	if (coordinates.nbRows()==4) // 4 node elements
 	{
-		Matrix intpt(4,2);
+		Matrix<double> intpt(4,2);
 		intpt(0,0) = -1/pow(3,0.5);
 		intpt(0,1) = -1/pow(3,0.5);
 		intpt(1,0) = 1/pow(3,0.5);
@@ -61,7 +60,7 @@ PhaseElement::PhaseElement(Matrix & loc_coordinates, std::vector<double> & loc_d
 
 }
 
-void PhaseElement::GetStiffnessAndRes(Matrix & Ke, std::vector<double> & res)
+void PhaseElement::GetStiffnessAndRes(Matrix<double> & Ke, std::vector<double> & res)
 {
 	Ke = 0.;
 	std::fill(res.begin(), res.end(), 0.);
@@ -91,10 +90,10 @@ void PhaseElement::GetStiffnessAndRes(Matrix & Ke, std::vector<double> & res)
 		dNdx.transpose(dNdx_T);
 		N.transpose(N_T);
 		
-		Ke += N_T * N * det * w *(prop[0]/prop[1]+2. * H) + // 4x4 = 4x1*1x4
-				dNdx_T * dNdx * det * w * prop[0]*prop[1]; // 4x2*2x4
+		Ke += det * w *(prop[0]/prop[1]+2. * H) * N_T * N+ // 4x4 = 4x1*1x4
+				det * w * prop[0]*prop[1] * dNdx_T * dNdx; // 4x2*2x4
 		// We compute the contribution of the node to res
-		res += (N_T.toVector() * det * w * (prop[0]/prop[1] * d -2.*(1.-d)*H)) + // 4x1
+		res += (N_T.getStorage() * det * w * (prop[0]/prop[1] * d -2.*(1.-d)*H)) + // 4x1
 				(dNdx_T * gradd * det * w * prop[0]*prop[1]); // 4x2*2x1
 	}
 }

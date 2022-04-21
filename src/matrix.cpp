@@ -1,7 +1,8 @@
 #include "matrix.hpp"
 
-
-double Matrix::determinant() {
+/* -------------------------------------------------------------------------- */
+template<typename T>
+double Matrix<T>::determinant() {
 
   assert(this->rows == this->cols);
   
@@ -31,7 +32,9 @@ double Matrix::determinant() {
 }
 
 
-void Matrix::inverse(Matrix & inv) {
+/* -------------------------------------------------------------------------- */
+template<typename T>
+void Matrix<T>::inverse(Matrix<T> & inv) {
 
   assert(this->rows == this->cols);
   
@@ -41,7 +44,7 @@ void Matrix::inverse(Matrix & inv) {
   // check singularity
   assert(det_K != 0);
 
-  Matrix tmp(this->rows-1, this->cols-1);
+  Matrix<T> tmp(this->rows-1, this->cols-1);
     
   for (UInt m=0; m < this->rows; ++m) {
     for (UInt n=0; n < this->cols; ++n) { 
@@ -67,24 +70,18 @@ void Matrix::inverse(Matrix & inv) {
   }
 }
 
-
-void Matrix::transpose(Matrix & a) {
-  a.resize(this->cols, this->rows);
+/* -------------------------------------------------------------------------- */
+template<typename T>
+void Matrix<T>::transpose(Matrix<T> & a) {
+  a.resize(this->rows, this->cols);
   
   for (UInt i=0; i < this->rows; ++i) {
-    for (UInt j=0; j < this->cols; ++j) {
+    for (UInt j=0; j < this->rows; ++j) {
       a(j, i) = (*this)(i, j); 
     }
   }
 }
 
+template class Matrix<UInt>;
+template class Matrix<double>;
 
-Matrix Matrix::col(UInt colNb){
-	assert(colNb<cols);
-	Matrix a(this->rows,1);
-	
-	for (UInt i=0; i < this->rows; ++i){
-	a(i, 0) = (*this)(i, colNb);
-	}
-	return a;
-	}

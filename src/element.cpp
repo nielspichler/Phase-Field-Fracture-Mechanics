@@ -31,7 +31,7 @@ Element::Element()
 }
 
 
-void Element::ShapeFun_4lin(Matrix & dNdxi, Matrix & N, std::vector<double> & xi)
+void Element::ShapeFun_4lin(Matrix<double> & dNdxi, Matrix<double> & N, std::vector<double> & xi)
 {
 	// Evaluating the shape functions at the integration points
 	N(0, 0) = 0.25 * (1-xi[0]) * (1-xi[1]);
