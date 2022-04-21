@@ -25,7 +25,7 @@
 #include "dispelement.hpp"
 
 
-DispElement::DispElement(Matrix & loc_coordinates, std::vector<double> & loc_d, std::vector<double> & loc_u)
+DispElement::DispElement(Matrix<double> & loc_coordinates, std::vector<double> & loc_d, std::vector<double> & loc_u, std::vector<double> & prop)
 {
 	coordinates = loc_coordinates;
 	nodal_d = loc_d;
@@ -45,9 +45,7 @@ DispElement::DispElement(Matrix & loc_coordinates, std::vector<double> & loc_d, 
 		intpt(3,0) = -1/pow(3,0.5);
 		intpt(3,1) = 1/pow(3,0.5);
 	}
-	
-	prop = {205000, 0.3}; // E, poisson
-	
+		
 	C.resize(3,3);
 	C(0,0) = prop[0]/((1+prop[1]) * (1-2*prop[1])) * (1-prop[1]);
 	C(1,1) = prop[0]/((1+prop[1]) * (1-2*prop[1])) * (1-prop[1]);
@@ -72,7 +70,7 @@ DispElement::DispElement(Matrix & loc_coordinates, std::vector<double> & loc_d, 
 	sig.resize((dim-1)*(dim-1)+2);
 }
 
-void DispElement::GetStiffnessAndRes(Matrix & Ke, std::vector<double> & res)
+void DispElement::GetStiffnessAndRes(Matrix<double> & Ke, std::vector<double> & res)
 {
 	Ke = 0.;
 	std::fill(res.begin(), res.end(), 0.);
@@ -118,7 +116,7 @@ void DispElement::GetStiffnessAndRes(Matrix & Ke, std::vector<double> & res)
 		B.transpose(B_T);
 		
 		// We compute the contribution of the node to Ke
-		Ke += B_T * C * B * ((1-d)*(1-d)+k)* det * w; // 8x8 = 8x3*3x3*3x8
+		Ke += (((1-d)*(1-d)+k) * det * w) * (B_T * C * B) ; // 8x8 = 8x3*3x3*3x8
 		
 		// We compute the contribution of the node to res
 		res += B_T * sig * ((1-d)*(1-d)+k) * det * w;// 8x1 = 8x3*3x1

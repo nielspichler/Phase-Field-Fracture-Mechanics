@@ -1,17 +1,15 @@
 #ifndef __VECTOR__HH__
 #define __VECTOR__HH__
 
-#include <cassert>
+#include "common.hpp"
 #include <vector>
-#include <iostream>
-#include <iomanip>   // for setprecision
-
 
 using UInt = unsigned int;
 
 
 // printing std::vector
-inline std::ostream& operator<<(std::ostream& stream, const std::vector<double>& _this) {
+template<typename T>
+inline std::ostream& operator<<(std::ostream& stream, const std::vector<T>& _this) {
 int print_precision = 2;
   for (UInt i = 0; i < _this.size(); ++i) {
     if (_this[i] >= 0){
@@ -25,11 +23,12 @@ int print_precision = 2;
 
 
 // vector vector addition
-inline std::vector<double> operator+(const std::vector<double>& a, const std::vector<double>& b) {
+template<typename T>
+inline std::vector<T> operator+(const std::vector<T>& a, const std::vector<T>& b) {
 
   assert(a.size() == b.size());
   
-  std::vector<double> c;
+  std::vector<T> c;
   c.resize(a.size());
   
   for (UInt i = 0; i < a.size(); ++i) {
@@ -39,25 +38,14 @@ inline std::vector<double> operator+(const std::vector<double>& a, const std::ve
   return c;
 }
 
-// vector vector increment addition
-inline std::vector<double> operator+=( std::vector<double>& a, const std::vector<double>& b) {
-
-  assert(a.size() == b.size());
-
-  for (UInt i = 0; i < b.size(); ++i) {
-    a[i] += b[i];
-  }
-
-  return a;
-}
-
 
 // vector vector subtraction
-inline std::vector<double> operator-(const std::vector<double>& a, const std::vector<double>& b) {
+template<typename T>
+inline std::vector<T> operator-(const std::vector<T>& a, const std::vector<T>& b) {
 
   assert(a.size() == b.size());
   
-  std::vector<double> c;
+  std::vector<T> c;
   c.resize(a.size());
   
   for (UInt i = 0; i < a.size(); ++i) {
@@ -69,9 +57,10 @@ inline std::vector<double> operator-(const std::vector<double>& a, const std::ve
 
 
 // vector multiplication by scalar
-inline std::vector<double> operator*(const std::vector<double>& a, double b) {
+template<typename T>
+inline std::vector<T> operator*(const std::vector<T>& a, double b) {
   
-  std::vector<double> c;
+  std::vector<T> c;
   c.resize(a.size());
   
   for (UInt i = 0; i < a.size(); ++i) {
@@ -83,7 +72,8 @@ inline std::vector<double> operator*(const std::vector<double>& a, double b) {
 
 
 // dot product
-inline double operator*(const std::vector<double>& a, const std::vector<double>& b) {
+template<typename T>
+inline double operator*(const std::vector<T>& a, const std::vector<T>& b) {
   assert(a.size() == b.size());
 
   double product = 0;
@@ -92,6 +82,13 @@ inline double operator*(const std::vector<double>& a, const std::vector<double>&
   }
 
   return product;
+}
+
+
+// vector +=
+template<typename T>
+inline void operator+=(std::vector<T> &v1, const std::vector<T> &v2) {
+    v1.insert(v1.end(), v2.begin(), v2.end());
 }
 
 #endif

@@ -1,0 +1,122 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>TEHPC Project, Phase-field fracture mechanics &#8212; Project_TEHPC_NielsPichler  documentation</title>
+    <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/language_data.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="TEHPC Project, Phase-field fracture mechanics" href="description.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="tehpc-project-phase-field-fracture-mechanics">
+<h1>TEHPC Project, Phase-field fracture mechanics<a class="headerlink" href="#tehpc-project-phase-field-fracture-mechanics" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="classes">
+<h2>Classes<a class="headerlink" href="#classes" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="element-class">
+<h3>Element class<a class="headerlink" href="#element-class" title="Permalink to this headline">¶</a></h3>
+<p>A parent class element is created, this class is fully abstract. Element has all the common members needed for the subclasses and only one private method that computes the valus of the shape functions for a 4 node linear element.</p>
+<p>From this abstract class, 2 subclasses are derived, <strong>PhaseElement</strong> and <strong>DispElement</strong> classes. Both have theis own implementation of the method <strong>GetStiffnessAndRes</strong> which computes the local stifness matrix and local residual. Both implementation could in theory account for other linear element shape and triangular element could be easily implemnted in the future.</p>
+<p>The UML diagramm can be found below.</p>
+<div class="figure align-center">
+<img alt="../_images/uml_element.png" src="../_images/uml_element.png" />
+</div>
+</div>
+<div class="section" id="model-class">
+<h3>Model class<a class="headerlink" href="#model-class" title="Permalink to this headline">¶</a></h3>
+<p>The model class take heavy inspiration from the one provided in the course. A constructor builds the model from an imput file. Then an assembly method is called that loops over the elements and calls the private method <strong>localStiffness</strong>. The global stifness matrix and residue vector are build this way, subsequently the stifness matrix is reduced to take into account the boundary conditions. Finally the system is solved. <strong>The class of solver is not yet designed but most likely will be copied from the course</strong>. Since the phase element requires a history variable to be computed, an <strong>update</strong> method is needed to cumpute this field varible. As one wants to visualize the results, the phase vector is written in a file in an output directory. As the model requires the application of the boundary condition to be progressive and works in multiple steps, the above described process is put inside a loop and the total boundary conditions are divided in corresponding steps. There are no subclasses of this class.</p>
+</div>
+<div class="section" id="basematrix-class">
+<h3>BaseMatrix class<a class="headerlink" href="#basematrix-class" title="Permalink to this headline">¶</a></h3>
+<p>The base matrix and its children class are copied from the project and used as a black-box tool. Some features were added, in particular operator overloading for the <strong>Matrix</strong> class (Matrix += Matrix and double*Matrix). These features were needed to construct the local stifness matrices.</p>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../index.html">Project_TEHPC_NielsPichler</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="description.html">TEHPC Project, Phase-field fracture mechanics</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">TEHPC Project, Phase-field fracture mechanics</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#classes">Classes</a></li>
+</ul>
+</li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="description.html" title="previous chapter">TEHPC Project, Phase-field fracture mechanics</a></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2022, Niels Pichler.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.8.5</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.8</a>
+      
+      |
+      <a href="../_sources/manual/architecture.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

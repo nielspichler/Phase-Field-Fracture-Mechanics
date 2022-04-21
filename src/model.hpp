@@ -5,7 +5,8 @@
 #include <fstream>
 #include <sstream>
 
-#include "arithmetic_operations.h"
+#include "common.hpp"
+#include "array.hpp"
 #include "matrix.hpp"
 
 #include "phaseelement.hpp"
@@ -37,12 +38,22 @@ public:
 
   // assembles global stiffness matrix K
   void assembly();
+  
+  // reduces the stifness matrices
+  void apply_bc(); 
+
+  // solves the equation
+  void solve(); 
+  
+  // updates the variables
+  void update(); 
+  
+  // stores the phase field variable in an output directory
+  void output(const std::string & odir); 
 
 
 private:
-  void localStiffness(int element, Matrix & Ke);
-
-  void fillRotationMatrix(Matrix & R, double sine, double cosine);
+  void localStiffness(int element, Matrix<double> & Ke);
 
 
   /* ------------------------------------------------------------------------ */
@@ -50,7 +61,7 @@ private:
   /* ------------------------------------------------------------------------ */
 public:
 
-  Matrix * getK() { return this->K; };
+  Matrix<double> * getK() { return this->K; };
 
 
   /* ------------------------------------------------------------------------ */
@@ -59,26 +70,36 @@ public:
 private:
 
   // general information
-  int dim;
+  UInt dim;
+  double lc;
 
   // nodal information
   UInt nb_nodes;
-  Matrix coordinates;
+  Array<double> coordinates;
+  Array<double> displacement;	//u
+  Array<double> phase;			//d
+  Array<double> history;		//H
+  Array<double> force;
 
   // elemental information
   UInt nb_elements;
   UInt nb_nodes_per_element;
-  Matrix connectivity;
+  Array<UInt> connectivity;
   std::vector<double> modulus;
+  std::vector<double> poisson;
+  std::vector<double> gc;
   std::vector<double> cross_section;
 
   // boundary conditions (nodal information)
-  Matrix bc_force;
-  int ** bc_disp = NULL;
-  Matrix bc_disp_value;
+  Array<double> bc_force;
+  Array<UInt> bc_disp;
+  Array<double> bc_disp_value;
 
   // global stiffness matrix
-  Matrix * K = NULL;
+  std::shared_ptr<BaseMatrix<double> > K;
+
+  // pointer to solver used
+  std::shared_ptr<NLsolver> solver;
 };
 
 #endif

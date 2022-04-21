@@ -32,16 +32,16 @@ class DispElement: public Element
 	public:
 		DispElement();
 		
-		DispElement(Matrix & loc_coordinates, std::vector<double> & loc_d, std::vector<double> & loc_u);
+		DispElement(Matrix<double> & loc_coordinates, std::vector<double> & loc_d, std::vector<double> & loc_u, std::vector<double> & prop);
 		
-		void GetStiffnessAndRes(Matrix & Ke, std::vector<double> & res);
+		void GetStiffnessAndRes(Matrix<double> & Ke, std::vector<double> & res);
 		
 	private:
 		/* add your private declarations */
-		Matrix B;
-		Matrix B_T;
-		Matrix C;
-		Matrix N_2d;
+		Matrix<double> B;
+		Matrix<double> B_T;
+		Matrix<double> C;
+		Matrix<double> N_2d;
 		std::vector<double> eps;
 		std::vector<double> sig;
 		double k;

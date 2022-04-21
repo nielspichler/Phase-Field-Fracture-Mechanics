@@ -1,5 +1,8 @@
 #include "model.hpp"
 
+
+// public methods
+
 void Model::readInput(const std::string & fname)
 {
   // character used to designate comment in input file
@@ -183,6 +186,24 @@ void Model::assembly()
 }
 
 
+void Model apply_bc(){
+	
+	}
+
+void Model solve(){
+	
+	}
+
+void Model update(){
+	
+	}
+
+void Model output(const std::string & odir){
+	
+	}
+
+// private methods
+
 void Model::localStiffness(int element, Matrix & Ke_d, Matrix & res_d, Matrix & Ke_u, Matrix & res_u)
 {
 	int e = element;
@@ -190,7 +211,18 @@ void Model::localStiffness(int element, Matrix & Ke_d, Matrix & res_d, Matrix & 
 	Ke_d = 0.;
 	Ke_u = 0.;
 	// Fill local variables
-	for (int i = 0;i<NB_NODES_OF_THE_ELEMENT;i++)
+	
+	Matrix<double> loc_coordinates(nb_nodes_per_element, 2)
+	std::vector<double> loc_d;
+	loc_d.resize(nb_nodes_per_element);
+	
+	std::vector<double> loc_u;
+	loc_d.resize(2*nb_nodes_per_element);
+	
+	std::vector<double>  prop_fracture = {gc(e), lc};
+	std::vector<double>  prop_elasticity = {modulus(e), poisson(e)};
+	
+	for (int i = 0;i<nb_nodes_per_element;i++)
 	{
 		loc_coordinates(i,0) = coordinates(connectivity(e, i),0);// x_i
 		loc_coordinates(i,1) = coordinates(connectivity(e, i),1);// y_i
@@ -203,8 +235,8 @@ void Model::localStiffness(int element, Matrix & Ke_d, Matrix & res_d, Matrix & 
 	}
 	
 	// the element is created
-	PhaseElement el_d(loc_coordinates, loc_d, loc_H);
-	DispElement el_u(loc_coordinates, loc_d, loc_u);
+	PhaseElement el_d(loc_coordinates, loc_d, loc_H, prop_fracture);
+	DispElement el_u(loc_coordinates, loc_d, loc_u, prop_elasticity);
 	// Local stiffness matrices
 	el_d.GetStiffnessAndRes(Ke_d, res_d);
 	el_u.GetStiffnessAndRes(Ke_u, res_u);
