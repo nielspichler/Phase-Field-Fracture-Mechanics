@@ -25,11 +25,12 @@
 #include "dispelement.hpp"
 
 
-DispElement::DispElement(Matrix<double> & loc_coordinates, std::vector<double> & loc_d, std::vector<double> & loc_u, std::vector<double> & prop)
+DispElement::DispElement(Matrix<double> & loc_coordinates, std::vector<double> & loc_d, std::vector<double> & loc_u, std::vector<double> & loc_prop)
 {
 	coordinates = loc_coordinates;
 	nodal_d = loc_d;
 	nodal_u = loc_u;
+	prop = loc_prop;
 	
 	dim = 2;
 	
@@ -55,19 +56,19 @@ DispElement::DispElement(Matrix<double> & loc_coordinates, std::vector<double> &
 	
 	N.resize(1,coordinates.nbRows()); // 1x4
 	N_2d.resize(dim, dim*coordinates.nbRows()); // 2x8
-	dNdxi.resize(coordinates.nbRows(), dim); // 2x4
+	dNdxi.resize(dim, coordinates.nbRows()); // 2x4
 	xi.resize(coordinates.nbRows()); //
 	J.resize(dim, dim);// 2X2
 	//invJ.resize(dim, dim);// 2X2
-	dNdx.resize(coordinates.nbRows(), dim);// 4x2
+	dNdx.resize(dim, coordinates.nbRows());// 2x4
 	B.resize((dim-1)*(dim-1)+2, dim*coordinates.nbRows()); // (dim-1)²+2 gives 3 for dim = 2 and 6 form dim = 3 (3x8)
 	det = 0.;
 	d = 0.;
 	w = 1.; // weight in gauss integration
-	k = 0.1;
+	k = 1e-6; //stabilisation factor
 	
-	eps.resize((dim-1)*(dim-1)+2);
-	sig.resize((dim-1)*(dim-1)+2);
+	eps.resize(dim);
+	sig.resize(dim);
 }
 
 void DispElement::GetStiffnessAndRes(Matrix<double> & Ke, std::vector<double> & res)
@@ -76,7 +77,7 @@ void DispElement::GetStiffnessAndRes(Matrix<double> & Ke, std::vector<double> & 
 	std::fill(res.begin(), res.end(), 0.);
 	B=0.;
 	
-	for (int i=0; i<intpt.nbRows(); i++) // loop over the integration points
+	for (UInt i=0; i<intpt.nbRows(); i++) // loop over the integration points
 	{
 		xi[0] = intpt(i,0);
 		xi[1] = intpt(i,1);
@@ -87,7 +88,7 @@ void DispElement::GetStiffnessAndRes(Matrix<double> & Ke, std::vector<double> & 
 		J.inverse(invJ); // 2x2
 		dNdx = invJ * dNdxi; // 2x4 = 2x2*2x4
 		
-		for (int j=0;j<coordinates.nbRows();j++) // loop over N_j (each submatrix in B)
+		for (UInt j=0;j<coordinates.nbRows();j++) // loop over N_j (each submatrix in B)
 		{
 			for (int k=0;k<dim;k++) // fill diagonals of each submatrix
 			{
@@ -116,10 +117,10 @@ void DispElement::GetStiffnessAndRes(Matrix<double> & Ke, std::vector<double> & 
 		B.transpose(B_T);
 		
 		// We compute the contribution of the node to Ke
-		Ke += (((1-d)*(1-d)+k) * det * w) * (B_T * C * B) ; // 8x8 = 8x3*3x3*3x8
+		Ke += ((((1-d)*(1-d))+k) * det * w) * (B_T * C * B) ; // 8x8 = 8x3*3x3*3x8
 		
 		// We compute the contribution of the node to res
-		res += B_T * sig * ((1-d)*(1-d)+k) * det * w;// 8x1 = 8x3*3x1
+		res += B_T * sig * (((1-d)*(1-d))+k) * det * w;// 8x1 = 8x3*3x1
 	}
 }
 

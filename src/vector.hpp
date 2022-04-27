@@ -88,7 +88,12 @@ inline double operator*(const std::vector<T>& a, const std::vector<T>& b) {
 // vector +=
 template<typename T>
 inline void operator+=(std::vector<T> &v1, const std::vector<T> &v2) {
-    v1.insert(v1.end(), v2.begin(), v2.end());
+	
+	assert(v1.size() == v2.size());
+	
+	for (UInt i = 0; i<v1.size(); i++){
+		v1[i] += v2[i];
+	}
 }
 
 #endif

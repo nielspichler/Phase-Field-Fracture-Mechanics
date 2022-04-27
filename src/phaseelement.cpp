@@ -25,17 +25,18 @@
 #include "phaseelement.hpp"
 
 
-PhaseElement::PhaseElement(Matrix<double> & loc_coordinates, std::vector<double> & loc_d, std::vector<double> & loc_H, std::vector<double> & prop)
+PhaseElement::PhaseElement(Matrix<double> & loc_coordinates, std::vector<double> & loc_d, std::vector<double> & loc_H, std::vector<double> & loc_prop)
 {
 	coordinates = loc_coordinates;
 	nodal_d = loc_d;
 	nodal_H = loc_H;
+	prop = loc_prop;
 	
 	int dim = 2;
 	
 	if (coordinates.nbRows()==4) // 4 node elements
 	{
-		Matrix<double> intpt(4,2);
+		intpt.resize(4,2);
 		intpt(0,0) = -1/pow(3,0.5);
 		intpt(0,1) = -1/pow(3,0.5);
 		intpt(1,0) = 1/pow(3,0.5);
@@ -47,12 +48,12 @@ PhaseElement::PhaseElement(Matrix<double> & loc_coordinates, std::vector<double>
 	}
 	N.resize(1,coordinates.nbRows()); // 1x4
 	N_T.resize(coordinates.nbRows(), 1); // 4x1
-	dNdxi.resize(coordinates.nbRows(), dim); // 2x4
+	dNdxi.resize(dim, coordinates.nbRows()); // 2x4
 	xi.resize(coordinates.nbRows());
 	J.resize(dim, dim);// 2X2
 	//invJ.resize(dim, dim);// 2X2
-	dNdx.resize(coordinates.nbRows(), dim);// 2x4
-	dNdx_T.resize(dim, coordinates.nbRows());// 4x2
+	dNdx.resize(dim, coordinates.nbRows());// 2x4
+	dNdx_T.resize(coordinates.nbRows(), dim);// 4x2
 	det=0.;
 	d=0.;
 	H=0.;
@@ -65,7 +66,7 @@ void PhaseElement::GetStiffnessAndRes(Matrix<double> & Ke, std::vector<double> &
 	Ke = 0.;
 	std::fill(res.begin(), res.end(), 0.);
 	
-	for (int i=0; i<intpt.nbRows(); i++) // loop over the integration points
+	for (UInt i=0; i<intpt.nbRows(); i++) // loop over the integration points
 	{
 		xi[0] = intpt(i,0);
 		xi[1] = intpt(i,1);

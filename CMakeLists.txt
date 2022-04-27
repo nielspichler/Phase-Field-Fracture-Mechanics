@@ -39,3 +39,11 @@ option(TEHPC_EXAMPLES "examples" OFF)
 if(TEHPC_EXAMPLES)
   add_subdirectory(examples)
 endif()
+
+# ------------------------------------------------------
+# test
+option(TEHPC_TESTS "tests" OFF)
+if(TEHPC_TESTS)
+  enable_testing()
+  add_subdirectory(tests)
+endif()

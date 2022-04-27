@@ -1,0 +1,1 @@
+/usr/bin/c++  -Wall -Wextra -pedantic -std=c++17  -g  -rdynamic CMakeFiles/model_example.dir/model_example.cpp.o  -o model_example  -Wl,-rpath,/home/student/Project_TEHPC/project-tehpc-niels-pichler/src ../src/libtehpc2022.so 

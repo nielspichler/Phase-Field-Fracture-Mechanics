@@ -19,7 +19,8 @@ int main(int argc, char *argv[])
 
     
   Model model(fname); // constructs the model from input file
-  
+
+
   for (int step = 0; step < maxiter; step++)
 	{
 		model.assembly(); // assembles the 2 stifness matrices

@@ -1,0 +1,5 @@
+/home/student/Project_TEHPC/project-tehpc-niels-pichler/CMakeFiles/rebuild_cache.dir
+/home/student/Project_TEHPC/project-tehpc-niels-pichler/CMakeFiles/edit_cache.dir
+/home/student/Project_TEHPC/project-tehpc-niels-pichler/src/CMakeFiles/rebuild_cache.dir
+/home/student/Project_TEHPC/project-tehpc-niels-pichler/src/CMakeFiles/edit_cache.dir
+/home/student/Project_TEHPC/project-tehpc-niels-pichler/src/CMakeFiles/tehpc2022.dir

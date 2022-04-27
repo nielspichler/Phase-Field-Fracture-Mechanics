@@ -1,8 +1,12 @@
 /home/student/Project_TEHPC/project-tehpc-niels-pichler/build/CMakeFiles/rebuild_cache.dir
 /home/student/Project_TEHPC/project-tehpc-niels-pichler/build/CMakeFiles/edit_cache.dir
+/home/student/Project_TEHPC/project-tehpc-niels-pichler/build/CMakeFiles/test.dir
 /home/student/Project_TEHPC/project-tehpc-niels-pichler/build/src/CMakeFiles/rebuild_cache.dir
 /home/student/Project_TEHPC/project-tehpc-niels-pichler/build/src/CMakeFiles/edit_cache.dir
+/home/student/Project_TEHPC/project-tehpc-niels-pichler/build/src/CMakeFiles/test.dir
 /home/student/Project_TEHPC/project-tehpc-niels-pichler/build/src/CMakeFiles/tehpc2022.dir
-/home/student/Project_TEHPC/project-tehpc-niels-pichler/build/examples/CMakeFiles/rebuild_cache.dir
-/home/student/Project_TEHPC/project-tehpc-niels-pichler/build/examples/CMakeFiles/edit_cache.dir
-/home/student/Project_TEHPC/project-tehpc-niels-pichler/build/examples/CMakeFiles/model_example.dir
+/home/student/Project_TEHPC/project-tehpc-niels-pichler/build/tests/CMakeFiles/rebuild_cache.dir
+/home/student/Project_TEHPC/project-tehpc-niels-pichler/build/tests/CMakeFiles/edit_cache.dir
+/home/student/Project_TEHPC/project-tehpc-niels-pichler/build/tests/CMakeFiles/test.dir
+/home/student/Project_TEHPC/project-tehpc-niels-pichler/build/tests/CMakeFiles/model_assembly_tests.dir
+/home/student/Project_TEHPC/project-tehpc-niels-pichler/build/tests/CMakeFiles/model_constructor_tests.dir

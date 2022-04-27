@@ -35,6 +35,12 @@ void Model::readInput(const std::string & fname)
     if (keyword == "$dimensions") {
       sstr >> dim;
     }
+	else if (keyword == "$lc") {
+      sstr >> lc;
+    }
+    else if (keyword == "$steps") {
+      sstr >> steps;
+    }
     else if (keyword == "$nodes") {
       sstr >> nb_nodes;
     }
@@ -50,10 +56,12 @@ void Model::readInput(const std::string & fname)
   read_file.close();
   
   // check if global properties were read
-  assert(dim >= 0);
-  assert(nb_nodes >= 0);
-  assert(nb_nodes_per_element >= 0);
-  assert(nb_elements >= 0);
+  //assert(dim >= 0);
+  //assert(nb_nodes >= 0);
+  //assert(nb_nodes_per_element >= 0);
+  //assert(nb_elements >= 0);
+  //assert(steps >= 0);
+  //assert(lc >= 0.0);
   
   /* allocate arrays: 
      coordinates, 
@@ -64,16 +72,15 @@ void Model::readInput(const std::string & fname)
 
   connectivity.resize(nb_elements, nb_nodes_per_element);
   modulus.resize(nb_elements);
-  cross_section.resize(nb_elements);
+  poisson.resize(nb_elements);
+  gc.resize(nb_elements);
   
   // BC
-  bc_force.resize(nb_nodes, dim);
-  bc_disp = allocateIntMatrix(nb_nodes, dim);
+  bc_disp.resize(nb_nodes, dim);
   bc_disp_value.resize(nb_nodes, dim);
   
   // initialize BC arrays with zero values
-  bc_force=0.;
-  matrixSetValue(bc_disp, nb_nodes, dim, 0);
+  bc_disp = 0;
   bc_disp_value=0.;
   
   // open input file again and read array values (copy and modify from week 3)
@@ -111,23 +118,20 @@ void Model::readInput(const std::string & fname)
       sstr >> idx;
       int node;
       sstr >> node;
-      connectivity(idx-1, 0) = node-1;
+      connectivity(idx-1, 0) = node-1; // node 1
       sstr >> node;
-      connectivity(idx-1, 1) = node-1;
+      connectivity(idx-1, 1) = node-1; // node 2
+      sstr >> node;
+      connectivity(idx-1, 2) = node-1; // node 3
+      sstr >> node;
+      connectivity(idx-1, 3) = node-1; // node 4
       int etype;
       sstr >> etype;
       sstr >> modulus[idx-1];
-      sstr >> cross_section[idx-1];
+      sstr >> poisson[idx-1];
+      sstr >> gc[idx-1];
     }
-    else if (keyword == "$bcn") {
-      int tmp;
-      sstr >> tmp; // index (not used)
-      int node;
-      sstr >> node;
-      int dir;
-      sstr >> dir;
-      sstr >> bc_force(node-1, dir-1);
-    }
+
     else if (keyword == "$bcd") {
       int tmp;
       sstr >> tmp; // index (not used)
@@ -136,26 +140,27 @@ void Model::readInput(const std::string & fname)
       int dir;
       sstr >> dir;
       sstr >> bc_disp_value(node-1, dir-1);
-      bc_disp[node-1][dir-1] = 1; // set to ON
+      bc_disp(node-1, dir-1) = 1; // set to ON
     }
   }
   read_file.close();
 }
 
+/*
 void Model::assembly()
  {
   
   // initializing local stiffnes matrix, rotation matrix
-  int local_size = nb_nodes_per_element*dim;
-  Matrix Ke(local_size, local_size);
+  UInt local_size = nb_nodes_per_element*dim;
+  Matrix<double> Ke(local_size, local_size);
 
   // initialze and fill the 2D array for mapping local indicies to global
-  Matrix global_indices(nb_elements, local_size);
+  Matrix<double> global_indices(nb_elements, local_size);
   
   // global numbering
-  for (int e = 0; e < nb_elements; ++e) {
-    for (int i = 0; i < nb_nodes_per_element; ++i) {
-      for (int j = 0; j < dim; ++j) {
+  for (UInt e = 0; e < nb_elements; ++e) {
+    for (UInt i = 0; i < nb_nodes_per_element; ++i) {
+      for (UInt j = 0; j < dim; ++j) {
 	global_indices(e, 2*i+j) = j + dim * connectivity(e,i);
       }
     }
@@ -167,14 +172,13 @@ void Model::assembly()
 
 
   // for loop over elements starts here
-  for (int e = 0; e < nb_elements; ++e) {
+  for (UInt e = 0; e < nb_elements; ++e) {
     
     // here: call the "localStiffness" function to fill Ke
-    /* Your solution goes here */
     localStiffness(e, Ke);
     // Assemble the globale stiffness matrix
-    for (int i = 0; i < local_size; ++i) {
-      for (int j = 0; j < local_size; ++j) {
+    for (UInt i = 0; i < local_size; ++i) {
+      for (UInt j = 0; j < local_size; ++j) {
 	int gi = global_indices(e, i);
 	int gj = global_indices(e, j);
 	(*K)(gi, gj) += Ke(i, j);
@@ -184,54 +188,58 @@ void Model::assembly()
   // for loop over elements end here
 
 }
+*/
 
-
-void Model apply_bc(){
+void Model::apply_bc(){
 	
 	}
 
-void Model solve(){
+void Model::solve(){
 	
 	}
 
-void Model update(){
+void Model::update(){
 	
 	}
 
-void Model output(const std::string & odir){
+void Model ::output(const std::string & odir){
 	
 	}
 
 // private methods
 
-void Model::localStiffness(int element, Matrix & Ke_d, Matrix & res_d, Matrix & Ke_u, Matrix & res_u)
+void Model::localStiffness(int element, Matrix<double> & Ke_d, std::vector<double>  & res_d, Matrix<double> & Ke_u, std::vector<double> & res_u)
 {
 	int e = element;
 	// resetting local stiffness and rotation matrix to zero
 	Ke_d = 0.;
 	Ke_u = 0.;
 	// Fill local variables
-	
-	Matrix<double> loc_coordinates(nb_nodes_per_element, 2)
+	// local coordinates
+	Matrix<double> loc_coordinates(nb_nodes_per_element, 2);
+	// local phase
 	std::vector<double> loc_d;
 	loc_d.resize(nb_nodes_per_element);
-	
+	// local history
+	std::vector<double> loc_H;
+	loc_H.resize(nb_nodes_per_element);
+	// local displacement
 	std::vector<double> loc_u;
-	loc_d.resize(2*nb_nodes_per_element);
+	loc_u.resize(2*nb_nodes_per_element);
+	// local properties
+	std::vector<double>  prop_fracture = {gc[e], lc};
+	std::vector<double>  prop_elasticity = {modulus[e], poisson[e]};
 	
-	std::vector<double>  prop_fracture = {gc(e), lc};
-	std::vector<double>  prop_elasticity = {modulus(e), poisson(e)};
-	
-	for (int i = 0;i<nb_nodes_per_element;i++)
+	for (UInt i = 0;i<nb_nodes_per_element;i++)
 	{
 		loc_coordinates(i,0) = coordinates(connectivity(e, i),0);// x_i
 		loc_coordinates(i,1) = coordinates(connectivity(e, i),1);// y_i
 		
-		loc_d[i] = d(connectivity(e, i))
-		loc_H[i] = H(connectivity(e, i))
+		loc_d[i] = phase[connectivity(e, i)];
+		loc_H[i] = history[connectivity(e, i)];
 		
-		loc_u[2*i] = u_1(connectivity(e, i));// u_1
-		loc_u[2*i+1] = u_2(connectivity(e, i));// u_2
+		loc_u[2*i] = displacement(connectivity(e, i), 0);// u_1
+		loc_u[2*i+1] = displacement(connectivity(e, i), 1);// u_2
 	}
 	
 	// the element is created

@@ -3,8 +3,8 @@
 
 // matrix matrix multiplication
 template<typename T>
-inline Matrix<T> operator*(Matrix<T>& a, Matrix<T>& b){
-  assert(a.nbRows() == b.nbCols() && b.nbRows() == a.nbCols());
+inline Matrix<T> operator*(const Matrix<T>& a, const Matrix<T>& b){
+  assert(b.nbRows() == a.nbCols());
 
   Matrix<T> c(a.nbRows(), b.nbCols());
     
@@ -50,7 +50,7 @@ inline Matrix<T> operator-(Matrix<T>& a, Matrix<T>& b){
 
 // matrix matrix addition
 template<typename T>
-inline Matrix<T> operator+(Matrix<T>& a, Matrix<T>& b){
+inline Matrix<T> operator+(const Matrix<T>& a, const Matrix<T>& b){
   assert(a.nbRows() == b.nbRows() && a.nbCols() == b.nbCols());
 
   Matrix<T> c(a.nbRows(), a.nbCols());
@@ -70,7 +70,7 @@ inline std::vector<T> operator*(Matrix<T>& a, std::vector<T>& b){
   assert(a.nbCols() == b.size());
 
   std::vector<T> c;
-  c.resize(b.size());
+  c.resize(a.nbRows());
       
   for(UInt i=0; i < a.nbRows(); i++) { // rows of a
     for(UInt j=0; j < a.nbCols(); j++) { // columns of a

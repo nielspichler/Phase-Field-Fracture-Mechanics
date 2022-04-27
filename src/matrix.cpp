@@ -73,10 +73,10 @@ void Matrix<T>::inverse(Matrix<T> & inv) {
 /* -------------------------------------------------------------------------- */
 template<typename T>
 void Matrix<T>::transpose(Matrix<T> & a) {
-  a.resize(this->rows, this->cols);
+  a.resize(this->cols, this->rows);
   
   for (UInt i=0; i < this->rows; ++i) {
-    for (UInt j=0; j < this->rows; ++j) {
+    for (UInt j=0; j < this->cols; ++j) {
       a(j, i) = (*this)(i, j); 
     }
   }

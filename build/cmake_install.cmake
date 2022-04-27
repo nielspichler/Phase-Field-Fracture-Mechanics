@@ -40,7 +40,7 @@ endif()
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
   include("/home/student/Project_TEHPC/project-tehpc-niels-pichler/build/src/cmake_install.cmake")
-  include("/home/student/Project_TEHPC/project-tehpc-niels-pichler/build/examples/cmake_install.cmake")
+  include("/home/student/Project_TEHPC/project-tehpc-niels-pichler/build/tests/cmake_install.cmake")
 
 endif()
 

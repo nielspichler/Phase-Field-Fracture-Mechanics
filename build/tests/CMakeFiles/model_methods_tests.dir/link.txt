@@ -1,0 +1,1 @@
+/usr/bin/c++  -Wall -Wextra -pedantic -std=c++17  -g  -rdynamic CMakeFiles/model_methods_tests.dir/model_methods_tests.cpp.o  -o model_methods_tests  -Wl,-rpath,/home/student/Project_TEHPC/project-tehpc-niels-pichler/build/src ../src/libtehpc2022.so 

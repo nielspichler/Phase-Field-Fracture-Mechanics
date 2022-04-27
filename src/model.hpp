@@ -9,8 +9,11 @@
 #include "array.hpp"
 #include "matrix.hpp"
 
+
 #include "phaseelement.hpp"
 #include "dispelement.hpp"
+#include "newton_raphson_solver.hpp"
+
 
 using UInt = unsigned int;
 
@@ -25,7 +28,7 @@ public:
     this->readInput(fname);
   };
   
-  ~Model();
+  virtual ~Model() = default;
 
 
   /* ------------------------------------------------------------------------ */
@@ -53,7 +56,7 @@ public:
 
 
 private:
-  void localStiffness(int element, Matrix<double> & Ke);
+  void localStiffness(int element, Matrix<double> & Ke_d, std::vector<double>  & res_d, Matrix<double> & Ke_u, std::vector<double> & res_u);
 
 
   /* ------------------------------------------------------------------------ */
@@ -61,7 +64,36 @@ private:
   /* ------------------------------------------------------------------------ */
 public:
 
-  Matrix<double> * getK() { return this->K; };
+  //Matrix<double> * getK() { return this->K; };
+  
+  // these accessors are needed to test the parsing of the file
+  UInt get_dim(){return this->dim;};
+  double get_lc(){return this->lc;};
+  UInt get_steps(){return this->steps;};
+  UInt get_nb_nodes(){return this->nb_nodes;};
+  Array<double> get_coordinates(){return this->coordinates;};
+  UInt get_nb_elements(){return this->nb_elements;};
+  UInt get_nb_nodes_per_element(){return this->nb_nodes_per_element;};
+  Array<UInt> get_connectivity(){return this->connectivity;};
+  std::vector<double> get_modulus(){return this->modulus;};
+  std::vector<double> get_poisson(){return this->poisson;};
+  std::vector<double> get_gc(){return this->gc;};
+  Array<UInt> get_bc_disp(){return this->bc_disp;};
+  Array<double> get_bc_disp_value(){return this->bc_disp_value;};
+  
+  // this is needed to test the local stifness construction
+	void get_localStifness(int element, Matrix<double> & Ke_d, std::vector<double>  & res_d, Matrix<double> & Ke_u, std::vector<double> & res_u){
+	localStiffness(element, Ke_d, res_d, Ke_u, res_u);
+	};
+	// to set all required variables to run local stifness in the test
+	void set_init(Array<double> d, std::vector<double> p, std::vector<double> h){
+		displacement.resize(d.nbRows(), d.nbCols());
+		displacement = d;
+		phase.resize(p.size());
+		phase = p;
+		history.resize(h.size());
+		history = h;
+	};
 
 
   /* ------------------------------------------------------------------------ */
@@ -72,14 +104,14 @@ private:
   // general information
   UInt dim;
   double lc;
+  UInt steps;
 
   // nodal information
   UInt nb_nodes;
   Array<double> coordinates;
-  Array<double> displacement;	//u
-  Array<double> phase;			//d
-  Array<double> history;		//H
-  Array<double> force;
+  Array<double> displacement;		//u
+  std::vector<double> phase;		//d
+  std::vector<double> history;		//H
 
   // elemental information
   UInt nb_elements;
@@ -88,10 +120,8 @@ private:
   std::vector<double> modulus;
   std::vector<double> poisson;
   std::vector<double> gc;
-  std::vector<double> cross_section;
 
   // boundary conditions (nodal information)
-  Array<double> bc_force;
   Array<UInt> bc_disp;
   Array<double> bc_disp_value;
 
@@ -99,7 +129,7 @@ private:
   std::shared_ptr<BaseMatrix<double> > K;
 
   // pointer to solver used
-  std::shared_ptr<NLsolver> solver;
+  std::shared_ptr<NRsolver> solver;
 };
 
 #endif

@@ -42,8 +42,17 @@ src/CMakeFiles/tehpc2022.dir/model.cpp.o: ../src/matrix.hpp
 src/CMakeFiles/tehpc2022.dir/model.cpp.o: ../src/matrix_inline.hpp
 src/CMakeFiles/tehpc2022.dir/model.cpp.o: ../src/model.cpp
 src/CMakeFiles/tehpc2022.dir/model.cpp.o: ../src/model.hpp
+src/CMakeFiles/tehpc2022.dir/model.cpp.o: ../src/newton_raphson_solver.hpp
 src/CMakeFiles/tehpc2022.dir/model.cpp.o: ../src/phaseelement.hpp
 src/CMakeFiles/tehpc2022.dir/model.cpp.o: ../src/vector.hpp
+
+src/CMakeFiles/tehpc2022.dir/newton_raphson_solver.cpp.o: ../src/base_matrix.hpp
+src/CMakeFiles/tehpc2022.dir/newton_raphson_solver.cpp.o: ../src/common.hpp
+src/CMakeFiles/tehpc2022.dir/newton_raphson_solver.cpp.o: ../src/matrix.hpp
+src/CMakeFiles/tehpc2022.dir/newton_raphson_solver.cpp.o: ../src/matrix_inline.hpp
+src/CMakeFiles/tehpc2022.dir/newton_raphson_solver.cpp.o: ../src/newton_raphson_solver.cpp
+src/CMakeFiles/tehpc2022.dir/newton_raphson_solver.cpp.o: ../src/newton_raphson_solver.hpp
+src/CMakeFiles/tehpc2022.dir/newton_raphson_solver.cpp.o: ../src/vector.hpp
 
 src/CMakeFiles/tehpc2022.dir/phaseelement.cpp.o: ../src/base_matrix.hpp
 src/CMakeFiles/tehpc2022.dir/phaseelement.cpp.o: ../src/common.hpp
