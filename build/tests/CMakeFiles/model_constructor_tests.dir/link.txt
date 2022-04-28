@@ -1,1 +1,0 @@
-/usr/bin/c++  -Wall -Wextra -pedantic -std=c++17  -g  -rdynamic CMakeFiles/model_constructor_tests.dir/model_constructor_tests.cpp.o  -o model_constructor_tests  -Wl,-rpath,/home/student/Project_TEHPC/project-tehpc-niels-pichler/build/src ../src/libtehpc2022.so 
