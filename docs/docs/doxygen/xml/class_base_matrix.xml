@@ -1,0 +1,389 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+  <compounddef id="class_base_matrix" kind="class" language="C++" prot="public" abstract="yes">
+    <compoundname>BaseMatrix</compoundname>
+    <derivedcompoundref refid="class_array" prot="public" virt="non-virtual">Array&lt; T &gt;</derivedcompoundref>
+    <derivedcompoundref refid="class_matrix" prot="public" virt="non-virtual">Matrix&lt; T &gt;</derivedcompoundref>
+    <includes refid="base__matrix_8hpp" local="no">base_matrix.hpp</includes>
+    <templateparamlist>
+      <param>
+        <type>typename T</type>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="protected-attrib">
+      <memberdef kind="variable" id="class_base_matrix_1a59cee12a5ce9bde3751b23deddb84781" prot="protected" static="no" mutable="no">
+        <type><ref refid="common_8hpp_1a9cc0620fb2e91b51587c6936060d4161" kindref="member">UInt</ref></type>
+        <definition>UInt BaseMatrix&lt; T &gt;::rows</definition>
+        <argsstring></argsstring>
+        <name>rows</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/student/Project_TEHPC/project-tehpc-niels-pichler/src/base_matrix.hpp" line="91" column="8" bodyfile="/home/student/Project_TEHPC/project-tehpc-niels-pichler/src/base_matrix.hpp" bodystart="91" bodyend="-1"/>
+        <referencedby refid="class_array_1ae9e652d84186e4ef0293a30c7c4af3df" compoundref="array_8hpp" startline="32" endline="39">Array&lt; UInt &gt;::resize</referencedby>
+        <referencedby refid="class_base_matrix_1a0a3a03b552bffbcc54bc59b98b0a68a7" compoundref="base__matrix_8hpp" startline="26" endline="28">BaseMatrix&lt; UInt &gt;::BaseMatrix</referencedby>
+        <referencedby refid="class_base_matrix_1a6f151cc78a826656e8b839499f08d53b" compoundref="base__matrix_8hpp" startline="39" endline="42">BaseMatrix&lt; UInt &gt;::resize</referencedby>
+        <referencedby refid="class_base_matrix_1ac036dca55e151b93b40766afdebc1b14" compoundref="base__matrix_8hpp" startline="70" endline="70">BaseMatrix&lt; UInt &gt;::nbRows</referencedby>
+        <referencedby refid="class_base_matrix_1afbb3bec01cedf4ec17e94df3b910130c" compoundref="base__matrix_8hpp" startline="77" endline="77">BaseMatrix&lt; UInt &gt;::size</referencedby>
+        <referencedby refid="class_matrix_1a9519dde17400b4c6b69454cfa6c867e7" compoundref="matrix_8hpp" startline="32" endline="39">Matrix&lt; double &gt;::resize</referencedby>
+        <referencedby refid="class_matrix_1a00376cb5c0c609b03bc73bec2e3e2001" compoundref="matrix_8hpp" startline="43" endline="45">Matrix&lt; double &gt;::operator()</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="class_base_matrix_1afac1191058cfe48321e9a27845b4f37a" prot="protected" static="no" mutable="no">
+        <type><ref refid="common_8hpp_1a9cc0620fb2e91b51587c6936060d4161" kindref="member">UInt</ref></type>
+        <definition>UInt BaseMatrix&lt; T &gt;::cols</definition>
+        <argsstring></argsstring>
+        <name>cols</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/student/Project_TEHPC/project-tehpc-niels-pichler/src/base_matrix.hpp" line="94" column="8" bodyfile="/home/student/Project_TEHPC/project-tehpc-niels-pichler/src/base_matrix.hpp" bodystart="94" bodyend="-1"/>
+        <referencedby refid="class_array_1a26c21bf2b592207c71d6a0f952ef323c" compoundref="array_8hpp" startline="20" endline="22">Array&lt; UInt &gt;::Array</referencedby>
+        <referencedby refid="class_array_1ae9e652d84186e4ef0293a30c7c4af3df" compoundref="array_8hpp" startline="32" endline="39">Array&lt; UInt &gt;::resize</referencedby>
+        <referencedby refid="class_array_1a35dc97f93d6e255b34fc5affa631df2f" compoundref="array_8hpp" startline="43" endline="45">Array&lt; UInt &gt;::operator()</referencedby>
+        <referencedby refid="class_base_matrix_1a0a3a03b552bffbcc54bc59b98b0a68a7" compoundref="base__matrix_8hpp" startline="26" endline="28">BaseMatrix&lt; UInt &gt;::BaseMatrix</referencedby>
+        <referencedby refid="class_base_matrix_1a6f151cc78a826656e8b839499f08d53b" compoundref="base__matrix_8hpp" startline="39" endline="42">BaseMatrix&lt; UInt &gt;::resize</referencedby>
+        <referencedby refid="class_base_matrix_1a5e840b5b8195b01fea677c5d3a623ef2" compoundref="base__matrix_8hpp" startline="73" endline="73">BaseMatrix&lt; UInt &gt;::nbCols</referencedby>
+        <referencedby refid="class_base_matrix_1afbb3bec01cedf4ec17e94df3b910130c" compoundref="base__matrix_8hpp" startline="77" endline="77">BaseMatrix&lt; UInt &gt;::size</referencedby>
+        <referencedby refid="class_matrix_1a2cd3764b5299adb5769b150c89e5ded6" compoundref="matrix_8hpp" startline="20" endline="22">Matrix&lt; double &gt;::Matrix</referencedby>
+        <referencedby refid="class_matrix_1a9519dde17400b4c6b69454cfa6c867e7" compoundref="matrix_8hpp" startline="32" endline="39">Matrix&lt; double &gt;::resize</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="class_base_matrix_1ad5c0ac3cb40291f4d8de890218043d1a" prot="protected" static="no" mutable="no">
+        <type>std::vector&lt; T &gt;</type>
+        <definition>std::vector&lt;T&gt; BaseMatrix&lt; T &gt;::storage</definition>
+        <argsstring></argsstring>
+        <name>storage</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/student/Project_TEHPC/project-tehpc-niels-pichler/src/base_matrix.hpp" line="97" column="15" bodyfile="/home/student/Project_TEHPC/project-tehpc-niels-pichler/src/base_matrix.hpp" bodystart="97" bodyend="-1"/>
+        <referencedby refid="class_array_1ae9e652d84186e4ef0293a30c7c4af3df" compoundref="array_8hpp" startline="32" endline="39">Array&lt; UInt &gt;::resize</referencedby>
+        <referencedby refid="class_array_1a35dc97f93d6e255b34fc5affa631df2f" compoundref="array_8hpp" startline="43" endline="45">Array&lt; UInt &gt;::operator()</referencedby>
+        <referencedby refid="class_array_1aa158fe6ecdb74c3ce008a993134ca868" compoundref="array_8hpp" startline="51" endline="54">Array&lt; UInt &gt;::operator=</referencedby>
+        <referencedby refid="class_base_matrix_1ac3c957800f00d239ad2f78652e89f3d4" compoundref="base__matrix_8hpp" startline="80" endline="80">BaseMatrix&lt; UInt &gt;::storageSize</referencedby>
+        <referencedby refid="class_base_matrix_1a8086b801b8415faea96f0bfe0a4ac8ed" compoundref="base__matrix_8hpp" startline="83" endline="83">BaseMatrix&lt; UInt &gt;::getStorage</referencedby>
+        <referencedby refid="class_matrix_1a9519dde17400b4c6b69454cfa6c867e7" compoundref="matrix_8hpp" startline="32" endline="39">Matrix&lt; double &gt;::resize</referencedby>
+        <referencedby refid="class_matrix_1a00376cb5c0c609b03bc73bec2e3e2001" compoundref="matrix_8hpp" startline="43" endline="45">Matrix&lt; double &gt;::operator()</referencedby>
+        <referencedby refid="class_matrix_1aacb55bf5245429976d221ca6bcae236b" compoundref="matrix_8hpp" startline="51" endline="54">Matrix&lt; double &gt;::operator/=</referencedby>
+        <referencedby refid="class_matrix_1a0d38ebbff03482a0949efd248610ed1b" compoundref="matrix_8hpp" startline="57" endline="60">Matrix&lt; double &gt;::operator*=</referencedby>
+        <referencedby refid="class_matrix_1a3f1531e901641e3cc6cc015478cdef7e" compoundref="matrix_8hpp" startline="63" endline="66">Matrix&lt; double &gt;::operator+=</referencedby>
+        <referencedby refid="class_matrix_1a7f27a17d4b88aab316991fb2b93dfecc" compoundref="matrix_8hpp" startline="69" endline="72">Matrix&lt; double &gt;::operator=</referencedby>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_base_matrix_1abe8429f173629a08ff9fc51b727377f7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>BaseMatrix&lt; T &gt;::BaseMatrix</definition>
+        <argsstring>()=default</argsstring>
+        <name>BaseMatrix</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/student/Project_TEHPC/project-tehpc-niels-pichler/src/base_matrix.hpp" line="24" column="3"/>
+      </memberdef>
+      <memberdef kind="function" id="class_base_matrix_1a0a3a03b552bffbcc54bc59b98b0a68a7" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>BaseMatrix&lt; T &gt;::BaseMatrix</definition>
+        <argsstring>(UInt rows, UInt cols)</argsstring>
+        <name>BaseMatrix</name>
+        <param>
+          <type><ref refid="common_8hpp_1a9cc0620fb2e91b51587c6936060d4161" kindref="member">UInt</ref></type>
+          <declname>rows</declname>
+        </param>
+        <param>
+          <type><ref refid="common_8hpp_1a9cc0620fb2e91b51587c6936060d4161" kindref="member">UInt</ref></type>
+          <declname>cols</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/student/Project_TEHPC/project-tehpc-niels-pichler/src/base_matrix.hpp" line="26" column="3" bodyfile="/home/student/Project_TEHPC/project-tehpc-niels-pichler/src/base_matrix.hpp" bodystart="26" bodyend="28"/>
+      </memberdef>
+      <memberdef kind="function" id="class_base_matrix_1a198301f1c76b6d7e1994a9300e2506f5" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type></type>
+        <definition>virtual BaseMatrix&lt; T &gt;::~BaseMatrix</definition>
+        <argsstring>()=default</argsstring>
+        <name>~BaseMatrix</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/student/Project_TEHPC/project-tehpc-niels-pichler/src/base_matrix.hpp" line="30" column="11"/>
+      </memberdef>
+      <memberdef kind="function" id="class_base_matrix_1a6f151cc78a826656e8b839499f08d53b" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type>void</type>
+        <definition>virtual void BaseMatrix&lt; T &gt;::resize</definition>
+        <argsstring>(UInt rows, UInt cols)</argsstring>
+        <name>resize</name>
+        <reimplementedby refid="class_matrix_1a9519dde17400b4c6b69454cfa6c867e7">resize</reimplementedby>
+        <reimplementedby refid="class_array_1ae9e652d84186e4ef0293a30c7c4af3df">resize</reimplementedby>
+        <reimplementedby refid="class_array_1ae9e652d84186e4ef0293a30c7c4af3df">resize</reimplementedby>
+        <reimplementedby refid="class_matrix_1a9519dde17400b4c6b69454cfa6c867e7">resize</reimplementedby>
+        <reimplementedby refid="class_array_1ae9e652d84186e4ef0293a30c7c4af3df">resize</reimplementedby>
+        <param>
+          <type><ref refid="common_8hpp_1a9cc0620fb2e91b51587c6936060d4161" kindref="member">UInt</ref></type>
+          <declname>rows</declname>
+        </param>
+        <param>
+          <type><ref refid="common_8hpp_1a9cc0620fb2e91b51587c6936060d4161" kindref="member">UInt</ref></type>
+          <declname>cols</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/student/Project_TEHPC/project-tehpc-niels-pichler/src/base_matrix.hpp" line="39" column="16" bodyfile="/home/student/Project_TEHPC/project-tehpc-niels-pichler/src/base_matrix.hpp" bodystart="39" bodyend="42"/>
+        <referencedby refid="class_base_matrix_1a0a3a03b552bffbcc54bc59b98b0a68a7" compoundref="base__matrix_8hpp" startline="26" endline="28">BaseMatrix&lt; UInt &gt;::BaseMatrix</referencedby>
+        <referencedby refid="class_matrix_1a9519dde17400b4c6b69454cfa6c867e7" compoundref="matrix_8hpp" startline="32" endline="39">Matrix&lt; double &gt;::resize</referencedby>
+        <referencedby refid="class_array_1ae9e652d84186e4ef0293a30c7c4af3df" compoundref="array_8hpp" startline="32" endline="39">Array&lt; UInt &gt;::resize</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="class_base_matrix_1ae91400b38c33236ce6eda079d6604935" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>T &amp;</type>
+        <definition>virtual T&amp; BaseMatrix&lt; T &gt;::operator()</definition>
+        <argsstring>(UInt i, UInt j)=0</argsstring>
+        <name>operator()</name>
+        <reimplementedby refid="class_matrix_1a00376cb5c0c609b03bc73bec2e3e2001">operator()</reimplementedby>
+        <reimplementedby refid="class_array_1a35dc97f93d6e255b34fc5affa631df2f">operator()</reimplementedby>
+        <reimplementedby refid="class_array_1a35dc97f93d6e255b34fc5affa631df2f">operator()</reimplementedby>
+        <reimplementedby refid="class_matrix_1a00376cb5c0c609b03bc73bec2e3e2001">operator()</reimplementedby>
+        <reimplementedby refid="class_array_1a35dc97f93d6e255b34fc5affa631df2f">operator()</reimplementedby>
+        <param>
+          <type><ref refid="common_8hpp_1a9cc0620fb2e91b51587c6936060d4161" kindref="member">UInt</ref></type>
+          <declname>i</declname>
+        </param>
+        <param>
+          <type><ref refid="common_8hpp_1a9cc0620fb2e91b51587c6936060d4161" kindref="member">UInt</ref></type>
+          <declname>j</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/student/Project_TEHPC/project-tehpc-niels-pichler/src/base_matrix.hpp" line="46" column="13"/>
+      </memberdef>
+      <memberdef kind="function" id="class_base_matrix_1a012fdbc9db6e1ba360bbbfc4aff27956" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>T</type>
+        <definition>virtual T BaseMatrix&lt; T &gt;::operator()</definition>
+        <argsstring>(UInt i, UInt j) const =0</argsstring>
+        <name>operator()</name>
+        <reimplementedby refid="class_matrix_1aa8510298a5f45ce292d9490c02315f51">operator()</reimplementedby>
+        <reimplementedby refid="class_array_1a466cbf29f4bbcb76645697e7569c4599">operator()</reimplementedby>
+        <reimplementedby refid="class_array_1a466cbf29f4bbcb76645697e7569c4599">operator()</reimplementedby>
+        <reimplementedby refid="class_matrix_1aa8510298a5f45ce292d9490c02315f51">operator()</reimplementedby>
+        <reimplementedby refid="class_array_1a466cbf29f4bbcb76645697e7569c4599">operator()</reimplementedby>
+        <param>
+          <type><ref refid="common_8hpp_1a9cc0620fb2e91b51587c6936060d4161" kindref="member">UInt</ref></type>
+          <declname>i</declname>
+        </param>
+        <param>
+          <type><ref refid="common_8hpp_1a9cc0620fb2e91b51587c6936060d4161" kindref="member">UInt</ref></type>
+          <declname>j</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/student/Project_TEHPC/project-tehpc-niels-pichler/src/base_matrix.hpp" line="49" column="13"/>
+      </memberdef>
+      <memberdef kind="function" id="class_base_matrix_1ab89658706d0316fb693247bd5402b1d6" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+        <type>void</type>
+        <definition>virtual void BaseMatrix&lt; T &gt;::print</definition>
+        <argsstring>(std::ostream &amp;stream) const</argsstring>
+        <name>print</name>
+        <reimplementedby refid="class_array_1ad5ce2feedf24cf97de0183750005e356">print</reimplementedby>
+        <reimplementedby refid="class_array_1ad5ce2feedf24cf97de0183750005e356">print</reimplementedby>
+        <reimplementedby refid="class_array_1ad5ce2feedf24cf97de0183750005e356">print</reimplementedby>
+        <reimplementedby refid="class_matrix_1abdbf63366368e14319e802f6cdaef612">print</reimplementedby>
+        <reimplementedby refid="class_matrix_1abdbf63366368e14319e802f6cdaef612">print</reimplementedby>
+        <param>
+          <type>std::ostream &amp;</type>
+          <declname>stream</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/student/Project_TEHPC/project-tehpc-niels-pichler/src/base_matrix.hpp" line="59" column="16" bodyfile="/home/student/Project_TEHPC/project-tehpc-niels-pichler/src/base_matrix.hpp" bodystart="59" bodyend="62"/>
+        <referencedby refid="base__matrix_8hpp_1a2377b257fe83d3066141812bf253898a" compoundref="base__matrix_8hpp" startline="109" endline="112">operator&lt;&lt;</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="class_base_matrix_1ac036dca55e151b93b40766afdebc1b14" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="common_8hpp_1a9cc0620fb2e91b51587c6936060d4161" kindref="member">UInt</ref></type>
+        <definition>UInt BaseMatrix&lt; T &gt;::nbRows</definition>
+        <argsstring>() const</argsstring>
+        <name>nbRows</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/student/Project_TEHPC/project-tehpc-niels-pichler/src/base_matrix.hpp" line="70" column="8" bodyfile="/home/student/Project_TEHPC/project-tehpc-niels-pichler/src/base_matrix.hpp" bodystart="70" bodyend="70"/>
+        <referencedby refid="class_disp_element_1a5a63901c8fa54d3268cc154eafbc2e96" compoundref="dispelement_8cpp" startline="28" endline="72">DispElement::DispElement</referencedby>
+        <referencedby refid="class_disp_element_1a5f72b4fd611a3e2f0d5cf0d490144846" compoundref="dispelement_8cpp" startline="74" endline="125">DispElement::GetStiffnessAndRes</referencedby>
+        <referencedby refid="class_phase_element_1ad694ab007dde2e735bf30a95764fae41" compoundref="phaseelement_8cpp" startline="64" endline="100">PhaseElement::GetStiffnessAndRes</referencedby>
+        <referencedby refid="matrix__inline_8hpp_1a6572630f7652d8e8e26621fd13e5a2a2" compoundref="matrix__inline_8hpp" startline="6" endline="20">operator*</referencedby>
+        <referencedby refid="matrix__inline_8hpp_1a43ac3c1a6f9624cdb0f6dd577fa0e39f" compoundref="matrix__inline_8hpp" startline="53" endline="64">operator+</referencedby>
+        <referencedby refid="matrix__inline_8hpp_1ab8c2b966c01967c4d2806dae32eb3300" compoundref="matrix__inline_8hpp" startline="36" endline="48">operator-</referencedby>
+        <referencedby refid="class_phase_element_1aca7eeaff804f204101b6d8c34785820c" compoundref="phaseelement_8cpp" startline="28" endline="62">PhaseElement::PhaseElement</referencedby>
+        <referencedby refid="class_model_1a8a923782ec2d825a98307207431e1fa2" compoundref="model_8hpp" startline="89" endline="96">Model::set_init</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="class_base_matrix_1a5e840b5b8195b01fea677c5d3a623ef2" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="common_8hpp_1a9cc0620fb2e91b51587c6936060d4161" kindref="member">UInt</ref></type>
+        <definition>UInt BaseMatrix&lt; T &gt;::nbCols</definition>
+        <argsstring>() const</argsstring>
+        <name>nbCols</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/student/Project_TEHPC/project-tehpc-niels-pichler/src/base_matrix.hpp" line="73" column="8" bodyfile="/home/student/Project_TEHPC/project-tehpc-niels-pichler/src/base_matrix.hpp" bodystart="73" bodyend="73"/>
+        <referencedby refid="matrix__inline_8hpp_1a6572630f7652d8e8e26621fd13e5a2a2" compoundref="matrix__inline_8hpp" startline="6" endline="20">operator*</referencedby>
+        <referencedby refid="matrix__inline_8hpp_1a43ac3c1a6f9624cdb0f6dd577fa0e39f" compoundref="matrix__inline_8hpp" startline="53" endline="64">operator+</referencedby>
+        <referencedby refid="matrix__inline_8hpp_1ab8c2b966c01967c4d2806dae32eb3300" compoundref="matrix__inline_8hpp" startline="36" endline="48">operator-</referencedby>
+        <referencedby refid="class_model_1a8a923782ec2d825a98307207431e1fa2" compoundref="model_8hpp" startline="89" endline="96">Model::set_init</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="class_base_matrix_1afbb3bec01cedf4ec17e94df3b910130c" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="common_8hpp_1a9cc0620fb2e91b51587c6936060d4161" kindref="member">UInt</ref></type>
+        <definition>UInt BaseMatrix&lt; T &gt;::size</definition>
+        <argsstring>() const</argsstring>
+        <name>size</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/student/Project_TEHPC/project-tehpc-niels-pichler/src/base_matrix.hpp" line="77" column="8" bodyfile="/home/student/Project_TEHPC/project-tehpc-niels-pichler/src/base_matrix.hpp" bodystart="77" bodyend="77"/>
+        <referencedby refid="class_base_matrix_1ab89658706d0316fb693247bd5402b1d6" compoundref="base__matrix_8hpp" startline="59" endline="62">BaseMatrix&lt; UInt &gt;::print</referencedby>
+        <referencedby refid="class_array_1ae9e652d84186e4ef0293a30c7c4af3df" compoundref="array_8hpp" startline="32" endline="39">Array&lt; UInt &gt;::resize</referencedby>
+        <referencedby refid="class_matrix_1a9519dde17400b4c6b69454cfa6c867e7" compoundref="matrix_8hpp" startline="32" endline="39">Matrix&lt; double &gt;::resize</referencedby>
+        <referencedby refid="class_n_rsolver_1aac7fb5ccbd41916af1542820b41f5b7d" compoundref="newton__raphson__solver_8cpp" startline="3" endline="81">NRsolver::solve</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="class_base_matrix_1ac3c957800f00d239ad2f78652e89f3d4" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="common_8hpp_1a9cc0620fb2e91b51587c6936060d4161" kindref="member">UInt</ref></type>
+        <definition>UInt BaseMatrix&lt; T &gt;::storageSize</definition>
+        <argsstring>() const</argsstring>
+        <name>storageSize</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/student/Project_TEHPC/project-tehpc-niels-pichler/src/base_matrix.hpp" line="80" column="8" bodyfile="/home/student/Project_TEHPC/project-tehpc-niels-pichler/src/base_matrix.hpp" bodystart="80" bodyend="80"/>
+        <referencedby refid="class_base_matrix_1ab89658706d0316fb693247bd5402b1d6" compoundref="base__matrix_8hpp" startline="59" endline="62">BaseMatrix&lt; UInt &gt;::print</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="class_base_matrix_1a8086b801b8415faea96f0bfe0a4ac8ed" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>std::vector&lt; double &gt; &amp;</type>
+        <definition>std::vector&lt;double&gt;&amp; BaseMatrix&lt; T &gt;::getStorage</definition>
+        <argsstring>()</argsstring>
+        <name>getStorage</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/student/Project_TEHPC/project-tehpc-niels-pichler/src/base_matrix.hpp" line="83" column="16" bodyfile="/home/student/Project_TEHPC/project-tehpc-niels-pichler/src/base_matrix.hpp" bodystart="83" bodyend="83"/>
+        <referencedby refid="class_phase_element_1ad694ab007dde2e735bf30a95764fae41" compoundref="phaseelement_8cpp" startline="64" endline="100">PhaseElement::GetStiffnessAndRes</referencedby>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="friend">
+      <memberdef kind="friend" id="class_base_matrix_1a41d409b87a8180014c32d7b33111a7c0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>friend std::ostream &amp;</type>
+        <definition>std::ostream&amp; operator&lt;&lt;</definition>
+        <argsstring>(std::ostream &amp;stream, const BaseMatrix&lt; T &gt; &amp;_this)</argsstring>
+        <name>operator&lt;&lt;</name>
+        <param>
+          <type>std::ostream &amp;</type>
+          <declname>stream</declname>
+        </param>
+        <param>
+          <type>const <ref refid="class_base_matrix" kindref="compound">BaseMatrix</ref>&lt; T &gt; &amp;</type>
+          <declname>_this</declname>
+        </param>
+        <briefdescription>
+<para>Output to stream. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/student/Project_TEHPC/project-tehpc-niels-pichler/src/base_matrix.hpp" line="55" column="10" bodyfile="/home/student/Project_TEHPC/project-tehpc-niels-pichler/src/base_matrix.hpp" bodystart="109" bodyend="112"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2">
+        <label>Array&lt; T &gt;</label>
+        <link refid="class_array"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>BaseMatrix&lt; T &gt;</label>
+        <link refid="class_base_matrix"/>
+      </node>
+      <node id="3">
+        <label>Matrix&lt; T &gt;</label>
+        <link refid="class_matrix"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>BaseMatrix&lt; T &gt;</label>
+        <link refid="class_base_matrix"/>
+      </node>
+    </collaborationgraph>
+    <location file="/home/student/Project_TEHPC/project-tehpc-niels-pichler/src/base_matrix.hpp" line="12" column="1" bodyfile="/home/student/Project_TEHPC/project-tehpc-niels-pichler/src/base_matrix.hpp" bodystart="12" bodyend="-1"/>
+    <listofallmembers>
+      <member refid="class_base_matrix_1abe8429f173629a08ff9fc51b727377f7" prot="public" virt="non-virtual"><scope>BaseMatrix</scope><name>BaseMatrix</name></member>
+      <member refid="class_base_matrix_1a0a3a03b552bffbcc54bc59b98b0a68a7" prot="public" virt="non-virtual"><scope>BaseMatrix</scope><name>BaseMatrix</name></member>
+      <member refid="class_base_matrix_1afac1191058cfe48321e9a27845b4f37a" prot="protected" virt="non-virtual"><scope>BaseMatrix</scope><name>cols</name></member>
+      <member refid="class_base_matrix_1a8086b801b8415faea96f0bfe0a4ac8ed" prot="public" virt="non-virtual"><scope>BaseMatrix</scope><name>getStorage</name></member>
+      <member refid="class_base_matrix_1a5e840b5b8195b01fea677c5d3a623ef2" prot="public" virt="non-virtual"><scope>BaseMatrix</scope><name>nbCols</name></member>
+      <member refid="class_base_matrix_1ac036dca55e151b93b40766afdebc1b14" prot="public" virt="non-virtual"><scope>BaseMatrix</scope><name>nbRows</name></member>
+      <member refid="class_base_matrix_1ae91400b38c33236ce6eda079d6604935" prot="public" virt="pure-virtual"><scope>BaseMatrix</scope><name>operator()</name></member>
+      <member refid="class_base_matrix_1a012fdbc9db6e1ba360bbbfc4aff27956" prot="public" virt="pure-virtual"><scope>BaseMatrix</scope><name>operator()</name></member>
+      <member refid="class_base_matrix_1a41d409b87a8180014c32d7b33111a7c0" prot="public" virt="non-virtual"><scope>BaseMatrix</scope><name>operator&lt;&lt;</name></member>
+      <member refid="class_base_matrix_1ab89658706d0316fb693247bd5402b1d6" prot="public" virt="virtual"><scope>BaseMatrix</scope><name>print</name></member>
+      <member refid="class_base_matrix_1a6f151cc78a826656e8b839499f08d53b" prot="public" virt="virtual"><scope>BaseMatrix</scope><name>resize</name></member>
+      <member refid="class_base_matrix_1a59cee12a5ce9bde3751b23deddb84781" prot="protected" virt="non-virtual"><scope>BaseMatrix</scope><name>rows</name></member>
+      <member refid="class_base_matrix_1afbb3bec01cedf4ec17e94df3b910130c" prot="public" virt="non-virtual"><scope>BaseMatrix</scope><name>size</name></member>
+      <member refid="class_base_matrix_1ad5c0ac3cb40291f4d8de890218043d1a" prot="protected" virt="non-virtual"><scope>BaseMatrix</scope><name>storage</name></member>
+      <member refid="class_base_matrix_1ac3c957800f00d239ad2f78652e89f3d4" prot="public" virt="non-virtual"><scope>BaseMatrix</scope><name>storageSize</name></member>
+      <member refid="class_base_matrix_1a198301f1c76b6d7e1994a9300e2506f5" prot="public" virt="virtual"><scope>BaseMatrix</scope><name>~BaseMatrix</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

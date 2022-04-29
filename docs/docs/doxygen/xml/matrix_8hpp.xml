@@ -1,0 +1,445 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+  <compounddef id="matrix_8hpp" kind="file" language="C++">
+    <compoundname>matrix.hpp</compoundname>
+    <includes refid="common_8hpp" local="yes">common.hpp</includes>
+    <includes refid="base__matrix_8hpp" local="yes">base_matrix.hpp</includes>
+    <includes refid="vector_8hpp" local="yes">vector.hpp</includes>
+    <includes refid="matrix__inline_8hpp" local="yes">matrix_inline.hpp</includes>
+    <includedby refid="element_8hpp" local="yes">/home/student/Project_TEHPC/project-tehpc-niels-pichler/src/element.hpp</includedby>
+    <includedby refid="matrix__inline_8hpp" local="yes">/home/student/Project_TEHPC/project-tehpc-niels-pichler/src/matrix_inline.hpp</includedby>
+    <includedby refid="matrix_8cpp" local="yes">/home/student/Project_TEHPC/project-tehpc-niels-pichler/src/matrix.cpp</includedby>
+    <includedby refid="model_8hpp" local="yes">/home/student/Project_TEHPC/project-tehpc-niels-pichler/src/model.hpp</includedby>
+    <includedby refid="newton__raphson__solver_8hpp" local="yes">/home/student/Project_TEHPC/project-tehpc-niels-pichler/src/newton_raphson_solver.hpp</includedby>
+    <incdepgraph>
+      <node id="9">
+        <label>iomanip</label>
+      </node>
+      <node id="12">
+        <label>vector.hpp</label>
+        <link refid="vector_8hpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+      </node>
+      <node id="13">
+        <label>matrix_inline.hpp</label>
+        <link refid="matrix__inline_8hpp"/>
+        <childnode refid="1" relation="include">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>cmath</label>
+      </node>
+      <node id="6">
+        <label>cassert</label>
+      </node>
+      <node id="8">
+        <label>ostream</label>
+      </node>
+      <node id="11">
+        <label>vector</label>
+      </node>
+      <node id="10">
+        <label>base_matrix.hpp</label>
+        <link refid="base__matrix_8hpp"/>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>/home/student/Project_TEHPC/project-tehpc-niels-pichler/src/matrix.hpp</label>
+        <link refid="matrix_8hpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+      </node>
+      <node id="7">
+        <label>iostream</label>
+      </node>
+      <node id="5">
+        <label>algorithm</label>
+      </node>
+      <node id="2">
+        <label>common.hpp</label>
+        <link refid="common_8hpp"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>memory</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="6">
+        <label>/home/student/Project_TEHPC/project-tehpc-niels-pichler/src/model.cpp</label>
+        <link refid="model_8cpp"/>
+      </node>
+      <node id="8">
+        <label>/home/student/Project_TEHPC/project-tehpc-niels-pichler/src/phaseelement.hpp</label>
+        <link refid="phaseelement_8hpp"/>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+      </node>
+      <node id="10">
+        <label>/home/student/Project_TEHPC/project-tehpc-niels-pichler/src/matrix_inline.hpp</label>
+        <link refid="matrix__inline_8hpp"/>
+        <childnode refid="1" relation="include">
+        </childnode>
+      </node>
+      <node id="9">
+        <label>/home/student/Project_TEHPC/project-tehpc-niels-pichler/src/phaseelement.cpp</label>
+        <link refid="phaseelement_8cpp"/>
+      </node>
+      <node id="13">
+        <label>/home/student/Project_TEHPC/project-tehpc-niels-pichler/src/newton_raphson_solver.cpp</label>
+        <link refid="newton__raphson__solver_8cpp"/>
+      </node>
+      <node id="4">
+        <label>/home/student/Project_TEHPC/project-tehpc-niels-pichler/src/dispelement.cpp</label>
+        <link refid="dispelement_8cpp"/>
+      </node>
+      <node id="7">
+        <label>/home/student/Project_TEHPC/project-tehpc-niels-pichler/src/element.cpp</label>
+        <link refid="element_8cpp"/>
+      </node>
+      <node id="1">
+        <label>/home/student/Project_TEHPC/project-tehpc-niels-pichler/src/matrix.hpp</label>
+        <link refid="matrix_8hpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>/home/student/Project_TEHPC/project-tehpc-niels-pichler/src/model.hpp</label>
+        <link refid="model_8hpp"/>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
+      <node id="12">
+        <label>/home/student/Project_TEHPC/project-tehpc-niels-pichler/src/newton_raphson_solver.hpp</label>
+        <link refid="newton__raphson__solver_8hpp"/>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>/home/student/Project_TEHPC/project-tehpc-niels-pichler/src/dispelement.hpp</label>
+        <link refid="dispelement_8hpp"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>/home/student/Project_TEHPC/project-tehpc-niels-pichler/src/element.hpp</label>
+        <link refid="element_8hpp"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+      </node>
+      <node id="11">
+        <label>/home/student/Project_TEHPC/project-tehpc-niels-pichler/src/matrix.cpp</label>
+        <link refid="matrix_8cpp"/>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="class_matrix" prot="public">Matrix</innerclass>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="matrix_8hpp_1a6572630f7652d8e8e26621fd13e5a2a2" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename T</type>
+          </param>
+        </templateparamlist>
+        <type><ref refid="class_matrix" kindref="compound">Matrix</ref>&lt; T &gt;</type>
+        <definition>Matrix&lt;T&gt; operator*</definition>
+        <argsstring>(const Matrix&lt; T &gt; &amp;a, const Matrix&lt; T &gt; &amp;b)</argsstring>
+        <name>operator*</name>
+        <param>
+          <type>const <ref refid="class_matrix" kindref="compound">Matrix</ref>&lt; T &gt; &amp;</type>
+          <declname>a</declname>
+        </param>
+        <param>
+          <type>const <ref refid="class_matrix" kindref="compound">Matrix</ref>&lt; T &gt; &amp;</type>
+          <declname>b</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/student/Project_TEHPC/project-tehpc-niels-pichler/src/matrix.hpp" line="98" column="8" bodyfile="/home/student/Project_TEHPC/project-tehpc-niels-pichler/src/matrix_inline.hpp" bodystart="6" bodyend="20" declfile="/home/student/Project_TEHPC/project-tehpc-niels-pichler/src/matrix.hpp" declline="98" declcolumn="8"/>
+        <references refid="class_base_matrix_1a5e840b5b8195b01fea677c5d3a623ef2" compoundref="base__matrix_8hpp" startline="73" endline="73">BaseMatrix&lt; T &gt;::nbCols</references>
+        <references refid="class_base_matrix_1ac036dca55e151b93b40766afdebc1b14" compoundref="base__matrix_8hpp" startline="70" endline="70">BaseMatrix&lt; T &gt;::nbRows</references>
+      </memberdef>
+      <memberdef kind="function" id="matrix_8hpp_1af5e300bb9e3466f2fa6adbbd975e5e39" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename T</type>
+          </param>
+        </templateparamlist>
+        <type><ref refid="class_matrix" kindref="compound">Matrix</ref>&lt; T &gt;</type>
+        <definition>Matrix&lt;T&gt; operator*</definition>
+        <argsstring>(const double &amp;c, const Matrix&lt; T &gt; &amp;a)</argsstring>
+        <name>operator*</name>
+        <param>
+          <type>const double &amp;</type>
+          <declname>c</declname>
+        </param>
+        <param>
+          <type>const <ref refid="class_matrix" kindref="compound">Matrix</ref>&lt; T &gt; &amp;</type>
+          <declname>a</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/student/Project_TEHPC/project-tehpc-niels-pichler/src/matrix.hpp" line="102" column="8" bodyfile="/home/student/Project_TEHPC/project-tehpc-niels-pichler/src/matrix_inline.hpp" bodystart="24" bodyend="32" declfile="/home/student/Project_TEHPC/project-tehpc-niels-pichler/src/matrix.hpp" declline="102" declcolumn="8"/>
+        <references refid="class_base_matrix_1a5e840b5b8195b01fea677c5d3a623ef2" compoundref="base__matrix_8hpp" startline="73" endline="73">BaseMatrix&lt; T &gt;::nbCols</references>
+        <references refid="class_base_matrix_1ac036dca55e151b93b40766afdebc1b14" compoundref="base__matrix_8hpp" startline="70" endline="70">BaseMatrix&lt; T &gt;::nbRows</references>
+      </memberdef>
+      <memberdef kind="function" id="matrix_8hpp_1a0a750c5b1a77203bc6776cb8594e6478" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename T</type>
+          </param>
+        </templateparamlist>
+        <type><ref refid="class_matrix" kindref="compound">Matrix</ref>&lt; T &gt;</type>
+        <definition>Matrix&lt;T&gt; operator-</definition>
+        <argsstring>(const Matrix&lt; T &gt; &amp;a, const Matrix&lt; T &gt; &amp;b)</argsstring>
+        <name>operator-</name>
+        <param>
+          <type>const <ref refid="class_matrix" kindref="compound">Matrix</ref>&lt; T &gt; &amp;</type>
+          <declname>a</declname>
+        </param>
+        <param>
+          <type>const <ref refid="class_matrix" kindref="compound">Matrix</ref>&lt; T &gt; &amp;</type>
+          <declname>b</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/student/Project_TEHPC/project-tehpc-niels-pichler/src/matrix.hpp" line="106" column="8" declfile="/home/student/Project_TEHPC/project-tehpc-niels-pichler/src/matrix.hpp" declline="106" declcolumn="8"/>
+      </memberdef>
+      <memberdef kind="function" id="matrix_8hpp_1a43ac3c1a6f9624cdb0f6dd577fa0e39f" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename T</type>
+          </param>
+        </templateparamlist>
+        <type><ref refid="class_matrix" kindref="compound">Matrix</ref>&lt; T &gt;</type>
+        <definition>Matrix&lt;T&gt; operator+</definition>
+        <argsstring>(const Matrix&lt; T &gt; &amp;a, const Matrix&lt; T &gt; &amp;b)</argsstring>
+        <name>operator+</name>
+        <param>
+          <type>const <ref refid="class_matrix" kindref="compound">Matrix</ref>&lt; T &gt; &amp;</type>
+          <declname>a</declname>
+        </param>
+        <param>
+          <type>const <ref refid="class_matrix" kindref="compound">Matrix</ref>&lt; T &gt; &amp;</type>
+          <declname>b</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/student/Project_TEHPC/project-tehpc-niels-pichler/src/matrix.hpp" line="110" column="8" bodyfile="/home/student/Project_TEHPC/project-tehpc-niels-pichler/src/matrix_inline.hpp" bodystart="53" bodyend="64" declfile="/home/student/Project_TEHPC/project-tehpc-niels-pichler/src/matrix.hpp" declline="110" declcolumn="8"/>
+        <references refid="class_base_matrix_1a5e840b5b8195b01fea677c5d3a623ef2" compoundref="base__matrix_8hpp" startline="73" endline="73">BaseMatrix&lt; T &gt;::nbCols</references>
+        <references refid="class_base_matrix_1ac036dca55e151b93b40766afdebc1b14" compoundref="base__matrix_8hpp" startline="70" endline="70">BaseMatrix&lt; T &gt;::nbRows</references>
+      </memberdef>
+      <memberdef kind="function" id="matrix_8hpp_1a487691c6422ce0d64be3c9b53b498af8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename T</type>
+          </param>
+        </templateparamlist>
+        <type>std::vector&lt; T &gt;</type>
+        <definition>std::vector&lt;T&gt; operator*</definition>
+        <argsstring>(const Matrix&lt; T &gt; &amp;a, const std::vector&lt; T &gt; &amp;b)</argsstring>
+        <name>operator*</name>
+        <param>
+          <type>const <ref refid="class_matrix" kindref="compound">Matrix</ref>&lt; T &gt; &amp;</type>
+          <declname>a</declname>
+        </param>
+        <param>
+          <type>const std::vector&lt; T &gt; &amp;</type>
+          <declname>b</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/student/Project_TEHPC/project-tehpc-niels-pichler/src/matrix.hpp" line="114" column="13" declfile="/home/student/Project_TEHPC/project-tehpc-niels-pichler/src/matrix.hpp" declline="114" declcolumn="13"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="preprocessor">#ifndef<sp/>__MATRIX__HH__</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>__MATRIX__HH__</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="common_8hpp" kindref="compound">common.hpp</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="base__matrix_8hpp" kindref="compound">base_matrix.hpp</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="vector_8hpp" kindref="compound">vector.hpp</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal">&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>T&gt;</highlight></codeline>
+<codeline lineno="9" refid="class_matrix" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="class_matrix" kindref="compound">Matrix</ref><sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/><ref refid="class_base_matrix" kindref="compound">BaseMatrix</ref>&lt;T&gt;<sp/>{</highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="12"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">using</highlight><highlight class="normal"><sp/><ref refid="class_base_matrix" kindref="compound">Parent</ref><sp/>=<sp/><ref refid="class_base_matrix" kindref="compound">BaseMatrix&lt;T&gt;</ref>;</highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/*<sp/>------------------------------------------------------------------------<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/*<sp/>Constructors/Destructors<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/*<sp/>------------------------------------------------------------------------<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"><sp/><sp/><ref refid="class_matrix_1a8f3dfbe2a101bdc58c768d315dbc1234" kindref="member">Matrix</ref>()<sp/>=<sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight></codeline>
+<codeline lineno="20" refid="class_matrix_1a2cd3764b5299adb5769b150c89e5ded6" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="class_matrix_1a2cd3764b5299adb5769b150c89e5ded6" kindref="member">Matrix</ref>(<ref refid="common_8hpp_1a9cc0620fb2e91b51587c6936060d4161" kindref="member">UInt</ref><sp/><ref refid="class_base_matrix_1a59cee12a5ce9bde3751b23deddb84781" kindref="member">rows</ref>,<sp/><ref refid="common_8hpp_1a9cc0620fb2e91b51587c6936060d4161" kindref="member">UInt</ref><sp/><ref refid="class_base_matrix_1afac1191058cfe48321e9a27845b4f37a" kindref="member">cols</ref>)<sp/>:<sp/><ref refid="class_base_matrix" kindref="compound">Parent</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"><sp/><sp/><sp/><sp/>this-&gt;<ref refid="class_matrix_1a9519dde17400b4c6b69454cfa6c867e7" kindref="member">resize</ref>(rows,<sp/><ref refid="class_base_matrix_1afac1191058cfe48321e9a27845b4f37a" kindref="member">cols</ref>);</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"><sp/><sp/>};</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"><sp/><sp/><ref refid="class_matrix_1aad1e22cc8c4b843d2f7f20b01c5cd543" kindref="member">~Matrix</ref>()<sp/>=<sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/*<sp/>------------------------------------------------------------------------<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="27"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/*<sp/>Methods<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">/*<sp/>------------------------------------------------------------------------<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight></codeline>
+<codeline lineno="31"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>resizing<sp/>the<sp/>matrix<sp/>to<sp/>given<sp/>rows<sp/>and<sp/>cols</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="32" refid="class_matrix_1a9519dde17400b4c6b69454cfa6c867e7" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="class_matrix_1a9519dde17400b4c6b69454cfa6c867e7" kindref="member">resize</ref>(<ref refid="common_8hpp_1a9cc0620fb2e91b51587c6936060d4161" kindref="member">UInt</ref><sp/><ref refid="class_base_matrix_1a59cee12a5ce9bde3751b23deddb84781" kindref="member">rows</ref>,<sp/><ref refid="common_8hpp_1a9cc0620fb2e91b51587c6936060d4161" kindref="member">UInt</ref><sp/><ref refid="class_base_matrix_1afac1191058cfe48321e9a27845b4f37a" kindref="member">cols</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="class_base_matrix_1a6f151cc78a826656e8b839499f08d53b" kindref="member">Parent::resize</ref>(<ref refid="class_base_matrix_1a59cee12a5ce9bde3751b23deddb84781" kindref="member">rows</ref>,<sp/><ref refid="class_base_matrix_1afac1191058cfe48321e9a27845b4f37a" kindref="member">cols</ref>);</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>adapt<sp/>memory</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="common_8hpp_1a9cc0620fb2e91b51587c6936060d4161" kindref="member">UInt</ref><sp/><ref refid="class_base_matrix_1afbb3bec01cedf4ec17e94df3b910130c" kindref="member">size</ref><sp/>=<sp/><ref refid="class_base_matrix_1a59cee12a5ce9bde3751b23deddb84781" kindref="member">rows</ref>*<ref refid="class_base_matrix_1afac1191058cfe48321e9a27845b4f37a" kindref="member">cols</ref>;</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/>this-&gt;<ref refid="class_base_matrix_1ad5c0ac3cb40291f4d8de890218043d1a" kindref="member">storage</ref>.resize(size);</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"></highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>operator<sp/>to<sp/>access<sp/>ans<sp/>assign<sp/>values<sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>stored<sp/>in<sp/>a<sp/>column<sp/>major</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="43" refid="class_matrix_1a00376cb5c0c609b03bc73bec2e3e2001" refkind="member"><highlight class="normal"><sp/><sp/>T&amp;<sp/><ref refid="class_matrix_1a00376cb5c0c609b03bc73bec2e3e2001" kindref="member">operator()</ref>(<ref refid="common_8hpp_1a9cc0620fb2e91b51587c6936060d4161" kindref="member">UInt</ref><sp/>i,<sp/><ref refid="common_8hpp_1a9cc0620fb2e91b51587c6936060d4161" kindref="member">UInt</ref><sp/>j)<sp/>{</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>this-&gt;<ref refid="class_base_matrix_1ad5c0ac3cb40291f4d8de890218043d1a" kindref="member">storage</ref>[i<sp/>+<sp/>j*this-&gt;<ref refid="class_base_matrix_1a59cee12a5ce9bde3751b23deddb84781" kindref="member">rows</ref>];</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="46" refid="class_matrix_1aa8510298a5f45ce292d9490c02315f51" refkind="member"><highlight class="normal"><sp/><sp/>T<sp/><ref refid="class_matrix_1aa8510298a5f45ce292d9490c02315f51" kindref="member">operator()</ref>(<ref refid="common_8hpp_1a9cc0620fb2e91b51587c6936060d4161" kindref="member">UInt</ref><sp/>i,<sp/><ref refid="common_8hpp_1a9cc0620fb2e91b51587c6936060d4161" kindref="member">UInt</ref><sp/>j)</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>this-&gt;<ref refid="class_base_matrix_1ad5c0ac3cb40291f4d8de890218043d1a" kindref="member">storage</ref>[i<sp/>+<sp/>j*this-&gt;<ref refid="class_base_matrix_1a59cee12a5ce9bde3751b23deddb84781" kindref="member">rows</ref>];</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"></highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>operator<sp/>division<sp/>by<sp/>scalar</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="51" refid="class_matrix_1aacb55bf5245429976d221ca6bcae236b" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="class_matrix" kindref="compound">Matrix&lt;T&gt;</ref>&amp;<sp/><ref refid="class_matrix_1aacb55bf5245429976d221ca6bcae236b" kindref="member">operator/=</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>T&amp;<sp/>c)<sp/>{</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/>std::for_each(this-&gt;<ref refid="class_base_matrix_1ad5c0ac3cb40291f4d8de890218043d1a" kindref="member">storage</ref>.begin(),<sp/>this-&gt;storage.end(),<sp/>[&amp;c](T&amp;<sp/>v)<sp/>{<sp/>v<sp/>/=<sp/>c;<sp/>});</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>*</highlight><highlight class="keyword">this</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/></highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>operator<sp/>multiplication<sp/>by<sp/>scalar</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="57" refid="class_matrix_1a0d38ebbff03482a0949efd248610ed1b" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="class_matrix" kindref="compound">Matrix&lt;T&gt;</ref>&amp;<sp/><ref refid="class_matrix_1a0d38ebbff03482a0949efd248610ed1b" kindref="member">operator*=</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal">&amp;<sp/>c)<sp/>{</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/>std::for_each(this-&gt;<ref refid="class_base_matrix_1ad5c0ac3cb40291f4d8de890218043d1a" kindref="member">storage</ref>.begin(),<sp/>this-&gt;storage.end(),<sp/>[&amp;c](T&amp;<sp/>v)<sp/>{<sp/>v<sp/>*=<sp/>c;<sp/>});</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>*</highlight><highlight class="keyword">this</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/></highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>operator<sp/>multiplication<sp/>increment<sp/>by<sp/>matrix</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="63" refid="class_matrix_1a3f1531e901641e3cc6cc015478cdef7e" refkind="member"><highlight class="normal"><ref refid="class_matrix" kindref="compound">Matrix&lt;T&gt;</ref>&amp;<sp/><ref refid="class_matrix_1a3f1531e901641e3cc6cc015478cdef7e" kindref="member">operator+=</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="class_matrix" kindref="compound">Matrix&lt;T&gt;</ref>&amp;<sp/>a)<sp/>{</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/>this-&gt;<ref refid="class_base_matrix_1ad5c0ac3cb40291f4d8de890218043d1a" kindref="member">storage</ref><sp/>+=<sp/>a.<ref refid="class_base_matrix_1ad5c0ac3cb40291f4d8de890218043d1a" kindref="member">storage</ref>;</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>*</highlight><highlight class="keyword">this</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/></highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>set<sp/>value<sp/>to<sp/>a<sp/>scalar</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="69" refid="class_matrix_1a7f27a17d4b88aab316991fb2b93dfecc" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="class_matrix" kindref="compound">Matrix&lt;T&gt;</ref>&amp;<sp/><ref refid="class_matrix_1a7f27a17d4b88aab316991fb2b93dfecc" kindref="member">operator=</ref>(T<sp/>c)<sp/>{</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/>std::for_each(this-&gt;<ref refid="class_base_matrix_1ad5c0ac3cb40291f4d8de890218043d1a" kindref="member">storage</ref>.begin(),<sp/>this-&gt;storage.end(),<sp/>[c](T&amp;<sp/>v)<sp/>{<sp/>v<sp/>=<sp/>c;<sp/>});</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>*</highlight><highlight class="keyword">this</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"></highlight></codeline>
+<codeline lineno="74"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>transpose<sp/>a<sp/>matrix</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="class_matrix_1a744c7cb15d91bfd47f74e79d91c46c81" kindref="member">transpose</ref>(<ref refid="class_matrix" kindref="compound">Matrix&lt;T&gt;</ref><sp/>&amp;);</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/></highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>inverse<sp/>a<sp/>matrix</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="class_matrix_1ac4817fa7c78a6d8cfed0f63e07e577fd" kindref="member">inverse</ref>(<ref refid="class_matrix" kindref="compound">Matrix&lt;T&gt;</ref><sp/>&amp;);</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"></highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>return<sp/>determinant<sp/>of<sp/>matrix</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/><ref refid="class_matrix_1aa0347b091217f8ea2a928efd860d4d26" kindref="member">determinant</ref>();</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"></highlight></codeline>
+<codeline lineno="84"><highlight class="normal"></highlight></codeline>
+<codeline lineno="85"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>print<sp/>matrix</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="class_matrix_1abdbf63366368e14319e802f6cdaef612" kindref="member">print</ref>(std::ostream&amp;<sp/>stream)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"></highlight></codeline>
+<codeline lineno="89"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"></highlight></codeline>
+<codeline lineno="91"><highlight class="normal"></highlight></codeline>
+<codeline lineno="92"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>--------------------------------------------------------------------------<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="93"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>Separate<sp/>function<sp/>definitions<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="94"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>--------------------------------------------------------------------------<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="95"><highlight class="normal"></highlight></codeline>
+<codeline lineno="96"><highlight class="normal"></highlight><highlight class="comment">//<sp/>matrix<sp/>matrix<sp/>multiplication</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="97"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal">&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>T&gt;</highlight></codeline>
+<codeline lineno="98"><highlight class="normal"><ref refid="class_matrix" kindref="compound">Matrix&lt;T&gt;</ref><sp/><ref refid="matrix_8hpp_1a6572630f7652d8e8e26621fd13e5a2a2" kindref="member">operator*</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="class_matrix" kindref="compound">Matrix&lt;T&gt;</ref>&amp;<sp/>a,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="class_matrix" kindref="compound">Matrix&lt;T&gt;</ref><sp/>&amp;<sp/>b);</highlight></codeline>
+<codeline lineno="99"><highlight class="normal"></highlight></codeline>
+<codeline lineno="100"><highlight class="normal"></highlight><highlight class="comment">//<sp/>double<sp/>matrix<sp/>multiplication</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="101"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal">&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>T&gt;</highlight></codeline>
+<codeline lineno="102"><highlight class="normal"><ref refid="class_matrix" kindref="compound">Matrix&lt;T&gt;</ref><sp/><ref refid="matrix_8hpp_1a6572630f7652d8e8e26621fd13e5a2a2" kindref="member">operator*</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal">&amp;<sp/>c,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="class_matrix" kindref="compound">Matrix&lt;T&gt;</ref><sp/>&amp;<sp/>a);</highlight></codeline>
+<codeline lineno="103"><highlight class="normal"></highlight></codeline>
+<codeline lineno="104"><highlight class="normal"></highlight><highlight class="comment">//<sp/>matrix<sp/>matrix<sp/>subtraction</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="105"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal">&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>T&gt;</highlight></codeline>
+<codeline lineno="106"><highlight class="normal"><ref refid="class_matrix" kindref="compound">Matrix&lt;T&gt;</ref><sp/><ref refid="matrix_8hpp_1a0a750c5b1a77203bc6776cb8594e6478" kindref="member">operator-</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="class_matrix" kindref="compound">Matrix&lt;T&gt;</ref>&amp;<sp/>a,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="class_matrix" kindref="compound">Matrix&lt;T&gt;</ref><sp/>&amp;<sp/>b);</highlight></codeline>
+<codeline lineno="107"><highlight class="normal"></highlight></codeline>
+<codeline lineno="108"><highlight class="normal"></highlight><highlight class="comment">//<sp/>matrix<sp/>matrix<sp/>addition</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="109"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal">&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>T&gt;</highlight></codeline>
+<codeline lineno="110"><highlight class="normal"><ref refid="class_matrix" kindref="compound">Matrix&lt;T&gt;</ref><sp/><ref refid="matrix_8hpp_1a43ac3c1a6f9624cdb0f6dd577fa0e39f" kindref="member">operator+</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="class_matrix" kindref="compound">Matrix&lt;T&gt;</ref>&amp;<sp/>a,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="class_matrix" kindref="compound">Matrix&lt;T&gt;</ref><sp/>&amp;<sp/>b);</highlight></codeline>
+<codeline lineno="111"><highlight class="normal"></highlight></codeline>
+<codeline lineno="112"><highlight class="normal"></highlight><highlight class="comment">//<sp/>matrix<sp/>vector<sp/>multiplication</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="113"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal">&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>T&gt;</highlight></codeline>
+<codeline lineno="114"><highlight class="normal">std::vector&lt;T&gt;<sp/><ref refid="matrix_8hpp_1a6572630f7652d8e8e26621fd13e5a2a2" kindref="member">operator*</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="class_matrix" kindref="compound">Matrix&lt;T&gt;</ref>&amp;<sp/>a,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::vector&lt;T&gt;<sp/>&amp;<sp/>b);</highlight></codeline>
+<codeline lineno="115"><highlight class="normal"></highlight></codeline>
+<codeline lineno="116"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="matrix__inline_8hpp" kindref="compound">matrix_inline.hpp</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="117"><highlight class="normal"></highlight></codeline>
+<codeline lineno="118"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+    </programlisting>
+    <location file="/home/student/Project_TEHPC/project-tehpc-niels-pichler/src/matrix.hpp"/>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,698 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+  <compounddef id="class_model" kind="class" language="C++" prot="public">
+    <compoundname>Model</compoundname>
+    <includes refid="model_8hpp" local="no">model.hpp</includes>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_model_1a6a738b138d989a2020ef6b90811288c1" prot="private" static="no" mutable="no">
+        <type><ref refid="common_8hpp_1a9cc0620fb2e91b51587c6936060d4161" kindref="member">UInt</ref></type>
+        <definition>UInt Model::dim</definition>
+        <argsstring></argsstring>
+        <name>dim</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/student/Project_TEHPC/project-tehpc-niels-pichler/src/model.hpp" line="105" column="8" bodyfile="/home/student/Project_TEHPC/project-tehpc-niels-pichler/src/model.hpp" bodystart="96" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_model_1a7571631d09fa77524689d1835199b3b1" prot="private" static="no" mutable="no">
+        <type>double</type>
+        <definition>double Model::lc</definition>
+        <argsstring></argsstring>
+        <name>lc</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/student/Project_TEHPC/project-tehpc-niels-pichler/src/model.hpp" line="106" column="10" bodyfile="/home/student/Project_TEHPC/project-tehpc-niels-pichler/src/model.hpp" bodystart="106" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_model_1a0dcd739a33b63b6b862c1bedc2fe81b5" prot="private" static="no" mutable="no">
+        <type><ref refid="common_8hpp_1a9cc0620fb2e91b51587c6936060d4161" kindref="member">UInt</ref></type>
+        <definition>UInt Model::steps</definition>
+        <argsstring></argsstring>
+        <name>steps</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/student/Project_TEHPC/project-tehpc-niels-pichler/src/model.hpp" line="107" column="8" bodyfile="/home/student/Project_TEHPC/project-tehpc-niels-pichler/src/model.hpp" bodystart="107" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_model_1a888c3a9173a2ccde003f4f46456b4706" prot="private" static="no" mutable="no">
+        <type><ref refid="common_8hpp_1a9cc0620fb2e91b51587c6936060d4161" kindref="member">UInt</ref></type>
+        <definition>UInt Model::nb_nodes</definition>
+        <argsstring></argsstring>
+        <name>nb_nodes</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/student/Project_TEHPC/project-tehpc-niels-pichler/src/model.hpp" line="110" column="8" bodyfile="/home/student/Project_TEHPC/project-tehpc-niels-pichler/src/model.hpp" bodystart="110" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_model_1ad4fca75fc5872039667f9275ad0b013c" prot="private" static="no" mutable="no">
+        <type><ref refid="class_array" kindref="compound">Array</ref>&lt; double &gt;</type>
+        <definition>Array&lt;double&gt; Model::coordinates</definition>
+        <argsstring></argsstring>
+        <name>coordinates</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/student/Project_TEHPC/project-tehpc-niels-pichler/src/model.hpp" line="111" column="9" bodyfile="/home/student/Project_TEHPC/project-tehpc-niels-pichler/src/model.hpp" bodystart="111" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_model_1a7f1208e32b27085f588c2cbdcbc3ff4b" prot="private" static="no" mutable="no">
+        <type><ref refid="class_array" kindref="compound">Array</ref>&lt; double &gt;</type>
+        <definition>Array&lt;double&gt; Model::displacement</definition>
+        <argsstring></argsstring>
+        <name>displacement</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/student/Project_TEHPC/project-tehpc-niels-pichler/src/model.hpp" line="112" column="9" bodyfile="/home/student/Project_TEHPC/project-tehpc-niels-pichler/src/model.hpp" bodystart="112" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_model_1a7ee698fb61f98a5002fcb723478ea767" prot="private" static="no" mutable="no">
+        <type>std::vector&lt; double &gt;</type>
+        <definition>std::vector&lt;double&gt; Model::phase</definition>
+        <argsstring></argsstring>
+        <name>phase</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/student/Project_TEHPC/project-tehpc-niels-pichler/src/model.hpp" line="113" column="15" bodyfile="/home/student/Project_TEHPC/project-tehpc-niels-pichler/src/model.hpp" bodystart="113" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_model_1a9a579fd5de491f7b9bc5743a2770a266" prot="private" static="no" mutable="no">
+        <type>std::vector&lt; double &gt;</type>
+        <definition>std::vector&lt;double&gt; Model::history</definition>
+        <argsstring></argsstring>
+        <name>history</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/student/Project_TEHPC/project-tehpc-niels-pichler/src/model.hpp" line="114" column="15" bodyfile="/home/student/Project_TEHPC/project-tehpc-niels-pichler/src/model.hpp" bodystart="114" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_model_1a095cccc7bdb4b6d046889b26bba1cc78" prot="private" static="no" mutable="no">
+        <type><ref refid="common_8hpp_1a9cc0620fb2e91b51587c6936060d4161" kindref="member">UInt</ref></type>
+        <definition>UInt Model::nb_elements</definition>
+        <argsstring></argsstring>
+        <name>nb_elements</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/student/Project_TEHPC/project-tehpc-niels-pichler/src/model.hpp" line="117" column="8" bodyfile="/home/student/Project_TEHPC/project-tehpc-niels-pichler/src/model.hpp" bodystart="117" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_model_1a22f51285d31dae70d36255a326c77d18" prot="private" static="no" mutable="no">
+        <type><ref refid="common_8hpp_1a9cc0620fb2e91b51587c6936060d4161" kindref="member">UInt</ref></type>
+        <definition>UInt Model::nb_nodes_per_element</definition>
+        <argsstring></argsstring>
+        <name>nb_nodes_per_element</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/student/Project_TEHPC/project-tehpc-niels-pichler/src/model.hpp" line="118" column="8" bodyfile="/home/student/Project_TEHPC/project-tehpc-niels-pichler/src/model.hpp" bodystart="118" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_model_1adaa0f038c33f4103abc73503acdbb2b0" prot="private" static="no" mutable="no">
+        <type><ref refid="class_array" kindref="compound">Array</ref>&lt; <ref refid="common_8hpp_1a9cc0620fb2e91b51587c6936060d4161" kindref="member">UInt</ref> &gt;</type>
+        <definition>Array&lt;UInt&gt; Model::connectivity</definition>
+        <argsstring></argsstring>
+        <name>connectivity</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/student/Project_TEHPC/project-tehpc-niels-pichler/src/model.hpp" line="119" column="9" bodyfile="/home/student/Project_TEHPC/project-tehpc-niels-pichler/src/model.hpp" bodystart="119" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_model_1a7df32ca71150fc919adb166fcd23c92b" prot="private" static="no" mutable="no">
+        <type>std::vector&lt; double &gt;</type>
+        <definition>std::vector&lt;double&gt; Model::modulus</definition>
+        <argsstring></argsstring>
+        <name>modulus</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/student/Project_TEHPC/project-tehpc-niels-pichler/src/model.hpp" line="120" column="15" bodyfile="/home/student/Project_TEHPC/project-tehpc-niels-pichler/src/model.hpp" bodystart="120" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_model_1a22b51661829d08c488c12edc25ae4806" prot="private" static="no" mutable="no">
+        <type>std::vector&lt; double &gt;</type>
+        <definition>std::vector&lt;double&gt; Model::poisson</definition>
+        <argsstring></argsstring>
+        <name>poisson</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/student/Project_TEHPC/project-tehpc-niels-pichler/src/model.hpp" line="121" column="15" bodyfile="/home/student/Project_TEHPC/project-tehpc-niels-pichler/src/model.hpp" bodystart="121" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_model_1ae9445bd45afa0ebb4f7b07a32025f3e1" prot="private" static="no" mutable="no">
+        <type>std::vector&lt; double &gt;</type>
+        <definition>std::vector&lt;double&gt; Model::gc</definition>
+        <argsstring></argsstring>
+        <name>gc</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/student/Project_TEHPC/project-tehpc-niels-pichler/src/model.hpp" line="122" column="15" bodyfile="/home/student/Project_TEHPC/project-tehpc-niels-pichler/src/model.hpp" bodystart="122" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_model_1af8cecda6bdc59545e30b3c8a4e69e8a2" prot="private" static="no" mutable="no">
+        <type><ref refid="class_array" kindref="compound">Array</ref>&lt; <ref refid="common_8hpp_1a9cc0620fb2e91b51587c6936060d4161" kindref="member">UInt</ref> &gt;</type>
+        <definition>Array&lt;UInt&gt; Model::bc_disp</definition>
+        <argsstring></argsstring>
+        <name>bc_disp</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/student/Project_TEHPC/project-tehpc-niels-pichler/src/model.hpp" line="125" column="9" bodyfile="/home/student/Project_TEHPC/project-tehpc-niels-pichler/src/model.hpp" bodystart="125" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_model_1a57d9255ff35221918e81d64df78ab60d" prot="private" static="no" mutable="no">
+        <type><ref refid="class_array" kindref="compound">Array</ref>&lt; double &gt;</type>
+        <definition>Array&lt;double&gt; Model::bc_disp_value</definition>
+        <argsstring></argsstring>
+        <name>bc_disp_value</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/student/Project_TEHPC/project-tehpc-niels-pichler/src/model.hpp" line="126" column="9" bodyfile="/home/student/Project_TEHPC/project-tehpc-niels-pichler/src/model.hpp" bodystart="126" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_model_1aba1d6db1231d43c6fcb4b3708d820318" prot="private" static="no" mutable="no">
+        <type>std::shared_ptr&lt; <ref refid="class_base_matrix" kindref="compound">BaseMatrix</ref>&lt; double &gt; &gt;</type>
+        <definition>std::shared_ptr&lt;BaseMatrix&lt;double&gt; &gt; Model::K</definition>
+        <argsstring></argsstring>
+        <name>K</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/student/Project_TEHPC/project-tehpc-niels-pichler/src/model.hpp" line="129" column="19" bodyfile="/home/student/Project_TEHPC/project-tehpc-niels-pichler/src/model.hpp" bodystart="129" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_model_1a9fc48719a2c004d1d5fb84aa2e5a023b" prot="private" static="no" mutable="no">
+        <type>std::shared_ptr&lt; <ref refid="class_n_rsolver" kindref="compound">NRsolver</ref> &gt;</type>
+        <definition>std::shared_ptr&lt;NRsolver&gt; Model::solver</definition>
+        <argsstring></argsstring>
+        <name>solver</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/student/Project_TEHPC/project-tehpc-niels-pichler/src/model.hpp" line="132" column="19" bodyfile="/home/student/Project_TEHPC/project-tehpc-niels-pichler/src/model.hpp" bodystart="132" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_model_1ab5bdabea36b1d1bee80151e2da913373" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Model::Model</definition>
+        <argsstring>()=default</argsstring>
+        <name>Model</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/student/Project_TEHPC/project-tehpc-niels-pichler/src/model.hpp" line="25" column="3"/>
+      </memberdef>
+      <memberdef kind="function" id="class_model_1a16ee343a3bf772a4aa00c8d23fcc591f" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>Model::Model</definition>
+        <argsstring>(const std::string &amp;fname)</argsstring>
+        <name>Model</name>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>fname</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/student/Project_TEHPC/project-tehpc-niels-pichler/src/model.hpp" line="27" column="3" bodyfile="/home/student/Project_TEHPC/project-tehpc-niels-pichler/src/model.hpp" bodystart="27" bodyend="29"/>
+        <references refid="class_model_1ac8d29cf23b87530eff5f25315ca54a42" compoundref="model_8cpp" startline="6" endline="147">readInput</references>
+      </memberdef>
+      <memberdef kind="function" id="class_model_1a2efbe4ec768191fa70ad86f260ec2fd6" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type></type>
+        <definition>virtual Model::~Model</definition>
+        <argsstring>()=default</argsstring>
+        <name>~Model</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/student/Project_TEHPC/project-tehpc-niels-pichler/src/model.hpp" line="31" column="11"/>
+      </memberdef>
+      <memberdef kind="function" id="class_model_1ac8d29cf23b87530eff5f25315ca54a42" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Model::readInput</definition>
+        <argsstring>(const std::string &amp;fname)</argsstring>
+        <name>readInput</name>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>fname</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/student/Project_TEHPC/project-tehpc-niels-pichler/src/model.hpp" line="40" column="8" bodyfile="/home/student/Project_TEHPC/project-tehpc-niels-pichler/src/model.cpp" bodystart="6" bodyend="147"/>
+        <references refid="class_array_1ae9e652d84186e4ef0293a30c7c4af3df" compoundref="array_8hpp" startline="32" endline="39">Array&lt; T &gt;::resize</references>
+        <referencedby refid="class_model_1a16ee343a3bf772a4aa00c8d23fcc591f" compoundref="model_8hpp" startline="27" endline="29">Model</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="class_model_1a106e91a1b5ddfe1fc3087882c8c27bc5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Model::assembly</definition>
+        <argsstring>()</argsstring>
+        <name>assembly</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/student/Project_TEHPC/project-tehpc-niels-pichler/src/model.hpp" line="43" column="8"/>
+      </memberdef>
+      <memberdef kind="function" id="class_model_1a24d61f6d660c9a30da5795631e934f3a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Model::apply_bc</definition>
+        <argsstring>()</argsstring>
+        <name>apply_bc</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/student/Project_TEHPC/project-tehpc-niels-pichler/src/model.hpp" line="46" column="8" bodyfile="/home/student/Project_TEHPC/project-tehpc-niels-pichler/src/model.cpp" bodystart="193" bodyend="195"/>
+      </memberdef>
+      <memberdef kind="function" id="class_model_1a74df995e0f6ec20b41cdca0a253e9c2a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Model::solve</definition>
+        <argsstring>()</argsstring>
+        <name>solve</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/student/Project_TEHPC/project-tehpc-niels-pichler/src/model.hpp" line="49" column="8" bodyfile="/home/student/Project_TEHPC/project-tehpc-niels-pichler/src/model.cpp" bodystart="197" bodyend="199"/>
+      </memberdef>
+      <memberdef kind="function" id="class_model_1a8976f84f757eb3cd68b2aa7eeb5a345f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Model::update</definition>
+        <argsstring>()</argsstring>
+        <name>update</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/student/Project_TEHPC/project-tehpc-niels-pichler/src/model.hpp" line="52" column="8" bodyfile="/home/student/Project_TEHPC/project-tehpc-niels-pichler/src/model.cpp" bodystart="201" bodyend="203"/>
+      </memberdef>
+      <memberdef kind="function" id="class_model_1a6861375feb4cb55cdfa5a8b1a8d3bf6a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Model::output</definition>
+        <argsstring>(const std::string &amp;odir)</argsstring>
+        <name>output</name>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>odir</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/student/Project_TEHPC/project-tehpc-niels-pichler/src/model.hpp" line="55" column="8" bodyfile="/home/student/Project_TEHPC/project-tehpc-niels-pichler/src/model.cpp" bodystart="205" bodyend="207"/>
+      </memberdef>
+      <memberdef kind="function" id="class_model_1ab845b024606db89b838a6f3d4815ef6c" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="common_8hpp_1a9cc0620fb2e91b51587c6936060d4161" kindref="member">UInt</ref></type>
+        <definition>UInt Model::get_dim</definition>
+        <argsstring>()</argsstring>
+        <name>get_dim</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/student/Project_TEHPC/project-tehpc-niels-pichler/src/model.hpp" line="70" column="8" bodyfile="/home/student/Project_TEHPC/project-tehpc-niels-pichler/src/model.hpp" bodystart="70" bodyend="70"/>
+      </memberdef>
+      <memberdef kind="function" id="class_model_1a6aa0472f4d7dd38aff10f908eea28905" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>double</type>
+        <definition>double Model::get_lc</definition>
+        <argsstring>()</argsstring>
+        <name>get_lc</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/student/Project_TEHPC/project-tehpc-niels-pichler/src/model.hpp" line="71" column="10" bodyfile="/home/student/Project_TEHPC/project-tehpc-niels-pichler/src/model.hpp" bodystart="71" bodyend="71"/>
+      </memberdef>
+      <memberdef kind="function" id="class_model_1ace995f7b9de5012be34b8ccb5391dd65" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="common_8hpp_1a9cc0620fb2e91b51587c6936060d4161" kindref="member">UInt</ref></type>
+        <definition>UInt Model::get_steps</definition>
+        <argsstring>()</argsstring>
+        <name>get_steps</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/student/Project_TEHPC/project-tehpc-niels-pichler/src/model.hpp" line="72" column="8" bodyfile="/home/student/Project_TEHPC/project-tehpc-niels-pichler/src/model.hpp" bodystart="72" bodyend="72"/>
+      </memberdef>
+      <memberdef kind="function" id="class_model_1aedc5cd165a18b87811b25a94db413f97" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="common_8hpp_1a9cc0620fb2e91b51587c6936060d4161" kindref="member">UInt</ref></type>
+        <definition>UInt Model::get_nb_nodes</definition>
+        <argsstring>()</argsstring>
+        <name>get_nb_nodes</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/student/Project_TEHPC/project-tehpc-niels-pichler/src/model.hpp" line="73" column="8" bodyfile="/home/student/Project_TEHPC/project-tehpc-niels-pichler/src/model.hpp" bodystart="73" bodyend="73"/>
+      </memberdef>
+      <memberdef kind="function" id="class_model_1a495690be9ba3aa1930fd2480adea1375" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="class_array" kindref="compound">Array</ref>&lt; double &gt;</type>
+        <definition>Array&lt;double&gt; Model::get_coordinates</definition>
+        <argsstring>()</argsstring>
+        <name>get_coordinates</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/student/Project_TEHPC/project-tehpc-niels-pichler/src/model.hpp" line="74" column="9" bodyfile="/home/student/Project_TEHPC/project-tehpc-niels-pichler/src/model.hpp" bodystart="74" bodyend="74"/>
+      </memberdef>
+      <memberdef kind="function" id="class_model_1aae0a773ae82111ecc1dfd12b656ac5fc" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="common_8hpp_1a9cc0620fb2e91b51587c6936060d4161" kindref="member">UInt</ref></type>
+        <definition>UInt Model::get_nb_elements</definition>
+        <argsstring>()</argsstring>
+        <name>get_nb_elements</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/student/Project_TEHPC/project-tehpc-niels-pichler/src/model.hpp" line="75" column="8" bodyfile="/home/student/Project_TEHPC/project-tehpc-niels-pichler/src/model.hpp" bodystart="75" bodyend="75"/>
+      </memberdef>
+      <memberdef kind="function" id="class_model_1ad7147d720818a3e99f72a4448d580ad8" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="common_8hpp_1a9cc0620fb2e91b51587c6936060d4161" kindref="member">UInt</ref></type>
+        <definition>UInt Model::get_nb_nodes_per_element</definition>
+        <argsstring>()</argsstring>
+        <name>get_nb_nodes_per_element</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/student/Project_TEHPC/project-tehpc-niels-pichler/src/model.hpp" line="76" column="8" bodyfile="/home/student/Project_TEHPC/project-tehpc-niels-pichler/src/model.hpp" bodystart="76" bodyend="76"/>
+      </memberdef>
+      <memberdef kind="function" id="class_model_1a68d5a6a02240c96ad68ac3f77af594f6" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="class_array" kindref="compound">Array</ref>&lt; <ref refid="common_8hpp_1a9cc0620fb2e91b51587c6936060d4161" kindref="member">UInt</ref> &gt;</type>
+        <definition>Array&lt;UInt&gt; Model::get_connectivity</definition>
+        <argsstring>()</argsstring>
+        <name>get_connectivity</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/student/Project_TEHPC/project-tehpc-niels-pichler/src/model.hpp" line="77" column="9" bodyfile="/home/student/Project_TEHPC/project-tehpc-niels-pichler/src/model.hpp" bodystart="77" bodyend="77"/>
+      </memberdef>
+      <memberdef kind="function" id="class_model_1a9aa3087298c8ff1a36208a961dcaf07e" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>std::vector&lt; double &gt;</type>
+        <definition>std::vector&lt;double&gt; Model::get_modulus</definition>
+        <argsstring>()</argsstring>
+        <name>get_modulus</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/student/Project_TEHPC/project-tehpc-niels-pichler/src/model.hpp" line="78" column="15" bodyfile="/home/student/Project_TEHPC/project-tehpc-niels-pichler/src/model.hpp" bodystart="78" bodyend="78"/>
+      </memberdef>
+      <memberdef kind="function" id="class_model_1a9d5bf9a97f53f17643809e21a28bb1e3" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>std::vector&lt; double &gt;</type>
+        <definition>std::vector&lt;double&gt; Model::get_poisson</definition>
+        <argsstring>()</argsstring>
+        <name>get_poisson</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/student/Project_TEHPC/project-tehpc-niels-pichler/src/model.hpp" line="79" column="15" bodyfile="/home/student/Project_TEHPC/project-tehpc-niels-pichler/src/model.hpp" bodystart="79" bodyend="79"/>
+      </memberdef>
+      <memberdef kind="function" id="class_model_1a5cb36c381fdf12b8757cfdbde6b85aeb" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>std::vector&lt; double &gt;</type>
+        <definition>std::vector&lt;double&gt; Model::get_gc</definition>
+        <argsstring>()</argsstring>
+        <name>get_gc</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/student/Project_TEHPC/project-tehpc-niels-pichler/src/model.hpp" line="80" column="15" bodyfile="/home/student/Project_TEHPC/project-tehpc-niels-pichler/src/model.hpp" bodystart="80" bodyend="80"/>
+      </memberdef>
+      <memberdef kind="function" id="class_model_1a307f9686b62ef96c6460b1494f16e6e2" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="class_array" kindref="compound">Array</ref>&lt; <ref refid="common_8hpp_1a9cc0620fb2e91b51587c6936060d4161" kindref="member">UInt</ref> &gt;</type>
+        <definition>Array&lt;UInt&gt; Model::get_bc_disp</definition>
+        <argsstring>()</argsstring>
+        <name>get_bc_disp</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/student/Project_TEHPC/project-tehpc-niels-pichler/src/model.hpp" line="81" column="9" bodyfile="/home/student/Project_TEHPC/project-tehpc-niels-pichler/src/model.hpp" bodystart="81" bodyend="81"/>
+      </memberdef>
+      <memberdef kind="function" id="class_model_1af1cbc8db40c57209bab0802aea7c96cc" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="class_array" kindref="compound">Array</ref>&lt; double &gt;</type>
+        <definition>Array&lt;double&gt; Model::get_bc_disp_value</definition>
+        <argsstring>()</argsstring>
+        <name>get_bc_disp_value</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/student/Project_TEHPC/project-tehpc-niels-pichler/src/model.hpp" line="82" column="9" bodyfile="/home/student/Project_TEHPC/project-tehpc-niels-pichler/src/model.hpp" bodystart="82" bodyend="82"/>
+      </memberdef>
+      <memberdef kind="function" id="class_model_1ae5c28e250ac2bb5b026a3a4188c251c0" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void Model::get_localStifness</definition>
+        <argsstring>(int element, Matrix&lt; double &gt; &amp;Ke_d, std::vector&lt; double &gt; &amp;res_d, Matrix&lt; double &gt; &amp;Ke_u, std::vector&lt; double &gt; &amp;res_u)</argsstring>
+        <name>get_localStifness</name>
+        <param>
+          <type>int</type>
+          <declname>element</declname>
+        </param>
+        <param>
+          <type><ref refid="class_matrix" kindref="compound">Matrix</ref>&lt; double &gt; &amp;</type>
+          <declname>Ke_d</declname>
+        </param>
+        <param>
+          <type>std::vector&lt; double &gt; &amp;</type>
+          <declname>res_d</declname>
+        </param>
+        <param>
+          <type><ref refid="class_matrix" kindref="compound">Matrix</ref>&lt; double &gt; &amp;</type>
+          <declname>Ke_u</declname>
+        </param>
+        <param>
+          <type>std::vector&lt; double &gt; &amp;</type>
+          <declname>res_u</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/student/Project_TEHPC/project-tehpc-niels-pichler/src/model.hpp" line="85" column="6" bodyfile="/home/student/Project_TEHPC/project-tehpc-niels-pichler/src/model.hpp" bodystart="85" bodyend="87"/>
+      </memberdef>
+      <memberdef kind="function" id="class_model_1a8a923782ec2d825a98307207431e1fa2" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void Model::set_init</definition>
+        <argsstring>(Array&lt; double &gt; d, std::vector&lt; double &gt; p, std::vector&lt; double &gt; h)</argsstring>
+        <name>set_init</name>
+        <param>
+          <type><ref refid="class_array" kindref="compound">Array</ref>&lt; double &gt;</type>
+          <declname>d</declname>
+        </param>
+        <param>
+          <type>std::vector&lt; double &gt;</type>
+          <declname>p</declname>
+        </param>
+        <param>
+          <type>std::vector&lt; double &gt;</type>
+          <declname>h</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/student/Project_TEHPC/project-tehpc-niels-pichler/src/model.hpp" line="89" column="6" bodyfile="/home/student/Project_TEHPC/project-tehpc-niels-pichler/src/model.hpp" bodystart="89" bodyend="96"/>
+        <references refid="class_base_matrix_1a5e840b5b8195b01fea677c5d3a623ef2" compoundref="base__matrix_8hpp" startline="73" endline="73">BaseMatrix&lt; T &gt;::nbCols</references>
+        <references refid="class_base_matrix_1ac036dca55e151b93b40766afdebc1b14" compoundref="base__matrix_8hpp" startline="70" endline="70">BaseMatrix&lt; T &gt;::nbRows</references>
+        <references refid="class_array_1ae9e652d84186e4ef0293a30c7c4af3df" compoundref="array_8hpp" startline="32" endline="39">Array&lt; T &gt;::resize</references>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-func">
+      <memberdef kind="function" id="class_model_1a9a1a07b84f079625b4e24545308536b1" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Model::localStiffness</definition>
+        <argsstring>(int element, Matrix&lt; double &gt; &amp;Ke_d, std::vector&lt; double &gt; &amp;res_d, Matrix&lt; double &gt; &amp;Ke_u, std::vector&lt; double &gt; &amp;res_u)</argsstring>
+        <name>localStiffness</name>
+        <param>
+          <type>int</type>
+          <declname>element</declname>
+        </param>
+        <param>
+          <type><ref refid="class_matrix" kindref="compound">Matrix</ref>&lt; double &gt; &amp;</type>
+          <declname>Ke_d</declname>
+        </param>
+        <param>
+          <type>std::vector&lt; double &gt; &amp;</type>
+          <declname>res_d</declname>
+        </param>
+        <param>
+          <type><ref refid="class_matrix" kindref="compound">Matrix</ref>&lt; double &gt; &amp;</type>
+          <declname>Ke_u</declname>
+        </param>
+        <param>
+          <type>std::vector&lt; double &gt; &amp;</type>
+          <declname>res_u</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/student/Project_TEHPC/project-tehpc-niels-pichler/src/model.hpp" line="59" column="8" bodyfile="/home/student/Project_TEHPC/project-tehpc-niels-pichler/src/model.cpp" bodystart="211" bodyend="251"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="1">
+        <label>Model</label>
+        <link refid="class_model"/>
+      </node>
+    </collaborationgraph>
+    <location file="/home/student/Project_TEHPC/project-tehpc-niels-pichler/src/model.hpp" line="20" column="12" bodyfile="/home/student/Project_TEHPC/project-tehpc-niels-pichler/src/model.hpp" bodystart="20" bodyend="133"/>
+    <listofallmembers>
+      <member refid="class_model_1a24d61f6d660c9a30da5795631e934f3a" prot="public" virt="non-virtual"><scope>Model</scope><name>apply_bc</name></member>
+      <member refid="class_model_1a106e91a1b5ddfe1fc3087882c8c27bc5" prot="public" virt="non-virtual"><scope>Model</scope><name>assembly</name></member>
+      <member refid="class_model_1af8cecda6bdc59545e30b3c8a4e69e8a2" prot="private" virt="non-virtual"><scope>Model</scope><name>bc_disp</name></member>
+      <member refid="class_model_1a57d9255ff35221918e81d64df78ab60d" prot="private" virt="non-virtual"><scope>Model</scope><name>bc_disp_value</name></member>
+      <member refid="class_model_1adaa0f038c33f4103abc73503acdbb2b0" prot="private" virt="non-virtual"><scope>Model</scope><name>connectivity</name></member>
+      <member refid="class_model_1ad4fca75fc5872039667f9275ad0b013c" prot="private" virt="non-virtual"><scope>Model</scope><name>coordinates</name></member>
+      <member refid="class_model_1a6a738b138d989a2020ef6b90811288c1" prot="private" virt="non-virtual"><scope>Model</scope><name>dim</name></member>
+      <member refid="class_model_1a7f1208e32b27085f588c2cbdcbc3ff4b" prot="private" virt="non-virtual"><scope>Model</scope><name>displacement</name></member>
+      <member refid="class_model_1ae9445bd45afa0ebb4f7b07a32025f3e1" prot="private" virt="non-virtual"><scope>Model</scope><name>gc</name></member>
+      <member refid="class_model_1a307f9686b62ef96c6460b1494f16e6e2" prot="public" virt="non-virtual"><scope>Model</scope><name>get_bc_disp</name></member>
+      <member refid="class_model_1af1cbc8db40c57209bab0802aea7c96cc" prot="public" virt="non-virtual"><scope>Model</scope><name>get_bc_disp_value</name></member>
+      <member refid="class_model_1a68d5a6a02240c96ad68ac3f77af594f6" prot="public" virt="non-virtual"><scope>Model</scope><name>get_connectivity</name></member>
+      <member refid="class_model_1a495690be9ba3aa1930fd2480adea1375" prot="public" virt="non-virtual"><scope>Model</scope><name>get_coordinates</name></member>
+      <member refid="class_model_1ab845b024606db89b838a6f3d4815ef6c" prot="public" virt="non-virtual"><scope>Model</scope><name>get_dim</name></member>
+      <member refid="class_model_1a5cb36c381fdf12b8757cfdbde6b85aeb" prot="public" virt="non-virtual"><scope>Model</scope><name>get_gc</name></member>
+      <member refid="class_model_1a6aa0472f4d7dd38aff10f908eea28905" prot="public" virt="non-virtual"><scope>Model</scope><name>get_lc</name></member>
+      <member refid="class_model_1ae5c28e250ac2bb5b026a3a4188c251c0" prot="public" virt="non-virtual"><scope>Model</scope><name>get_localStifness</name></member>
+      <member refid="class_model_1a9aa3087298c8ff1a36208a961dcaf07e" prot="public" virt="non-virtual"><scope>Model</scope><name>get_modulus</name></member>
+      <member refid="class_model_1aae0a773ae82111ecc1dfd12b656ac5fc" prot="public" virt="non-virtual"><scope>Model</scope><name>get_nb_elements</name></member>
+      <member refid="class_model_1aedc5cd165a18b87811b25a94db413f97" prot="public" virt="non-virtual"><scope>Model</scope><name>get_nb_nodes</name></member>
+      <member refid="class_model_1ad7147d720818a3e99f72a4448d580ad8" prot="public" virt="non-virtual"><scope>Model</scope><name>get_nb_nodes_per_element</name></member>
+      <member refid="class_model_1a9d5bf9a97f53f17643809e21a28bb1e3" prot="public" virt="non-virtual"><scope>Model</scope><name>get_poisson</name></member>
+      <member refid="class_model_1ace995f7b9de5012be34b8ccb5391dd65" prot="public" virt="non-virtual"><scope>Model</scope><name>get_steps</name></member>
+      <member refid="class_model_1a9a579fd5de491f7b9bc5743a2770a266" prot="private" virt="non-virtual"><scope>Model</scope><name>history</name></member>
+      <member refid="class_model_1aba1d6db1231d43c6fcb4b3708d820318" prot="private" virt="non-virtual"><scope>Model</scope><name>K</name></member>
+      <member refid="class_model_1a7571631d09fa77524689d1835199b3b1" prot="private" virt="non-virtual"><scope>Model</scope><name>lc</name></member>
+      <member refid="class_model_1a9a1a07b84f079625b4e24545308536b1" prot="private" virt="non-virtual"><scope>Model</scope><name>localStiffness</name></member>
+      <member refid="class_model_1ab5bdabea36b1d1bee80151e2da913373" prot="public" virt="non-virtual"><scope>Model</scope><name>Model</name></member>
+      <member refid="class_model_1a16ee343a3bf772a4aa00c8d23fcc591f" prot="public" virt="non-virtual"><scope>Model</scope><name>Model</name></member>
+      <member refid="class_model_1a7df32ca71150fc919adb166fcd23c92b" prot="private" virt="non-virtual"><scope>Model</scope><name>modulus</name></member>
+      <member refid="class_model_1a095cccc7bdb4b6d046889b26bba1cc78" prot="private" virt="non-virtual"><scope>Model</scope><name>nb_elements</name></member>
+      <member refid="class_model_1a888c3a9173a2ccde003f4f46456b4706" prot="private" virt="non-virtual"><scope>Model</scope><name>nb_nodes</name></member>
+      <member refid="class_model_1a22f51285d31dae70d36255a326c77d18" prot="private" virt="non-virtual"><scope>Model</scope><name>nb_nodes_per_element</name></member>
+      <member refid="class_model_1a6861375feb4cb55cdfa5a8b1a8d3bf6a" prot="public" virt="non-virtual"><scope>Model</scope><name>output</name></member>
+      <member refid="class_model_1a7ee698fb61f98a5002fcb723478ea767" prot="private" virt="non-virtual"><scope>Model</scope><name>phase</name></member>
+      <member refid="class_model_1a22b51661829d08c488c12edc25ae4806" prot="private" virt="non-virtual"><scope>Model</scope><name>poisson</name></member>
+      <member refid="class_model_1ac8d29cf23b87530eff5f25315ca54a42" prot="public" virt="non-virtual"><scope>Model</scope><name>readInput</name></member>
+      <member refid="class_model_1a8a923782ec2d825a98307207431e1fa2" prot="public" virt="non-virtual"><scope>Model</scope><name>set_init</name></member>
+      <member refid="class_model_1a74df995e0f6ec20b41cdca0a253e9c2a" prot="public" virt="non-virtual"><scope>Model</scope><name>solve</name></member>
+      <member refid="class_model_1a9fc48719a2c004d1d5fb84aa2e5a023b" prot="private" virt="non-virtual"><scope>Model</scope><name>solver</name></member>
+      <member refid="class_model_1a0dcd739a33b63b6b862c1bedc2fe81b5" prot="private" virt="non-virtual"><scope>Model</scope><name>steps</name></member>
+      <member refid="class_model_1a8976f84f757eb3cd68b2aa7eeb5a345f" prot="public" virt="non-virtual"><scope>Model</scope><name>update</name></member>
+      <member refid="class_model_1a2efbe4ec768191fa70ad86f260ec2fd6" prot="public" virt="virtual"><scope>Model</scope><name>~Model</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

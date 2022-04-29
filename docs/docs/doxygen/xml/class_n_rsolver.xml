@@ -1,0 +1,229 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+  <compounddef id="class_n_rsolver" kind="class" language="C++" prot="public">
+    <compoundname>NRsolver</compoundname>
+    <includes refid="newton__raphson__solver_8hpp" local="no">newton_raphson_solver.hpp</includes>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_n_rsolver_1a3a0101a8771a25e5f3a0fe58418a1699" prot="private" static="no" mutable="no">
+        <type>int</type>
+        <definition>int NRsolver::max_iter</definition>
+        <argsstring></argsstring>
+        <name>max_iter</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/student/Project_TEHPC/project-tehpc-niels-pichler/src/newton_raphson_solver.hpp" line="65" column="7" bodyfile="/home/student/Project_TEHPC/project-tehpc-niels-pichler/src/newton_raphson_solver.hpp" bodystart="65" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_n_rsolver_1afce25d2f58f1cbccd2aacc275f74bc97" prot="private" static="no" mutable="no">
+        <type>double</type>
+        <definition>double NRsolver::epsilon</definition>
+        <argsstring></argsstring>
+        <name>epsilon</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/student/Project_TEHPC/project-tehpc-niels-pichler/src/newton_raphson_solver.hpp" line="68" column="10" bodyfile="/home/student/Project_TEHPC/project-tehpc-niels-pichler/src/newton_raphson_solver.hpp" bodystart="68" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_n_rsolver_1ae16bcd7f1e84dd42a7ac6641c54f1adb" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>NRsolver::NRsolver</definition>
+        <argsstring>()</argsstring>
+        <name>NRsolver</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/student/Project_TEHPC/project-tehpc-niels-pichler/src/newton_raphson_solver.hpp" line="20" column="3" bodyfile="/home/student/Project_TEHPC/project-tehpc-niels-pichler/src/newton_raphson_solver.hpp" bodystart="20" bodyend="20"/>
+      </memberdef>
+      <memberdef kind="function" id="class_n_rsolver_1ac1c4a0adc26a81b48d5a13c5c9ae3a24" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>NRsolver::NRsolver</definition>
+        <argsstring>(int max_iter, double epsilon)</argsstring>
+        <name>NRsolver</name>
+        <param>
+          <type>int</type>
+          <declname>max_iter</declname>
+        </param>
+        <param>
+          <type>double</type>
+          <declname>epsilon</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/student/Project_TEHPC/project-tehpc-niels-pichler/src/newton_raphson_solver.hpp" line="22" column="3" bodyfile="/home/student/Project_TEHPC/project-tehpc-niels-pichler/src/newton_raphson_solver.hpp" bodystart="22" bodyend="25"/>
+      </memberdef>
+      <memberdef kind="function" id="class_n_rsolver_1a38eef07517c164bda71b99f8779df784" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>NRsolver::~NRsolver</definition>
+        <argsstring>()=default</argsstring>
+        <name>~NRsolver</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/student/Project_TEHPC/project-tehpc-niels-pichler/src/newton_raphson_solver.hpp" line="27" column="3"/>
+      </memberdef>
+      <memberdef kind="function" id="class_n_rsolver_1aac7fb5ccbd41916af1542820b41f5b7d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void NRsolver::solve</definition>
+        <argsstring>(std::shared_ptr&lt; BaseMatrix&lt; double &gt; &gt; A, const std::vector&lt; double &gt; &amp;b, std::vector&lt; double &gt; &amp;x)</argsstring>
+        <name>solve</name>
+        <param>
+          <type>std::shared_ptr&lt; <ref refid="class_base_matrix" kindref="compound">BaseMatrix</ref>&lt; double &gt; &gt;</type>
+          <declname>A</declname>
+        </param>
+        <param>
+          <type>const std::vector&lt; double &gt; &amp;</type>
+          <declname>b</declname>
+        </param>
+        <param>
+          <type>std::vector&lt; double &gt; &amp;</type>
+          <declname>x</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/student/Project_TEHPC/project-tehpc-niels-pichler/src/newton_raphson_solver.hpp" line="33" column="8" bodyfile="/home/student/Project_TEHPC/project-tehpc-niels-pichler/src/newton_raphson_solver.cpp" bodystart="3" bodyend="81"/>
+        <references refid="common_8hpp_1a2c6d8b1b1a798e59c2acfd0a7847c9da" compoundref="common_8hpp" startline="16">GET_VARIABLE_NAME</references>
+        <references refid="class_matrix_1ac4817fa7c78a6d8cfed0f63e07e577fd" compoundref="matrix_8cpp" startline="37" endline="71">Matrix&lt; T &gt;::inverse</references>
+        <references refid="class_base_matrix_1afbb3bec01cedf4ec17e94df3b910130c" compoundref="base__matrix_8hpp" startline="77" endline="77">BaseMatrix&lt; T &gt;::size</references>
+      </memberdef>
+      <memberdef kind="function" id="class_n_rsolver_1abd52504f38fd55b97c7294018e2ac536" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void NRsolver::printInfo</definition>
+        <argsstring>()</argsstring>
+        <name>printInfo</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/student/Project_TEHPC/project-tehpc-niels-pichler/src/newton_raphson_solver.hpp" line="53" column="8" bodyfile="/home/student/Project_TEHPC/project-tehpc-niels-pichler/src/newton_raphson_solver.hpp" bodystart="53" bodyend="58"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-func">
+      <memberdef kind="function" id="class_n_rsolver_1aee6890934f052d39122b94b149d29d3c" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void NRsolver::myFun</definition>
+        <argsstring>(Matrix&lt; double &gt; &amp;A, const std::vector&lt; double &gt; &amp;b, std::vector&lt; double &gt; &amp;x, std::vector&lt; double &gt; &amp;f)</argsstring>
+        <name>myFun</name>
+        <param>
+          <type><ref refid="class_matrix" kindref="compound">Matrix</ref>&lt; double &gt; &amp;</type>
+          <declname>A</declname>
+        </param>
+        <param>
+          <type>const std::vector&lt; double &gt; &amp;</type>
+          <declname>b</declname>
+        </param>
+        <param>
+          <type>std::vector&lt; double &gt; &amp;</type>
+          <declname>x</declname>
+        </param>
+        <param>
+          <type>std::vector&lt; double &gt; &amp;</type>
+          <declname>f</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/student/Project_TEHPC/project-tehpc-niels-pichler/src/newton_raphson_solver.hpp" line="38" column="8" bodyfile="/home/student/Project_TEHPC/project-tehpc-niels-pichler/src/newton_raphson_solver.cpp" bodystart="84" bodyend="89"/>
+      </memberdef>
+      <memberdef kind="function" id="class_n_rsolver_1aa410a200d835c4054d5472c24549962c" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void NRsolver::myFunDerivative</definition>
+        <argsstring>(const Matrix&lt; double &gt; &amp;A, Matrix&lt; double &gt; &amp;dfdx)</argsstring>
+        <name>myFunDerivative</name>
+        <param>
+          <type>const <ref refid="class_matrix" kindref="compound">Matrix</ref>&lt; double &gt; &amp;</type>
+          <declname>A</declname>
+        </param>
+        <param>
+          <type><ref refid="class_matrix" kindref="compound">Matrix</ref>&lt; double &gt; &amp;</type>
+          <declname>dfdx</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/student/Project_TEHPC/project-tehpc-niels-pichler/src/newton_raphson_solver.hpp" line="43" column="8" bodyfile="/home/student/Project_TEHPC/project-tehpc-niels-pichler/src/newton_raphson_solver.cpp" bodystart="92" bodyend="94"/>
+      </memberdef>
+      <memberdef kind="function" id="class_n_rsolver_1a54f7d575f6ca6f9bbddf5c0d0e1233c6" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void NRsolver::update</definition>
+        <argsstring>(std::vector&lt; double &gt; &amp;x_next, std::vector&lt; double &gt; &amp;x_prev, Matrix&lt; double &gt; &amp;dfdx_inv, std::vector&lt; double &gt; &amp;f)</argsstring>
+        <name>update</name>
+        <param>
+          <type>std::vector&lt; double &gt; &amp;</type>
+          <declname>x_next</declname>
+        </param>
+        <param>
+          <type>std::vector&lt; double &gt; &amp;</type>
+          <declname>x_prev</declname>
+        </param>
+        <param>
+          <type><ref refid="class_matrix" kindref="compound">Matrix</ref>&lt; double &gt; &amp;</type>
+          <declname>dfdx_inv</declname>
+        </param>
+        <param>
+          <type>std::vector&lt; double &gt; &amp;</type>
+          <declname>f</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/student/Project_TEHPC/project-tehpc-niels-pichler/src/newton_raphson_solver.hpp" line="46" column="8" bodyfile="/home/student/Project_TEHPC/project-tehpc-niels-pichler/src/newton_raphson_solver.cpp" bodystart="97" bodyend="104"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="1">
+        <label>NRsolver</label>
+        <link refid="class_n_rsolver"/>
+      </node>
+    </collaborationgraph>
+    <location file="/home/student/Project_TEHPC/project-tehpc-niels-pichler/src/newton_raphson_solver.hpp" line="15" column="15" bodyfile="/home/student/Project_TEHPC/project-tehpc-niels-pichler/src/newton_raphson_solver.hpp" bodystart="15" bodyend="69"/>
+    <listofallmembers>
+      <member refid="class_n_rsolver_1afce25d2f58f1cbccd2aacc275f74bc97" prot="private" virt="non-virtual"><scope>NRsolver</scope><name>epsilon</name></member>
+      <member refid="class_n_rsolver_1a3a0101a8771a25e5f3a0fe58418a1699" prot="private" virt="non-virtual"><scope>NRsolver</scope><name>max_iter</name></member>
+      <member refid="class_n_rsolver_1aee6890934f052d39122b94b149d29d3c" prot="private" virt="non-virtual"><scope>NRsolver</scope><name>myFun</name></member>
+      <member refid="class_n_rsolver_1aa410a200d835c4054d5472c24549962c" prot="private" virt="non-virtual"><scope>NRsolver</scope><name>myFunDerivative</name></member>
+      <member refid="class_n_rsolver_1ae16bcd7f1e84dd42a7ac6641c54f1adb" prot="public" virt="non-virtual"><scope>NRsolver</scope><name>NRsolver</name></member>
+      <member refid="class_n_rsolver_1ac1c4a0adc26a81b48d5a13c5c9ae3a24" prot="public" virt="non-virtual"><scope>NRsolver</scope><name>NRsolver</name></member>
+      <member refid="class_n_rsolver_1abd52504f38fd55b97c7294018e2ac536" prot="public" virt="non-virtual"><scope>NRsolver</scope><name>printInfo</name></member>
+      <member refid="class_n_rsolver_1aac7fb5ccbd41916af1542820b41f5b7d" prot="public" virt="non-virtual"><scope>NRsolver</scope><name>solve</name></member>
+      <member refid="class_n_rsolver_1a54f7d575f6ca6f9bbddf5c0d0e1233c6" prot="private" virt="non-virtual"><scope>NRsolver</scope><name>update</name></member>
+      <member refid="class_n_rsolver_1a38eef07517c164bda71b99f8779df784" prot="public" virt="non-virtual"><scope>NRsolver</scope><name>~NRsolver</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

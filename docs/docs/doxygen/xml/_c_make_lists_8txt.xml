@@ -1,0 +1,66 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+  <compounddef id="_c_make_lists_8txt" kind="file" language="C++">
+    <compoundname>CMakeLists.txt</compoundname>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="_c_make_lists_8txt_1a39410fabaf9ffdb2047b26d206404412" prot="public" static="no" const="no" explicit="no" inline="no" new="yes" virt="non-virtual">
+        <type></type>
+        <definition>set</definition>
+        <argsstring>(TEHPC_HEADER common.hpp base_matrix.hpp array.hpp array_inline.hpp matrix.hpp matrix_inline.hpp sparse_matrix.hpp vector.hpp element.hpp dispelement.hpp phaseelement.hpp newton_raphson_solver.hpp model.hpp) set(TEHPC_SRC array.cpp matrix.cpp element.cpp dispelement.cpp phaseelement.cpp new ton_raphson_solver.cpp model.cpp) set(TEHPC_DEPEND_FILES $</argsstring>
+        <name>set</name>
+        <param>
+          <type>TEHPC_HEADER common.hpp base_matrix.hpp array.hpp array_inline.hpp matrix.hpp matrix_inline.hpp sparse_matrix.hpp vector.hpp element.hpp dispelement.hpp phaseelement.hpp newton_raphson_solver.hpp model.</type>
+          <declname>hpp</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/student/Project_TEHPC/project-tehpc-niels-pichler/src/CMakeLists.txt" line="2" column="1" bodyfile="/home/student/Project_TEHPC/project-tehpc-niels-pichler/src/CMakeLists.txt" bodystart="2" bodyend="29"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="preprocessor">#<sp/>list<sp/>of<sp/>header<sp/>files<sp/>to<sp/>compile</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2" refid="_c_make_lists_8txt_1a39410fabaf9ffdb2047b26d206404412" refkind="member"><highlight class="normal"><ref refid="_c_make_lists_8txt_1a39410fabaf9ffdb2047b26d206404412" kindref="member">set</ref>(TEHPC_HEADER</highlight></codeline>
+<codeline lineno="3"><highlight class="normal"><sp/><sp/>common.hpp</highlight></codeline>
+<codeline lineno="4"><highlight class="normal"><sp/><sp/>base_matrix.hpp</highlight></codeline>
+<codeline lineno="5"><highlight class="normal"><sp/><sp/>array.hpp</highlight></codeline>
+<codeline lineno="6"><highlight class="normal"><sp/><sp/>array_inline.hpp</highlight></codeline>
+<codeline lineno="7"><highlight class="normal"><sp/><sp/>matrix.hpp</highlight></codeline>
+<codeline lineno="8"><highlight class="normal"><sp/><sp/>matrix_inline.hpp</highlight></codeline>
+<codeline lineno="9"><highlight class="normal"><sp/><sp/>sparse_matrix.hpp</highlight></codeline>
+<codeline lineno="10"><highlight class="normal"><sp/><sp/>vector.hpp</highlight></codeline>
+<codeline lineno="11"><highlight class="normal"><sp/><sp/>element.hpp</highlight></codeline>
+<codeline lineno="12"><highlight class="normal"><sp/><sp/>dispelement.hpp</highlight></codeline>
+<codeline lineno="13"><highlight class="normal"><sp/><sp/>phaseelement.hpp</highlight></codeline>
+<codeline lineno="14"><highlight class="normal"><sp/><sp/>newton_raphson_solver.hpp</highlight></codeline>
+<codeline lineno="15"><highlight class="normal"><sp/><sp/>model.hpp</highlight></codeline>
+<codeline lineno="16"><highlight class="normal"><sp/><sp/>)</highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight><highlight class="preprocessor">#<sp/>list<sp/>of<sp/>cpp<sp/>files<sp/>to<sp/>compile</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"><ref refid="_c_make_lists_8txt_1a39410fabaf9ffdb2047b26d206404412" kindref="member">set</ref>(TEHPC_SRC</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"><sp/><sp/>array.cpp</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"><sp/><sp/>matrix.cpp</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"><sp/><sp/>element.cpp</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"><sp/><sp/>dispelement.cpp</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"><sp/><sp/>phaseelement.cpp</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><sp/><sp/>newton_raphson_solver.cpp</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"><sp/><sp/>model.cpp</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"><sp/><sp/>)</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight></codeline>
+<codeline lineno="29"><highlight class="normal"><ref refid="_c_make_lists_8txt_1a39410fabaf9ffdb2047b26d206404412" kindref="member">set</ref>(TEHPC_DEPEND_FILES<sp/>${TEHPC_SRC}<sp/>${TEHPC_HEADER}<sp/>PARENT_SCOPE)</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight></codeline>
+<codeline lineno="31"><highlight class="normal">add_library(tehpc2022<sp/>${TEHPC_SRC})</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight></codeline>
+<codeline lineno="33"><highlight class="normal">#<sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>linking<sp/>to<sp/>other<sp/>libraries,<sp/>e.g.<sp/>MPI</highlight></codeline>
+<codeline lineno="34"><highlight class="normal">target_link_libraries(tehpc2022)</highlight></codeline>
+    </programlisting>
+    <location file="/home/student/Project_TEHPC/project-tehpc-niels-pichler/src/CMakeLists.txt"/>
+  </compounddef>
+</doxygen>

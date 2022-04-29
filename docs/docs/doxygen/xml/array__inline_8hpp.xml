@@ -1,0 +1,143 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+  <compounddef id="array__inline_8hpp" kind="file" language="C++">
+    <compoundname>array_inline.hpp</compoundname>
+    <includes refid="array_8hpp" local="yes">array.hpp</includes>
+    <includedby refid="array_8hpp" local="yes">/home/student/Project_TEHPC/project-tehpc-niels-pichler/src/array.hpp</includedby>
+    <incdepgraph>
+      <node id="10">
+        <label>iomanip</label>
+      </node>
+      <node id="1">
+        <label>/home/student/Project_TEHPC/project-tehpc-niels-pichler/src/array_inline.hpp</label>
+        <link refid="array__inline_8hpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+      <node id="13">
+        <label>vector.hpp</label>
+        <link refid="vector_8hpp"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>cmath</label>
+      </node>
+      <node id="7">
+        <label>cassert</label>
+      </node>
+      <node id="9">
+        <label>ostream</label>
+      </node>
+      <node id="2">
+        <label>array.hpp</label>
+        <link refid="array_8hpp"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="1" relation="include">
+        </childnode>
+      </node>
+      <node id="12">
+        <label>vector</label>
+      </node>
+      <node id="11">
+        <label>base_matrix.hpp</label>
+        <link refid="base__matrix_8hpp"/>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+      <node id="8">
+        <label>iostream</label>
+      </node>
+      <node id="6">
+        <label>algorithm</label>
+      </node>
+      <node id="3">
+        <label>common.hpp</label>
+        <link refid="common_8hpp"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>memory</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="5">
+        <label>/home/student/Project_TEHPC/project-tehpc-niels-pichler/src/model.cpp</label>
+        <link refid="model_8cpp"/>
+      </node>
+      <node id="1">
+        <label>/home/student/Project_TEHPC/project-tehpc-niels-pichler/src/array_inline.hpp</label>
+        <link refid="array__inline_8hpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>/home/student/Project_TEHPC/project-tehpc-niels-pichler/src/array.hpp</label>
+        <link refid="array_8hpp"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="1" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>/home/student/Project_TEHPC/project-tehpc-niels-pichler/src/model.hpp</label>
+        <link refid="model_8hpp"/>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>/home/student/Project_TEHPC/project-tehpc-niels-pichler/src/array.cpp</label>
+        <link refid="array_8cpp"/>
+      </node>
+    </invincdepgraph>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="preprocessor">#include<sp/>&quot;<ref refid="array_8hpp" kindref="compound">array.hpp</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="keyword">template</highlight><highlight class="normal">&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>T&gt;</highlight></codeline>
+<codeline lineno="5" refid="class_array_1ad5ce2feedf24cf97de0183750005e356" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="class_array_1ad5ce2feedf24cf97de0183750005e356" kindref="member">Array&lt;T&gt;::print</ref>(std::ostream&amp;<sp/>stream)</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="6"><highlight class="normal"><sp/><sp/>Parent::print(stream);</highlight></codeline>
+<codeline lineno="7"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>print_precision<sp/>=<sp/>2;</highlight></codeline>
+<codeline lineno="8"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(<ref refid="common_8hpp_1a9cc0620fb2e91b51587c6936060d4161" kindref="member">UInt</ref><sp/>i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/>this-&gt;rows;<sp/>++i)<sp/>{</highlight></codeline>
+<codeline lineno="9"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(<ref refid="common_8hpp_1a9cc0620fb2e91b51587c6936060d4161" kindref="member">UInt</ref><sp/>j<sp/>=<sp/>0;<sp/>j<sp/>&lt;<sp/>this-&gt;cols;<sp/>++j)<sp/>{</highlight></codeline>
+<codeline lineno="10"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>((*</highlight><highlight class="keyword">this</highlight><highlight class="normal">)(i,<sp/>j)<sp/>&gt;=<sp/>0){</highlight></codeline>
+<codeline lineno="11"><highlight class="normal"><sp/><sp/><sp/><sp/>stream<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;<sp/>&quot;</highlight><highlight class="normal"><sp/>;</highlight></codeline>
+<codeline lineno="12"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="13"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>stream<sp/>&lt;&lt;<sp/>std::fixed<sp/>&lt;&lt;<sp/>std::setprecision(print_precision)<sp/>&lt;&lt;<sp/>(*this)(i,<sp/>j)<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;<sp/>&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="14"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="15"><highlight class="normal"><sp/><sp/><sp/><sp/>stream<sp/>&lt;&lt;<sp/>std::endl;;</highlight></codeline>
+<codeline lineno="16"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="17"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="/home/student/Project_TEHPC/project-tehpc-niels-pichler/src/array_inline.hpp"/>
+  </compounddef>
+</doxygen>

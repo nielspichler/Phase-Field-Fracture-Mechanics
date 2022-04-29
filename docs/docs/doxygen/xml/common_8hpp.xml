@@ -1,0 +1,278 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+  <compounddef id="common_8hpp" kind="file" language="C++">
+    <compoundname>common.hpp</compoundname>
+    <includes local="no">memory</includes>
+    <includes local="no">cmath</includes>
+    <includes local="no">algorithm</includes>
+    <includes local="no">cassert</includes>
+    <includes local="no">iostream</includes>
+    <includes local="no">ostream</includes>
+    <includes local="no">iomanip</includes>
+    <includedby refid="array_8hpp" local="yes">/home/student/Project_TEHPC/project-tehpc-niels-pichler/src/array.hpp</includedby>
+    <includedby refid="base__matrix_8hpp" local="yes">/home/student/Project_TEHPC/project-tehpc-niels-pichler/src/base_matrix.hpp</includedby>
+    <includedby refid="vector_8hpp" local="yes">/home/student/Project_TEHPC/project-tehpc-niels-pichler/src/vector.hpp</includedby>
+    <includedby refid="matrix_8hpp" local="yes">/home/student/Project_TEHPC/project-tehpc-niels-pichler/src/matrix.hpp</includedby>
+    <includedby refid="model_8hpp" local="yes">/home/student/Project_TEHPC/project-tehpc-niels-pichler/src/model.hpp</includedby>
+    <includedby refid="newton__raphson__solver_8hpp" local="yes">/home/student/Project_TEHPC/project-tehpc-niels-pichler/src/newton_raphson_solver.hpp</includedby>
+    <incdepgraph>
+      <node id="8">
+        <label>iomanip</label>
+      </node>
+      <node id="3">
+        <label>cmath</label>
+      </node>
+      <node id="5">
+        <label>cassert</label>
+      </node>
+      <node id="7">
+        <label>ostream</label>
+      </node>
+      <node id="6">
+        <label>iostream</label>
+      </node>
+      <node id="4">
+        <label>algorithm</label>
+      </node>
+      <node id="1">
+        <label>/home/student/Project_TEHPC/project-tehpc-niels-pichler/src/common.hpp</label>
+        <link refid="common_8hpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>memory</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="6">
+        <label>/home/student/Project_TEHPC/project-tehpc-niels-pichler/src/model.cpp</label>
+        <link refid="model_8cpp"/>
+      </node>
+      <node id="13">
+        <label>/home/student/Project_TEHPC/project-tehpc-niels-pichler/src/phaseelement.hpp</label>
+        <link refid="phaseelement_8hpp"/>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>/home/student/Project_TEHPC/project-tehpc-niels-pichler/src/array_inline.hpp</label>
+        <link refid="array__inline_8hpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+      <node id="19">
+        <label>/home/student/Project_TEHPC/project-tehpc-niels-pichler/src/vector.hpp</label>
+        <link refid="vector_8hpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+      </node>
+      <node id="15">
+        <label>/home/student/Project_TEHPC/project-tehpc-niels-pichler/src/matrix_inline.hpp</label>
+        <link refid="matrix__inline_8hpp"/>
+        <childnode refid="8" relation="include">
+        </childnode>
+      </node>
+      <node id="14">
+        <label>/home/student/Project_TEHPC/project-tehpc-niels-pichler/src/phaseelement.cpp</label>
+        <link refid="phaseelement_8cpp"/>
+      </node>
+      <node id="2">
+        <label>/home/student/Project_TEHPC/project-tehpc-niels-pichler/src/array.hpp</label>
+        <link refid="array_8hpp"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="18">
+        <label>/home/student/Project_TEHPC/project-tehpc-niels-pichler/src/newton_raphson_solver.cpp</label>
+        <link refid="newton__raphson__solver_8cpp"/>
+      </node>
+      <node id="11">
+        <label>/home/student/Project_TEHPC/project-tehpc-niels-pichler/src/dispelement.cpp</label>
+        <link refid="dispelement_8cpp"/>
+      </node>
+      <node id="12">
+        <label>/home/student/Project_TEHPC/project-tehpc-niels-pichler/src/element.cpp</label>
+        <link refid="element_8cpp"/>
+      </node>
+      <node id="7">
+        <label>/home/student/Project_TEHPC/project-tehpc-niels-pichler/src/base_matrix.hpp</label>
+        <link refid="base__matrix_8hpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+      </node>
+      <node id="8">
+        <label>/home/student/Project_TEHPC/project-tehpc-niels-pichler/src/matrix.hpp</label>
+        <link refid="matrix_8hpp"/>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>/home/student/Project_TEHPC/project-tehpc-niels-pichler/src/model.hpp</label>
+        <link refid="model_8hpp"/>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>/home/student/Project_TEHPC/project-tehpc-niels-pichler/src/array.cpp</label>
+        <link refid="array_8cpp"/>
+      </node>
+      <node id="17">
+        <label>/home/student/Project_TEHPC/project-tehpc-niels-pichler/src/newton_raphson_solver.hpp</label>
+        <link refid="newton__raphson__solver_8hpp"/>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
+        </childnode>
+      </node>
+      <node id="10">
+        <label>/home/student/Project_TEHPC/project-tehpc-niels-pichler/src/dispelement.hpp</label>
+        <link refid="dispelement_8hpp"/>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>/home/student/Project_TEHPC/project-tehpc-niels-pichler/src/common.hpp</label>
+        <link refid="common_8hpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="19" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+      </node>
+      <node id="9">
+        <label>/home/student/Project_TEHPC/project-tehpc-niels-pichler/src/element.hpp</label>
+        <link refid="element_8hpp"/>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+      </node>
+      <node id="16">
+        <label>/home/student/Project_TEHPC/project-tehpc-niels-pichler/src/matrix.cpp</label>
+        <link refid="matrix_8cpp"/>
+      </node>
+    </invincdepgraph>
+      <sectiondef kind="define">
+      <memberdef kind="define" id="common_8hpp_1a2b2e8078bd7195155f83bdd61ffbbd8b" prot="public" static="no">
+        <name>__BEGIN_TEHPC__</name>
+        <initializer>namespace tehpc {</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/student/Project_TEHPC/project-tehpc-niels-pichler/src/common.hpp" line="13" column="9" bodyfile="/home/student/Project_TEHPC/project-tehpc-niels-pichler/src/common.hpp" bodystart="13" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="common_8hpp_1a7f70213454828541953c83acc9fa7c43" prot="public" static="no">
+        <name>__END_TEHPC__</name>
+        <initializer>}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/student/Project_TEHPC/project-tehpc-niels-pichler/src/common.hpp" line="14" column="9" bodyfile="/home/student/Project_TEHPC/project-tehpc-niels-pichler/src/common.hpp" bodystart="14" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="common_8hpp_1a2c6d8b1b1a798e59c2acfd0a7847c9da" prot="public" static="no">
+        <name>GET_VARIABLE_NAME</name>
+        <param><defname>Variable</defname></param>
+        <initializer>(#Variable)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/student/Project_TEHPC/project-tehpc-niels-pichler/src/common.hpp" line="16" column="9" bodyfile="/home/student/Project_TEHPC/project-tehpc-niels-pichler/src/common.hpp" bodystart="16" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="typedef">
+      <memberdef kind="typedef" id="common_8hpp_1a9cc0620fb2e91b51587c6936060d4161" prot="public" static="no">
+        <type>unsigned int</type>
+        <definition>using UInt =  unsigned int</definition>
+        <argsstring></argsstring>
+        <name>UInt</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/student/Project_TEHPC/project-tehpc-niels-pichler/src/common.hpp" line="18" column="1" bodyfile="/home/student/Project_TEHPC/project-tehpc-niels-pichler/src/common.hpp" bodystart="18" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="preprocessor">#ifndef<sp/>__COMMON_HEADERDEF__</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>__COMMON_HEADERDEF__</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;memory&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;cmath&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;algorithm&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;cassert&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;iostream&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;ostream&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;iomanip&gt;</highlight><highlight class="normal"><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>for<sp/>setprecision</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight></codeline>
+<codeline lineno="13" refid="common_8hpp_1a2b2e8078bd7195155f83bdd61ffbbd8b" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>__BEGIN_TEHPC__<sp/>namespace<sp/>tehpc<sp/>{</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="14" refid="common_8hpp_1a7f70213454828541953c83acc9fa7c43" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>__END_TEHPC__<sp/><sp/>}</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight></codeline>
+<codeline lineno="16" refid="common_8hpp_1a2c6d8b1b1a798e59c2acfd0a7847c9da" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>GET_VARIABLE_NAME(Variable)<sp/>(#Variable)<sp/>//macro<sp/>returns<sp/>Variable<sp/>name</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight></codeline>
+<codeline lineno="18" refid="common_8hpp_1a9cc0620fb2e91b51587c6936060d4161" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">using</highlight><highlight class="normal"><sp/><ref refid="common_8hpp_1a9cc0620fb2e91b51587c6936060d4161" kindref="member">UInt</ref><sp/>=<sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>int;</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>__COMMON_HEADERDEF__<sp/>*/</highlight><highlight class="preprocessor"></highlight></codeline>
+    </programlisting>
+    <location file="/home/student/Project_TEHPC/project-tehpc-niels-pichler/src/common.hpp"/>
+  </compounddef>
+</doxygen>

@@ -6,10 +6,6 @@
 
 #IncludeRegexTransform: 
 
-/home/student/Project_TEHPC/project-tehpc-niels-pichler/src/array.cpp
-array.hpp
-/home/student/Project_TEHPC/project-tehpc-niels-pichler/src/array.hpp
-
 /home/student/Project_TEHPC/project-tehpc-niels-pichler/src/array.hpp
 common.hpp
 /home/student/Project_TEHPC/project-tehpc-niels-pichler/src/common.hpp
@@ -56,10 +52,6 @@ dispelement.hpp
 element.hpp
 /home/student/Project_TEHPC/project-tehpc-niels-pichler/src/element.hpp
 
-/home/student/Project_TEHPC/project-tehpc-niels-pichler/src/element.cpp
-element.hpp
-/home/student/Project_TEHPC/project-tehpc-niels-pichler/src/element.hpp
-
 /home/student/Project_TEHPC/project-tehpc-niels-pichler/src/element.hpp
 matrix.hpp
 /home/student/Project_TEHPC/project-tehpc-niels-pichler/src/matrix.hpp
@@ -67,10 +59,6 @@ cassert
 -
 math.h
 -
-
-/home/student/Project_TEHPC/project-tehpc-niels-pichler/src/matrix.cpp
-matrix.hpp
-/home/student/Project_TEHPC/project-tehpc-niels-pichler/src/matrix.hpp
 
 /home/student/Project_TEHPC/project-tehpc-niels-pichler/src/matrix.hpp
 common.hpp
@@ -110,10 +98,6 @@ dispelement.hpp
 newton_raphson_solver.hpp
 /home/student/Project_TEHPC/project-tehpc-niels-pichler/src/newton_raphson_solver.hpp
 
-/home/student/Project_TEHPC/project-tehpc-niels-pichler/src/newton_raphson_solver.cpp
-newton_raphson_solver.hpp
-/home/student/Project_TEHPC/project-tehpc-niels-pichler/src/newton_raphson_solver.hpp
-
 /home/student/Project_TEHPC/project-tehpc-niels-pichler/src/newton_raphson_solver.hpp
 string
 -
@@ -127,10 +111,6 @@ vector.hpp
 /home/student/Project_TEHPC/project-tehpc-niels-pichler/src/vector.hpp
 matrix.hpp
 /home/student/Project_TEHPC/project-tehpc-niels-pichler/src/matrix.hpp
-
-/home/student/Project_TEHPC/project-tehpc-niels-pichler/src/phaseelement.cpp
-phaseelement.hpp
-/home/student/Project_TEHPC/project-tehpc-niels-pichler/src/phaseelement.hpp
 
 /home/student/Project_TEHPC/project-tehpc-niels-pichler/src/phaseelement.hpp
 element.hpp

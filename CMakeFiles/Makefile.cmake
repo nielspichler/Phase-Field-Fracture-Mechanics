@@ -11,6 +11,9 @@ set(CMAKE_MAKEFILE_DEPENDS
   "CMakeFiles/3.16.3/CMakeCXXCompiler.cmake"
   "CMakeFiles/3.16.3/CMakeSystem.cmake"
   "CMakeLists.txt"
+  "cmake/FindSphinx.cmake"
+  "docs/CMakeLists.txt"
+  "docs/Doxyfile.in"
   "src/CMakeLists.txt"
   "/usr/share/cmake-3.16/Modules/CMakeCInformation.cmake"
   "/usr/share/cmake-3.16/Modules/CMakeCXXInformation.cmake"
@@ -25,6 +28,10 @@ set(CMAKE_MAKEFILE_DEPENDS
   "/usr/share/cmake-3.16/Modules/Compiler/GNU-C.cmake"
   "/usr/share/cmake-3.16/Modules/Compiler/GNU-CXX.cmake"
   "/usr/share/cmake-3.16/Modules/Compiler/GNU.cmake"
+  "/usr/share/cmake-3.16/Modules/FindDoxygen.cmake"
+  "/usr/share/cmake-3.16/Modules/FindPackageHandleStandardArgs.cmake"
+  "/usr/share/cmake-3.16/Modules/FindPackageMessage.cmake"
+  "/usr/share/cmake-3.16/Modules/GNUInstallDirs.cmake"
   "/usr/share/cmake-3.16/Modules/Internal/CMakeCheckCompilerFlag.cmake"
   "/usr/share/cmake-3.16/Modules/Platform/Linux-GNU-C.cmake"
   "/usr/share/cmake-3.16/Modules/Platform/Linux-GNU-CXX.cmake"
@@ -43,9 +50,12 @@ set(CMAKE_MAKEFILE_OUTPUTS
 set(CMAKE_MAKEFILE_PRODUCTS
   "CMakeFiles/CMakeDirectoryInformation.cmake"
   "src/CMakeFiles/CMakeDirectoryInformation.cmake"
+  "docs/CMakeFiles/CMakeDirectoryInformation.cmake"
   )
 
 # Dependency information for all targets:
 set(CMAKE_DEPEND_INFO_FILES
   "src/CMakeFiles/tehpc2022.dir/DependInfo.cmake"
+  "docs/CMakeFiles/Sphinx.dir/DependInfo.cmake"
+  "docs/CMakeFiles/Doxygen.dir/DependInfo.cmake"
   )

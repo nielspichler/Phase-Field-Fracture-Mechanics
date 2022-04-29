@@ -47,3 +47,12 @@ if(TEHPC_TESTS)
   enable_testing()
   add_subdirectory(tests)
 endif()
+
+
+# Add the cmake folder so the FindSphinx module is found
+set(CMAKE_MODULE_PATH "${PROJECT_SOURCE_DIR}/cmake" ${CMAKE_MODULE_PATH})
+option(TEHPC_DOC "documentation" OFF)
+if(TEHPC_DOC)
+  add_subdirectory(docs)
+endif()
+

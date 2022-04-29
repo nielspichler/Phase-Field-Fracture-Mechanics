@@ -1,0 +1,174 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>TEHPC Project, Phase-field fracture mechanics &#8212; Project_TEHPC_NielsPichler  documentation</title>
+    <link rel="stylesheet" href="../_static/classic.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/language_data.js"></script>
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="TEHPC Project, Phase-field fracture mechanics" href="architecture.html" />
+    <link rel="prev" title="Welcome to Project_TEHPC_NielsPichler’s documentation!" href="../index.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="architecture.html" title="TEHPC Project, Phase-field fracture mechanics"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="../index.html" title="Welcome to Project_TEHPC_NielsPichler’s documentation!"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">Project_TEHPC_NielsPichler  documentation</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="tehpc-project-phase-field-fracture-mechanics">
+<h1>TEHPC Project, Phase-field fracture mechanics<a class="headerlink" href="#tehpc-project-phase-field-fracture-mechanics" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="description">
+<h2>Description<a class="headerlink" href="#description" title="Permalink to this headline">¶</a></h2>
+<p>This code imlements a finite element phase-field fracture mechanics scheme. The implementation follows mostly the approach proposed in <a class="footnote-reference" href="#id4" id="id1">[1]</a>.</p>
+</div>
+<div class="section" id="objective">
+<h2>Objective<a class="headerlink" href="#objective" title="Permalink to this headline">¶</a></h2>
+<p>The end-goal is to be able to predict the crack propagation path in a brittle linear elastic material for various initial defect location and boundary conditions types. Finite elements are used to model the bulk material response and the phase-field evolution.</p>
+<div class="section" id="limitations">
+<h3>Limitations<a class="headerlink" href="#limitations" title="Permalink to this headline">¶</a></h3>
+<p>For a realisable objective in the time frame dedicated to this implementation, several limitations to the project must be set. The limitations are:</p>
+<ul class="simple">
+<li>The domain is a 2D square</li>
+<li>The mesh used is regular</li>
+<li>Elements are 4-node bilinear elements only</li>
+<li>Only Dirichlet boundary conditions are applied (displacement control)</li>
+</ul>
+</div>
+</div>
+<div class="section" id="theoretical-foundation">
+<h2>Theoretical foundation<a class="headerlink" href="#theoretical-foundation" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="energetics">
+<h3>Energetics<a class="headerlink" href="#energetics" title="Permalink to this headline">¶</a></h3>
+<p>The total potential energy of an elastic body is defined as <strong>Pi</strong> = <strong>U</strong>-<strong>F</strong>, where <strong>U</strong> is the elastic strain energy and <strong>F</strong> the work of external forces. In case a crack is present in the body, the total energy of the body is <strong>Psi</strong> = <strong>Pi</strong> + <strong>Ws</strong> where <strong>Ws</strong> is the energy spent on crack propagation.</p>
+<p>Contrary to usual approaches to fracture mechanics, where the crack is seen as a sharp notch, a damage variable <em>d</em> is defined on the whole domain and represents the state of damage at every material point. <em>d</em> is 1 in the crack and 0 away from it. Along with <em>d</em>, a crack density function <em>gamma*(*d, grad d</em>) is also defined and used to compute <strong>Ws</strong> on the whole body.</p>
+<p>The strain energy <strong>U</strong> is computed by integrating the strain energy density, weighted by a degradation factor (a function of <em>d</em>) such that the strain energy density on the crack is 0. <strong>F</strong> is computed the classical way as the summation of the work of external forces.</p>
+<p>The scheme porposed in <a class="footnote-reference" href="#id4" id="id2">[1]</a> decomposes the problem in two parts. First the the interal energy must be at equilibrium:</p>
+<ul class="simple">
+<li><strong>U</strong> + <strong>Ws</strong></li>
+</ul>
+<p>Second, the external and internal energy must be at equilibrium:</p>
+<ul class="simple">
+<li><strong>U</strong>-<strong>F</strong></li>
+</ul>
+<p>In the first step, the strain energy drives the evolution of <em>d</em>, in the second step, the boundary conditions drive the evolution of the dicplacement field, affected by <em>d</em> through the degradation of the strain energy density field. Then the loop repeats with small increments on the applied boundary conditions.</p>
+</div>
+<div class="section" id="finite-elements">
+<h3>Finite elements<a class="headerlink" href="#finite-elements" title="Permalink to this headline">¶</a></h3>
+<p>The weak form of both problems can be formulated and turned into 2 finite element problem. The mathematical details can be found in <a class="footnote-reference" href="#id4" id="id3">[1]</a>.</p>
+<p>One stifness matrix is computed the phase, the matrix depends on the value of <em>d</em> and <em>H</em>, a field variable depending on the strain energy (<em>H</em> records the maximal strain energy density of the material point in time). The associated residue vector depends on the same variables.</p>
+<p>One stifness matrix is computed for the displacements, since the degraded strain energy enters in its formulation, the stifness matrix is directly dependent on <em>d</em>. Since only Dirichlet boundary conditions are applied, the residual vector is comprised of the internal forces residues.</p>
+<p>Since both stifness matrices are depend on <em>d</em>, the element stifness matrices (phase and displacement) are different for each element and need to be computed locally.</p>
+</div>
+</div>
+<div class="section" id="references">
+<h2>References<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h2>
+<table class="docutils footnote" frame="void" id="id4" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label">[1]</td><td><em>(<a class="fn-backref" href="#id1">1</a>, <a class="fn-backref" href="#id2">2</a>, <a class="fn-backref" href="#id3">3</a>)</em> Molnár, Gergely, and Anthony Gravouil. “2D and 3D Abaqus Implementation of a Robust Staggered Phase-Field Solution for Modeling Brittle Fracture.” Finite Elements in Analysis and Design 130 (August 2017): 27–38. <a class="reference external" href="https://doi.org/10.1016/j.finel.2017.03.002">https://doi.org/10.1016/j.finel.2017.03.002</a>.</td></tr>
+</tbody>
+</table>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../index.html">Table of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">TEHPC Project, Phase-field fracture mechanics</a><ul>
+<li><a class="reference internal" href="#description">Description</a></li>
+<li><a class="reference internal" href="#objective">Objective</a><ul>
+<li><a class="reference internal" href="#limitations">Limitations</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#theoretical-foundation">Theoretical foundation</a><ul>
+<li><a class="reference internal" href="#energetics">Energetics</a></li>
+<li><a class="reference internal" href="#finite-elements">Finite elements</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#references">References</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="../index.html"
+                        title="previous chapter">Welcome to Project_TEHPC_NielsPichler’s documentation!</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="architecture.html"
+                        title="next chapter">TEHPC Project, Phase-field fracture mechanics</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/manual/description.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="architecture.html" title="TEHPC Project, Phase-field fracture mechanics"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="../index.html" title="Welcome to Project_TEHPC_NielsPichler’s documentation!"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">Project_TEHPC_NielsPichler  documentation</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2022, Niels Pichler.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.8.5.
+    </div>
+  </body>
+</html>
