@@ -49,6 +49,9 @@ public:
   virtual T operator()(UInt i, UInt j) const = 0;
   //Solution:end
   
+  // set value to a scalar
+  virtual BaseMatrix<T>& operator=(T c) = 0;
+  
 public:
   //Solution:start
   //! Output to stream

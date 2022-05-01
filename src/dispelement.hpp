@@ -32,9 +32,12 @@ class DispElement: public Element
 	public:
 		DispElement();
 		
-		DispElement(Matrix<double> & loc_coordinates, std::vector<double> & loc_d, std::vector<double> & loc_u, std::vector<double> & prop);
+		DispElement(Matrix<double> & loc_coordinates, std::vector<double> & loc_d, std::vector<double> & loc_u, double & loc_H, std::vector<double> & prop);
 		
 		void GetStiffnessAndRes(Matrix<double> & Ke, std::vector<double> & res);
+		double get_H(){
+			return H;
+			}
 		
 	private:
 		/* add your private declarations */
@@ -44,7 +47,10 @@ class DispElement: public Element
 		Matrix<double> N_2d;
 		std::vector<double> eps;
 		std::vector<double> sig;
+		double H;
+		double psi_0;
 		double k;
+		
 };
 
 #endif /* DISPELEMENT_HPP */ 

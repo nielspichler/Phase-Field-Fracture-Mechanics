@@ -25,11 +25,11 @@
 #include "phaseelement.hpp"
 
 
-PhaseElement::PhaseElement(Matrix<double> & loc_coordinates, std::vector<double> & loc_d, std::vector<double> & loc_H, std::vector<double> & loc_prop)
+PhaseElement::PhaseElement(Matrix<double> & loc_coordinates, std::vector<double> & loc_d, double & loc_H, std::vector<double> & loc_prop)
 {
 	coordinates = loc_coordinates;
 	nodal_d = loc_d;
-	nodal_H = loc_H;
+	H = loc_H;
 	prop = loc_prop;
 	
 	int dim = 2;
@@ -56,7 +56,6 @@ PhaseElement::PhaseElement(Matrix<double> & loc_coordinates, std::vector<double>
 	dNdx_T.resize(coordinates.nbRows(), dim);// 4x2
 	det=0.;
 	d=0.;
-	H=0.;
 	w = 1.; // weight in gauss integration
 
 }
@@ -81,9 +80,6 @@ void PhaseElement::GetStiffnessAndRes(Matrix<double> & Ke, std::vector<double> &
 		d = (N * nodal_d)[0]; // 1x1 = 1x4*4x1
 		
 		gradd = dNdx * nodal_d; // 2x1 = 2x4*4x1
-		
-		// get H @ integration point
-		H = (N * nodal_H)[0]; // 1x1 = 1x4*4x1
 		
 		// We compute the contribution of the node to Ke
 		// prop[0] is gc, prop[1] is lc

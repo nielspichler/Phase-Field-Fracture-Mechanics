@@ -15,6 +15,7 @@ set(CMAKE_MAKEFILE_DEPENDS
   "docs/CMakeLists.txt"
   "docs/Doxyfile.in"
   "src/CMakeLists.txt"
+  "tests/CMakeLists.txt"
   "/usr/share/cmake-3.16/Modules/CMakeCInformation.cmake"
   "/usr/share/cmake-3.16/Modules/CMakeCXXInformation.cmake"
   "/usr/share/cmake-3.16/Modules/CMakeCheckCompilerFlagCommonPatterns.cmake"
@@ -50,12 +51,15 @@ set(CMAKE_MAKEFILE_OUTPUTS
 set(CMAKE_MAKEFILE_PRODUCTS
   "CMakeFiles/CMakeDirectoryInformation.cmake"
   "src/CMakeFiles/CMakeDirectoryInformation.cmake"
+  "tests/CMakeFiles/CMakeDirectoryInformation.cmake"
   "docs/CMakeFiles/CMakeDirectoryInformation.cmake"
   )
 
 # Dependency information for all targets:
 set(CMAKE_DEPEND_INFO_FILES
   "src/CMakeFiles/tehpc2022.dir/DependInfo.cmake"
+  "tests/CMakeFiles/model_assembly_tests.dir/DependInfo.cmake"
+  "tests/CMakeFiles/model_constructor_tests.dir/DependInfo.cmake"
   "docs/CMakeFiles/Sphinx.dir/DependInfo.cmake"
   "docs/CMakeFiles/Doxygen.dir/DependInfo.cmake"
   )

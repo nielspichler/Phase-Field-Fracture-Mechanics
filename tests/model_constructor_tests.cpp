@@ -67,6 +67,17 @@ int main(/*int argc, char *argv[]*/)
 			}
 		}
 
+	if((*model.get_K_u()).nbRows()!=8){success = false;}
+	else if ((*model.get_K_u()).nbCols()!=8){success = false;}
+	else if ((*model.get_K_d()).nbCols()!=4){success = false;}
+	else if ((*model.get_K_d()).nbRows()!=4){success = false;}
+	else if (model.get_Res_u().size()!=8){success = false;}
+	else if (model.get_Res_d().size()!=4){success = false;}
+	else if (success == true){std::cout<<"Global matrices and vectors correctly initialized"<< std::endl;}
+	else {std::cout<<"Something unexpected has happened #3"<< std::endl;}
+
+
+
 if (success == true){std::cout<<"Model constructor: Test sucessful"<< std::endl;}
 
 return 0;

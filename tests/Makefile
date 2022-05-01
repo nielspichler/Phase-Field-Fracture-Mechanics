@@ -137,14 +137,14 @@ test/fast: test
 
 # The main all target
 all: cmake_check_build_system
-	cd /home/student/Project_TEHPC/project-tehpc-niels-pichler && $(CMAKE_COMMAND) -E cmake_progress_start /home/student/Project_TEHPC/project-tehpc-niels-pichler/CMakeFiles /home/student/Project_TEHPC/project-tehpc-niels-pichler/docs/CMakeFiles/progress.marks
-	cd /home/student/Project_TEHPC/project-tehpc-niels-pichler && $(MAKE) -f CMakeFiles/Makefile2 docs/all
+	cd /home/student/Project_TEHPC/project-tehpc-niels-pichler && $(CMAKE_COMMAND) -E cmake_progress_start /home/student/Project_TEHPC/project-tehpc-niels-pichler/CMakeFiles /home/student/Project_TEHPC/project-tehpc-niels-pichler/tests/CMakeFiles/progress.marks
+	cd /home/student/Project_TEHPC/project-tehpc-niels-pichler && $(MAKE) -f CMakeFiles/Makefile2 tests/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/student/Project_TEHPC/project-tehpc-niels-pichler/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
 clean:
-	cd /home/student/Project_TEHPC/project-tehpc-niels-pichler && $(MAKE) -f CMakeFiles/Makefile2 docs/clean
+	cd /home/student/Project_TEHPC/project-tehpc-niels-pichler && $(MAKE) -f CMakeFiles/Makefile2 tests/clean
 .PHONY : clean
 
 # The main clean target
@@ -154,12 +154,12 @@ clean/fast: clean
 
 # Prepare targets for installation.
 preinstall: all
-	cd /home/student/Project_TEHPC/project-tehpc-niels-pichler && $(MAKE) -f CMakeFiles/Makefile2 docs/preinstall
+	cd /home/student/Project_TEHPC/project-tehpc-niels-pichler && $(MAKE) -f CMakeFiles/Makefile2 tests/preinstall
 .PHONY : preinstall
 
 # Prepare targets for installation.
 preinstall/fast:
-	cd /home/student/Project_TEHPC/project-tehpc-niels-pichler && $(MAKE) -f CMakeFiles/Makefile2 docs/preinstall
+	cd /home/student/Project_TEHPC/project-tehpc-niels-pichler && $(MAKE) -f CMakeFiles/Makefile2 tests/preinstall
 .PHONY : preinstall/fast
 
 # clear depends
@@ -168,34 +168,88 @@ depend:
 .PHONY : depend
 
 # Convenience name for target.
-docs/CMakeFiles/Sphinx.dir/rule:
-	cd /home/student/Project_TEHPC/project-tehpc-niels-pichler && $(MAKE) -f CMakeFiles/Makefile2 docs/CMakeFiles/Sphinx.dir/rule
-.PHONY : docs/CMakeFiles/Sphinx.dir/rule
+tests/CMakeFiles/model_assembly_tests.dir/rule:
+	cd /home/student/Project_TEHPC/project-tehpc-niels-pichler && $(MAKE) -f CMakeFiles/Makefile2 tests/CMakeFiles/model_assembly_tests.dir/rule
+.PHONY : tests/CMakeFiles/model_assembly_tests.dir/rule
 
 # Convenience name for target.
-Sphinx: docs/CMakeFiles/Sphinx.dir/rule
+model_assembly_tests: tests/CMakeFiles/model_assembly_tests.dir/rule
 
-.PHONY : Sphinx
+.PHONY : model_assembly_tests
 
 # fast build rule for target.
-Sphinx/fast:
-	cd /home/student/Project_TEHPC/project-tehpc-niels-pichler && $(MAKE) -f docs/CMakeFiles/Sphinx.dir/build.make docs/CMakeFiles/Sphinx.dir/build
-.PHONY : Sphinx/fast
+model_assembly_tests/fast:
+	cd /home/student/Project_TEHPC/project-tehpc-niels-pichler && $(MAKE) -f tests/CMakeFiles/model_assembly_tests.dir/build.make tests/CMakeFiles/model_assembly_tests.dir/build
+.PHONY : model_assembly_tests/fast
 
 # Convenience name for target.
-docs/CMakeFiles/Doxygen.dir/rule:
-	cd /home/student/Project_TEHPC/project-tehpc-niels-pichler && $(MAKE) -f CMakeFiles/Makefile2 docs/CMakeFiles/Doxygen.dir/rule
-.PHONY : docs/CMakeFiles/Doxygen.dir/rule
+tests/CMakeFiles/model_constructor_tests.dir/rule:
+	cd /home/student/Project_TEHPC/project-tehpc-niels-pichler && $(MAKE) -f CMakeFiles/Makefile2 tests/CMakeFiles/model_constructor_tests.dir/rule
+.PHONY : tests/CMakeFiles/model_constructor_tests.dir/rule
 
 # Convenience name for target.
-Doxygen: docs/CMakeFiles/Doxygen.dir/rule
+model_constructor_tests: tests/CMakeFiles/model_constructor_tests.dir/rule
 
-.PHONY : Doxygen
+.PHONY : model_constructor_tests
 
 # fast build rule for target.
-Doxygen/fast:
-	cd /home/student/Project_TEHPC/project-tehpc-niels-pichler && $(MAKE) -f docs/CMakeFiles/Doxygen.dir/build.make docs/CMakeFiles/Doxygen.dir/build
-.PHONY : Doxygen/fast
+model_constructor_tests/fast:
+	cd /home/student/Project_TEHPC/project-tehpc-niels-pichler && $(MAKE) -f tests/CMakeFiles/model_constructor_tests.dir/build.make tests/CMakeFiles/model_constructor_tests.dir/build
+.PHONY : model_constructor_tests/fast
+
+model_assembly_tests.o: model_assembly_tests.cpp.o
+
+.PHONY : model_assembly_tests.o
+
+# target to build an object file
+model_assembly_tests.cpp.o:
+	cd /home/student/Project_TEHPC/project-tehpc-niels-pichler && $(MAKE) -f tests/CMakeFiles/model_assembly_tests.dir/build.make tests/CMakeFiles/model_assembly_tests.dir/model_assembly_tests.cpp.o
+.PHONY : model_assembly_tests.cpp.o
+
+model_assembly_tests.i: model_assembly_tests.cpp.i
+
+.PHONY : model_assembly_tests.i
+
+# target to preprocess a source file
+model_assembly_tests.cpp.i:
+	cd /home/student/Project_TEHPC/project-tehpc-niels-pichler && $(MAKE) -f tests/CMakeFiles/model_assembly_tests.dir/build.make tests/CMakeFiles/model_assembly_tests.dir/model_assembly_tests.cpp.i
+.PHONY : model_assembly_tests.cpp.i
+
+model_assembly_tests.s: model_assembly_tests.cpp.s
+
+.PHONY : model_assembly_tests.s
+
+# target to generate assembly for a file
+model_assembly_tests.cpp.s:
+	cd /home/student/Project_TEHPC/project-tehpc-niels-pichler && $(MAKE) -f tests/CMakeFiles/model_assembly_tests.dir/build.make tests/CMakeFiles/model_assembly_tests.dir/model_assembly_tests.cpp.s
+.PHONY : model_assembly_tests.cpp.s
+
+model_constructor_tests.o: model_constructor_tests.cpp.o
+
+.PHONY : model_constructor_tests.o
+
+# target to build an object file
+model_constructor_tests.cpp.o:
+	cd /home/student/Project_TEHPC/project-tehpc-niels-pichler && $(MAKE) -f tests/CMakeFiles/model_constructor_tests.dir/build.make tests/CMakeFiles/model_constructor_tests.dir/model_constructor_tests.cpp.o
+.PHONY : model_constructor_tests.cpp.o
+
+model_constructor_tests.i: model_constructor_tests.cpp.i
+
+.PHONY : model_constructor_tests.i
+
+# target to preprocess a source file
+model_constructor_tests.cpp.i:
+	cd /home/student/Project_TEHPC/project-tehpc-niels-pichler && $(MAKE) -f tests/CMakeFiles/model_constructor_tests.dir/build.make tests/CMakeFiles/model_constructor_tests.dir/model_constructor_tests.cpp.i
+.PHONY : model_constructor_tests.cpp.i
+
+model_constructor_tests.s: model_constructor_tests.cpp.s
+
+.PHONY : model_constructor_tests.s
+
+# target to generate assembly for a file
+model_constructor_tests.cpp.s:
+	cd /home/student/Project_TEHPC/project-tehpc-niels-pichler && $(MAKE) -f tests/CMakeFiles/model_constructor_tests.dir/build.make tests/CMakeFiles/model_constructor_tests.dir/model_constructor_tests.cpp.s
+.PHONY : model_constructor_tests.cpp.s
 
 # Help Target
 help:
@@ -210,8 +264,14 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
 	@echo "... test"
-	@echo "... Sphinx"
-	@echo "... Doxygen"
+	@echo "... model_assembly_tests"
+	@echo "... model_constructor_tests"
+	@echo "... model_assembly_tests.o"
+	@echo "... model_assembly_tests.i"
+	@echo "... model_assembly_tests.s"
+	@echo "... model_constructor_tests.o"
+	@echo "... model_constructor_tests.i"
+	@echo "... model_constructor_tests.s"
 .PHONY : help
 
 

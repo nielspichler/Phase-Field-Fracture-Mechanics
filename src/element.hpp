@@ -44,7 +44,6 @@ class Element
 		std::vector<double> prop;			// Vector containing the material properties (E, nu...) or (lc, g...)
 		Matrix<double> intpt;						// 4 by 2 contains the integration points coordinates
 		std::vector<double> nodal_d; 		// 4 contains nodal values of d
-		std::vector<double> nodal_H; 		// 4 contains nodal value of H
 		std::vector<double> nodal_u; 		// 8 contains nodal value of u (u1, u2, u1, u2...)
 		int dim;
 		
@@ -57,9 +56,9 @@ class Element
 		Matrix<double> dNdx;// 2x4
 		Matrix<double> dNdx_T;// 4x2
 		double det;
-		double d;
+		double d; // phase at integration point
 		double w; // weight in gauss integration
-		double H;
+		double H; // elemental H
 		// Methods
 		void ShapeFun_4lin(Matrix<double> & dNdxi, Matrix<double> & N, std::vector<double> & xi);
 		

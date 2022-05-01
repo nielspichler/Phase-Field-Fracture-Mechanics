@@ -25,13 +25,13 @@
 #include "dispelement.hpp"
 
 
-DispElement::DispElement(Matrix<double> & loc_coordinates, std::vector<double> & loc_d, std::vector<double> & loc_u, std::vector<double> & loc_prop)
+DispElement::DispElement(Matrix<double> & loc_coordinates, std::vector<double> & loc_d, std::vector<double> & loc_u, double & loc_H, std::vector<double> & loc_prop)
 {
 	coordinates = loc_coordinates;
 	nodal_d = loc_d;
 	nodal_u = loc_u;
 	prop = loc_prop;
-	
+	H = loc_H;
 	dim = 2;
 	
 	if (coordinates.nbRows()==4) // 4 node elements
@@ -66,7 +66,7 @@ DispElement::DispElement(Matrix<double> & loc_coordinates, std::vector<double> &
 	d = 0.;
 	w = 1.; // weight in gauss integration
 	k = 1e-6; //stabilisation factor
-	
+	psi_0 = 0.;
 	eps.resize(dim);
 	sig.resize(dim);
 }
@@ -114,6 +114,9 @@ void DispElement::GetStiffnessAndRes(Matrix<double> & Ke, std::vector<double> & 
 		eps = B * nodal_u; // 3x1 = 3x8*8x1
 		sig = C*eps; // 3x1 = 3x3*3x1
 		
+		// compute elastic strain energy density
+		psi_0 += (1.0/intpt.nbRows()) * 0.5 * (eps * sig); // the elemental strain energy is the average of the integration points energy
+		
 		B.transpose(B_T);
 		
 		// We compute the contribution of the node to Ke
@@ -122,6 +125,12 @@ void DispElement::GetStiffnessAndRes(Matrix<double> & Ke, std::vector<double> & 
 		// We compute the contribution of the node to res
 		res += B_T * sig * (((1-d)*(1-d))+k) * det * w;// 8x1 = 8x3*3x1
 	}
+	
+	if (psi_0>=H)
+	{
+		H = psi_0;
+		}
+	
 }
 
 

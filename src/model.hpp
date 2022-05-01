@@ -64,9 +64,12 @@ private:
   /* ------------------------------------------------------------------------ */
 public:
 
-  //Matrix<double> * getK() { return this->K; };
+  std::shared_ptr<BaseMatrix<double> > get_K_u() { return this->K_u; };
+  std::shared_ptr<BaseMatrix<double> > get_K_d() { return this->K_d; };
+  std::vector<double> get_Res_u() {return this->Res_u;};
+  std::vector<double> get_Res_d() {return this->Res_d;};
   
-  // these accessors are needed to test the parsing of the file
+  // these accessors are needed to test the parsing of the input file
   UInt get_dim(){return this->dim;};
   double get_lc(){return this->lc;};
   UInt get_steps(){return this->steps;};
@@ -111,7 +114,7 @@ private:
   Array<double> coordinates;
   Array<double> displacement;		//u
   std::vector<double> phase;		//d
-  std::vector<double> history;		//H
+
 
   // elemental information
   UInt nb_elements;
@@ -120,13 +123,19 @@ private:
   std::vector<double> modulus;
   std::vector<double> poisson;
   std::vector<double> gc;
+  std::vector<double> history;		//H
 
   // boundary conditions (nodal information)
   Array<UInt> bc_disp;
   Array<double> bc_disp_value;
 
   // global stiffness matrix
-  std::shared_ptr<BaseMatrix<double> > K;
+  std::shared_ptr<BaseMatrix<double> > K_u;
+  std::shared_ptr<BaseMatrix<double> > K_d;
+  
+  // global residue vectors 
+  std::vector<double> Res_u;
+  std::vector<double> Res_d;
 
   // pointer to solver used
   std::shared_ptr<NRsolver> solver;

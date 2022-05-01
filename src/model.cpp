@@ -144,58 +144,120 @@ void Model::readInput(const std::string & fname)
     }
   }
   read_file.close();
+  
+  // initialize matrices size
+  
+  K_u = std::shared_ptr<BaseMatrix<double> >(new Matrix<double>(nb_nodes * dim, nb_nodes * dim));
+  K_d = std::shared_ptr<BaseMatrix<double> >(new Matrix<double>(nb_nodes, nb_nodes));
+
+  Res_u.resize(nb_nodes * dim);
+  Res_d.resize(nb_nodes);
+  
 }
 
-/*
 void Model::assembly()
  {
   
-  // initializing local stiffnes matrix, rotation matrix
-  UInt local_size = nb_nodes_per_element*dim;
-  Matrix<double> Ke(local_size, local_size);
+  (*K_u) = 0.0;
+  (*K_d) = 0.0;
+  
+  // initializing local stiffnes matrix, residue vect
+  UInt local_size_u = nb_nodes_per_element*dim;
+  Matrix<double> Ke_u(local_size_u, local_size_u);
+  std::vector<double>  res_u(local_size_u);
+  
+  UInt local_size_d = nb_nodes_per_element;
+  Matrix<double> Ke_d(local_size_d, local_size_d);
+  std::vector<double>  res_d(local_size_d);
 
   // initialze and fill the 2D array for mapping local indicies to global
-  Matrix<double> global_indices(nb_elements, local_size);
+  Matrix<double> global_indices_u(nb_elements, local_size_u);
+  Matrix<double> global_indices_d(nb_elements, local_size_d);
   
   // global numbering
   for (UInt e = 0; e < nb_elements; ++e) {
     for (UInt i = 0; i < nb_nodes_per_element; ++i) {
       for (UInt j = 0; j < dim; ++j) {
-	global_indices(e, 2*i+j) = j + dim * connectivity(e,i);
+          global_indices_u(e, 2*i+j) = j + dim * connectivity(e,i);
       }
+      global_indices_d(e, i) = connectivity(e,i); // ???
     }
   }
 
   // precision value for printing on the terminal
-	std::cout << "global indices" << std::endl;
-	std::cout << global_indices << std::endl;
-
+	std::cout << "global indices_u" << std::endl;
+	std::cout << global_indices_u << std::endl;
+	std::cout << "global indices_d" << std::endl;
+	std::cout << global_indices_d << std::endl;
 
   // for loop over elements starts here
   for (UInt e = 0; e < nb_elements; ++e) {
     
-    // here: call the "localStiffness" function to fill Ke
-    localStiffness(e, Ke);
-    // Assemble the globale stiffness matrix
-    for (UInt i = 0; i < local_size; ++i) {
-      for (UInt j = 0; j < local_size; ++j) {
-	int gi = global_indices(e, i);
-	int gj = global_indices(e, j);
-	(*K)(gi, gj) += Ke(i, j);
-      }      
+    // here: call the "localStiffness" function to fill Ke_s and res_s
+    localStiffness(e, Ke_d, res_d, Ke_u, res_u);
+    
+    // Assemble the global stiffness matrix
+    for (UInt i = 0; i < local_size_u; ++i) {
+      int gi = global_indices_u(e, i);
+      Res_u[gi] = res_u[i];
+      for (UInt j = 0; j < local_size_u; ++j) {
+			int gj = global_indices_u(e, j);
+			(*K_u)(gi, gj) += Ke_u(i, j);
+      }
+    }
+    for (UInt i = 0; i < local_size_d; ++i) {
+      int gi = global_indices_d(e, i);
+      Res_d[gi] = res_d[i];
+      for (UInt j = 0; j < local_size_d; ++j) {
+			int gj = global_indices_d(e, j);
+			(*K_d)(gi, gj) += Ke_d(i, j);
+      }
     }
   }
   // for loop over elements end here
-
 }
-*/
 
-void Model::apply_bc(){
-	
+void Model::apply_bc()
+{
+
+  // impose Dirichlet BC: adapt K, such that disp can be put in force
+  // see TUM FE poly page 82 and 83
+  for (UInt n=0; n<nb_nodes; ++n) {
+    for (UInt d=0; d<dim; ++d) {
+		  if (bc_disp(n,d)) { // was set to 1 if BC is applied, 0 else in the constructor
+			Res_u[n*dim + d] = bc_disp_value(n,d); // override force vector
+			for (UInt m=0; m<nb_nodes*dim; ++m) {
+			  (*(K_u))(n*dim+d,m) = 0.; // sets line to 0
+			}
+		(*(K_u))(n*this->dim+d,n*this->dim+d) = 1.; // diagonal to 1
+		  }
+    }
+  }
+
 	}
 
-void Model::solve(){
-	
+void Model::solve()
+{
+	std::cout << "Displecement matrix: " << std::endl;
+    std::cout << (*(K_u)) << std::endl;
+    std::cout << Res_u << std::endl;
+    /* Your solution goes here */
+    // call the solver (and the necessary input of the solver)
+    solver->solve(K_u, Res_u, displacement.getStorage());
+    // print solution to terminal (next time to file)
+    std::cout << "solution:" << std::endl;
+    std::cout << displacement << std::endl;
+    
+	std::cout << "Phase matrix: " << std::endl;
+    std::cout << (*(K_d)) << std::endl;
+    std::cout << Res_d << std::endl;
+    /* Your solution goes here */
+    // call the solver (and the necessary input of the solver)
+    solver->solve(K_d, Res_d, phase);
+    // print solution to terminal (next time to file)
+    std::cout << "solution:" << std::endl;
+    std::cout << phase << std::endl;
+    
 	}
 
 void Model::update(){
@@ -220,9 +282,6 @@ void Model::localStiffness(int element, Matrix<double> & Ke_d, std::vector<doubl
 	// local phase
 	std::vector<double> loc_d;
 	loc_d.resize(nb_nodes_per_element);
-	// local history
-	std::vector<double> loc_H;
-	loc_H.resize(nb_nodes_per_element);
 	// local displacement
 	std::vector<double> loc_u;
 	loc_u.resize(2*nb_nodes_per_element);
@@ -236,17 +295,22 @@ void Model::localStiffness(int element, Matrix<double> & Ke_d, std::vector<doubl
 		loc_coordinates(i,1) = coordinates(connectivity(e, i),1);// y_i
 		
 		loc_d[i] = phase[connectivity(e, i)];
-		loc_H[i] = history[connectivity(e, i)];
 		
 		loc_u[2*i] = displacement(connectivity(e, i), 0);// u_1
 		loc_u[2*i+1] = displacement(connectivity(e, i), 1);// u_2
 	}
 	
+	double loc_H = history[e];
+	
 	// the element is created
-	PhaseElement el_d(loc_coordinates, loc_d, loc_H, prop_fracture);
-	DispElement el_u(loc_coordinates, loc_d, loc_u, prop_elasticity);
-	// Local stiffness matrices
+	DispElement el_u(loc_coordinates, loc_d, loc_u, loc_H, prop_elasticity); // Disp element is created
+	el_u.GetStiffnessAndRes(Ke_u, res_u); // Sets the displacement matrix and residue also updates history variable if needed
+	
+	loc_H = el_u.get_H(); // the variable is updated
+	history[e] = loc_H; // the variable is stored
+	
+	PhaseElement el_d(loc_coordinates, loc_d, loc_H, prop_fracture); // the phase matrix is computed using the new history
 	el_d.GetStiffnessAndRes(Ke_d, res_d);
-	el_u.GetStiffnessAndRes(Ke_u, res_u);
+
 }
 

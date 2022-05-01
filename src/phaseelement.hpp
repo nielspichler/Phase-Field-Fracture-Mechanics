@@ -32,7 +32,7 @@ class PhaseElement: public Element
 	public:
 		PhaseElement();
 		
-		PhaseElement(Matrix<double> & loc_coordinates, std::vector<double> & d, std::vector<double> & H, std::vector<double> & prop);
+		PhaseElement(Matrix<double> & loc_coordinates, std::vector<double> & d, double & H, std::vector<double> & prop);
 		
 		// Methods
 		void GetStiffnessAndRes(Matrix<double> & Ke, std::vector<double> & res);

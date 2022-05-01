@@ -124,6 +124,17 @@ edit_cache/fast: edit_cache
 
 .PHONY : edit_cache/fast
 
+# Special rule for the target test
+test:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running tests..."
+	/usr/bin/ctest --force-new-ctest-process $(ARGS)
+.PHONY : test
+
+# Special rule for the target test
+test/fast: test
+
+.PHONY : test/fast
+
 # The main all target
 all: cmake_check_build_system
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/student/Project_TEHPC/project-tehpc-niels-pichler/CMakeFiles /home/student/Project_TEHPC/project-tehpc-niels-pichler/CMakeFiles/progress.marks
@@ -170,6 +181,32 @@ tehpc2022/fast:
 .PHONY : tehpc2022/fast
 
 #=============================================================================
+# Target rules for targets named model_assembly_tests
+
+# Build rule for target.
+model_assembly_tests: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 model_assembly_tests
+.PHONY : model_assembly_tests
+
+# fast build rule for target.
+model_assembly_tests/fast:
+	$(MAKE) -f tests/CMakeFiles/model_assembly_tests.dir/build.make tests/CMakeFiles/model_assembly_tests.dir/build
+.PHONY : model_assembly_tests/fast
+
+#=============================================================================
+# Target rules for targets named model_constructor_tests
+
+# Build rule for target.
+model_constructor_tests: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 model_constructor_tests
+.PHONY : model_constructor_tests
+
+# fast build rule for target.
+model_constructor_tests/fast:
+	$(MAKE) -f tests/CMakeFiles/model_constructor_tests.dir/build.make tests/CMakeFiles/model_constructor_tests.dir/build
+.PHONY : model_constructor_tests/fast
+
+#=============================================================================
 # Target rules for targets named Sphinx
 
 # Build rule for target.
@@ -207,7 +244,10 @@ help:
 	@echo "... list_install_components"
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
+	@echo "... test"
 	@echo "... tehpc2022"
+	@echo "... model_assembly_tests"
+	@echo "... model_constructor_tests"
 	@echo "... Sphinx"
 	@echo "... Doxygen"
 .PHONY : help
