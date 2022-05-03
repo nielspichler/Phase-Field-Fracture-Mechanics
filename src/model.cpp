@@ -152,23 +152,29 @@ void Model::readInput(const std::string & fname)
   K_u = std::shared_ptr<BaseMatrix<double> >(new Matrix<double>(nb_nodes * dim, nb_nodes * dim));
   K_d = std::shared_ptr<BaseMatrix<double> >(new Matrix<double>(nb_nodes, nb_nodes));
 
-  Res_u.resize(nb_nodes * dim);
+  Res_u.resize(nb_nodes, dim);
+  Res_u = 0.;
   Res_d.resize(nb_nodes);
+  std::fill(Res_d.begin(), Res_d.end(), 0.);
   
   phase.resize(nb_nodes);
   std::fill(history.begin(), history.end(), 0.); // later xthe phase gets set
   history.resize(nb_nodes);
   std::fill(history.begin(), history.end(), 0.);
   displacement.resize(nb_nodes, dim);
-  displacement = 0;
+  displacement = 0.;
   
 }
 
 void Model::assembly()
  {
   
+  // reset everything to 0
   (*K_u) = 0.0;
   (*K_d) = 0.0;
+  
+  //Res_u = 0.;
+  //std::fill(Res_d.begin(), Res_d.end(), 0.);
   
   // initializing local stiffnes matrix, residue vect
   UInt local_size_u = nb_nodes_per_element*dim;
@@ -210,7 +216,7 @@ void Model::assembly()
     // Assemble the global stiffness matrix
     for (UInt i = 0; i < local_size_u; ++i) {
       int gi = global_indices_u(e, i);
-      Res_u[gi] = res_u[i];
+      Res_u.getStorage()[gi] += res_u[i];
       for (UInt j = 0; j < local_size_u; ++j) {
 			int gj = global_indices_u(e, j);
 			(*K_u)(gi, gj) += Ke_u(i, j);
@@ -218,7 +224,7 @@ void Model::assembly()
     }
     for (UInt i = 0; i < local_size_d; ++i) {
       int gi = global_indices_d(e, i);
-      Res_d[gi] = res_d[i];
+      Res_d[gi] += res_d[i];
       for (UInt j = 0; j < local_size_d; ++j) {
 			int gj = global_indices_d(e, j);
 			(*K_d)(gi, gj) += Ke_d(i, j);
@@ -236,12 +242,12 @@ void Model::apply_bc(double fraction)
   for (UInt n=0; n<nb_nodes; ++n) {
     for (UInt d=0; d<dim; ++d) {
 		  if (bc_disp(n,d)) { // was set to 1 if BC is applied, 0 else in the constructor
-			Res_u[n*dim + d] = -1.*fraction * bc_disp_value(n,d); // override force vector
+			Res_u.getStorage()[n*dim + d] = -1.*fraction * bc_disp_value(n,d); // override force vector
 			for (UInt m=0; m<nb_nodes*dim; ++m) {
 			  (*(K_u))(n*dim+d,m) = 0.; // sets line to 0
 			}
 			(*(K_u))(n*this->dim+d,n*this->dim+d) = 1.; // diagonal to 1
-		  }
+		}
     }
   }
 }
@@ -260,7 +266,7 @@ void Model::solve()
     std::cout << Res_u << std::endl;
     #endif /* THEPC_VERBOSE */
     // call the solver (and the necessary input of the solver)
-    solver->solve(K_u, Res_u * (-1.), displacement.getStorage());
+    solver->solve(K_u, Res_u.getStorage() * (-1.), displacement.getStorage());
     // print solution to terminal (next time to file)
     #ifdef TEHPC_VERBOSE
     std::cout << "solution:" << std::endl;
@@ -279,7 +285,7 @@ void Model::solve()
     #endif /* THEPC_VERBOSE */
 	}
 
-void Model::output(const std::string & odir, std::vector<double> & nodal_value, const std::string & field_name)
+void Model::output(const std::string & odir, const std::vector<double> & nodal_value, const std::string & field_name)
 {
 	
 	std::ofstream output_file("./" + odir + "/output_" + Name + field_name +".dat", std::ios::app);
@@ -322,6 +328,12 @@ void Model::iterate(const std::string & sim_name, std::string & odir)
 		this->step = step;
 		std::cout<< "\r"<<"step: "<<step+1<< std::flush;
 		assembly();
+		
+		output(odir, Res_u(0), "F1");
+		output(odir, Res_u(1), "F2");
+		
+		output(odir, displacement(0), "u1");
+		output(odir, displacement(1), "u2");
 		
 		apply_bc((step+1.)/nb_steps); // thanks to the +1. the fraction of UInts is a double
 		
@@ -380,4 +392,3 @@ void Model::localStiffness(int element, Matrix<double> & Ke_d, std::vector<doubl
 	el_d.GetStiffnessAndRes(Ke_d, res_d);
 
 }
-

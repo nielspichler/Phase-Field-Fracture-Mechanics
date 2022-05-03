@@ -46,6 +46,16 @@ public:
   T operator()(UInt i, UInt j) const {
     return this->storage[i*this->cols + j];
   }
+  
+  // gets the column of the array
+  std::vector<T> operator()(UInt i) const {
+	std::vector<T> res;
+	res.resize(this->storage.size()/this->cols);
+	for (UInt j = 0; j<res.size(); j++){
+		res[j] = this->storage[j*this->cols + i];
+		}
+    return res;
+  }
 
   // set value to a scalar
   Array<T>& operator=(T c) {

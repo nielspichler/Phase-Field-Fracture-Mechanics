@@ -52,7 +52,7 @@ public:
   void solve(); 
   
   // stores the phase field variable in an output directory
-  void output(const std::string & odir, std::vector<double> & nodal_value, const std::string & field_name); 
+  void output(const std::string & odir, const std::vector<double> & nodal_value, const std::string & field_name); 
 
   void iterate(const std::string & sim_name, std::string & odir);
 
@@ -67,8 +67,9 @@ public:
 
   std::shared_ptr<BaseMatrix<double> > get_K_u() { return this->K_u; };
   std::shared_ptr<BaseMatrix<double> > get_K_d() { return this->K_d; };
-  std::vector<double> get_Res_u() {return this->Res_u;};
+  std::vector<double> get_Res_u() {return this->Res_u.getStorage();};
   std::vector<double> get_Res_d() {return this->Res_d;};
+  std::vector<double> & get_Phase() {return this->phase;};
   
   // these accessors are needed to test the parsing of the input file
   UInt get_dim(){return this->dim;};
@@ -137,7 +138,7 @@ private:
   std::shared_ptr<BaseMatrix<double> > K_d;
   
   // global residue vectors 
-  std::vector<double> Res_u;
+  Array<double> Res_u;
   std::vector<double> Res_d;
 
   // pointer to solver used
