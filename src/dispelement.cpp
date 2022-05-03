@@ -59,13 +59,13 @@ DispElement::DispElement(Matrix<double> & loc_coordinates, std::vector<double> &
 	dNdxi.resize(dim, coordinates.nbRows()); // 2x4
 	xi.resize(coordinates.nbRows()); //
 	J.resize(dim, dim);// 2X2
-	//invJ.resize(dim, dim);// 2X2
+	invJ.resize(dim, dim);// 2X2
 	dNdx.resize(dim, coordinates.nbRows());// 2x4
 	B.resize((dim-1)*(dim-1)+2, dim*coordinates.nbRows()); // (dim-1)²+2 gives 3 for dim = 2 and 6 form dim = 3 (3x8)
 	det = 0.;
 	d = 0.;
 	w = 1.; // weight in gauss integration
-	k = 1e-6; //stabilisation factor
+	k = 1e-10; //stabilisation factor
 	psi_0 = 0.;
 	eps.resize(dim);
 	sig.resize(dim);
@@ -83,9 +83,13 @@ void DispElement::GetStiffnessAndRes(Matrix<double> & Ke, std::vector<double> & 
 		xi[1] = intpt(i,1);
 		ShapeFun_4lin(dNdxi, N, xi); // evaluates the shape functions at the integration point
 		J = dNdxi * coordinates; // 2x2 = 2x4*4x2
-		det = J.determinant(); // could be faster is computed "by hand"
+		det = J(0,0)*J(1,1) - J(0,1)*J(1,0);//J.determinant(); // could be faster is computed "by hand"
 		assert(det!=0);
-		J.inverse(invJ); // 2x2
+		//J.inverse(invJ); // 2x2
+		invJ(0,0) = J(1,1)/det;
+		invJ(1,0) = -J(1,0)/det;
+		invJ(0,1) = -J(0,1)/det;
+		invJ(1,1) = J(0,0)/det;
 		dNdx = invJ * dNdxi; // 2x4 = 2x2*2x4
 		
 		for (UInt j=0;j<coordinates.nbRows();j++) // loop over N_j (each submatrix in B)

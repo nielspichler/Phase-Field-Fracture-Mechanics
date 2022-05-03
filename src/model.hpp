@@ -43,17 +43,18 @@ public:
   void assembly();
   
   // reduces the stifness matrices
-  void apply_bc(); 
+  void apply_bc(double fraction); 
+
+  // registers a solver to the model
+  void registerSolver(std::shared_ptr<NRsolver> solver);
 
   // solves the equation
   void solve(); 
   
-  // updates the variables
-  void update(); 
-  
   // stores the phase field variable in an output directory
-  void output(const std::string & odir); 
+  void output(const std::string & odir, std::vector<double> & nodal_value, const std::string & field_name); 
 
+  void iterate(const std::string & sim_name, std::string & odir);
 
 private:
   void localStiffness(int element, Matrix<double> & Ke_d, std::vector<double>  & res_d, Matrix<double> & Ke_u, std::vector<double> & res_u);
@@ -72,7 +73,7 @@ public:
   // these accessors are needed to test the parsing of the input file
   UInt get_dim(){return this->dim;};
   double get_lc(){return this->lc;};
-  UInt get_steps(){return this->steps;};
+  UInt get_nb_steps(){return this->nb_steps;};
   UInt get_nb_nodes(){return this->nb_nodes;};
   Array<double> get_coordinates(){return this->coordinates;};
   UInt get_nb_elements(){return this->nb_elements;};
@@ -107,7 +108,9 @@ private:
   // general information
   UInt dim;
   double lc;
-  UInt steps;
+  UInt nb_steps;
+  UInt step = 0;
+  std::string Name = "default";
 
   // nodal information
   UInt nb_nodes;

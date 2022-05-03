@@ -20,6 +20,11 @@ public:
   NRsolver() : NRsolver(100, 1e-6) {};
 
   NRsolver(int max_iter,double epsilon) {
+	  
+  std::cout << "init NRsolver with "
+  << "max_iter = " << max_iter << " and "
+  << "epsilon = " << epsilon << std::endl;
+
   this->max_iter = max_iter;
   this->epsilon = epsilon;  
 	};

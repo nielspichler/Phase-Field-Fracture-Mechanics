@@ -5,6 +5,8 @@
 
 void Model::readInput(const std::string & fname)
 {
+
+  std::cout<<"Parsing input file \n";
   // character used to designate comment in input file
   char comment_char = '#';
   
@@ -39,7 +41,7 @@ void Model::readInput(const std::string & fname)
       sstr >> lc;
     }
     else if (keyword == "$steps") {
-      sstr >> steps;
+      sstr >> nb_steps;
     }
     else if (keyword == "$nodes") {
       sstr >> nb_nodes;
@@ -63,7 +65,7 @@ void Model::readInput(const std::string & fname)
   //assert(steps >= 0);
   //assert(lc >= 0.0);
   
-  /* allocate arrays: 
+  /* allocate arradisplacement = 0;ys: 
      coordinates, 
      connectivity, modulus, cross_section, 
      bc_force, bc_disp, bc_disp_value
@@ -76,7 +78,7 @@ void Model::readInput(const std::string & fname)
   gc.resize(nb_elements);
   
   // BC
-  bc_disp.resize(nb_nodes, dim);
+  bc_disp.resize(nb_nodes, dim);coordinates.resize(nb_nodes, dim);
   bc_disp_value.resize(nb_nodes, dim);
   
   // initialize BC arrays with zero values
@@ -153,6 +155,13 @@ void Model::readInput(const std::string & fname)
   Res_u.resize(nb_nodes * dim);
   Res_d.resize(nb_nodes);
   
+  phase.resize(nb_nodes);
+  std::fill(history.begin(), history.end(), 0.); // later xthe phase gets set
+  history.resize(nb_nodes);
+  std::fill(history.begin(), history.end(), 0.);
+  displacement.resize(nb_nodes, dim);
+  displacement = 0;
+  
 }
 
 void Model::assembly()
@@ -183,13 +192,15 @@ void Model::assembly()
       global_indices_d(e, i) = connectivity(e,i); // ???
     }
   }
-
+  
+  #ifdef TEHPC_VERBOSE
   // precision value for printing on the terminal
 	std::cout << "global indices_u" << std::endl;
 	std::cout << global_indices_u << std::endl;
 	std::cout << "global indices_d" << std::endl;
 	std::cout << global_indices_d << std::endl;
-
+  #endif /* THEPC_VERBOSE */
+  
   // for loop over elements starts here
   for (UInt e = 0; e < nb_elements; ++e) {
     
@@ -217,54 +228,110 @@ void Model::assembly()
   // for loop over elements end here
 }
 
-void Model::apply_bc()
+void Model::apply_bc(double fraction)
 {
-
+  // fraction if the percentage of load applied (0 means no displacement, 1 means the full didirchlet BC is applied)
   // impose Dirichlet BC: adapt K, such that disp can be put in force
   // see TUM FE poly page 82 and 83
   for (UInt n=0; n<nb_nodes; ++n) {
     for (UInt d=0; d<dim; ++d) {
 		  if (bc_disp(n,d)) { // was set to 1 if BC is applied, 0 else in the constructor
-			Res_u[n*dim + d] = bc_disp_value(n,d); // override force vector
+			Res_u[n*dim + d] = -1.*fraction * bc_disp_value(n,d); // override force vector
 			for (UInt m=0; m<nb_nodes*dim; ++m) {
 			  (*(K_u))(n*dim+d,m) = 0.; // sets line to 0
 			}
-		(*(K_u))(n*this->dim+d,n*this->dim+d) = 1.; // diagonal to 1
+			(*(K_u))(n*this->dim+d,n*this->dim+d) = 1.; // diagonal to 1
 		  }
     }
   }
+}
 
-	}
+void Model::registerSolver(std::shared_ptr<NRsolver> solver_set) 
+{
+    solver = solver_set;
+  }
 
 void Model::solve()
 {
-	std::cout << "Displecement matrix: " << std::endl;
+	#ifdef TEHPC_VERBOSE
+	std::cout << "Displacement matrix: " << std::endl;
     std::cout << (*(K_u)) << std::endl;
+    std::cout << "Res_u matrix: " << std::endl;
     std::cout << Res_u << std::endl;
-    /* Your solution goes here */
+    #endif /* THEPC_VERBOSE */
     // call the solver (and the necessary input of the solver)
-    solver->solve(K_u, Res_u, displacement.getStorage());
+    solver->solve(K_u, Res_u * (-1.), displacement.getStorage());
     // print solution to terminal (next time to file)
+    #ifdef TEHPC_VERBOSE
     std::cout << "solution:" << std::endl;
     std::cout << displacement << std::endl;
-    
 	std::cout << "Phase matrix: " << std::endl;
     std::cout << (*(K_d)) << std::endl;
     std::cout << Res_d << std::endl;
+    #endif /* THEPC_VERBOSE */
     /* Your solution goes here */
     // call the solver (and the necessary input of the solver)
-    solver->solve(K_d, Res_d, phase);
+    solver->solve(K_d, Res_d * (-1.), phase);
     // print solution to terminal (next time to file)
+    #ifdef TEHPC_VERBOSE
     std::cout << "solution:" << std::endl;
     std::cout << phase << std::endl;
-    
+    #endif /* THEPC_VERBOSE */
 	}
 
-void Model::update(){
+void Model::output(const std::string & odir, std::vector<double> & nodal_value, const std::string & field_name)
+{
+	
+	std::ofstream output_file("./" + odir + "/output_" + Name + field_name +".dat", std::ios::app);
+	assert(output_file.is_open());
+	
+	if (step == 0){
+		output_file << field_name <<"_results_node_number:";
+		for(UInt i = 0; i<nb_nodes; i++){
+			output_file <<" Node_"<< i; // writes the x coordinate
+			}
+		output_file << "\nX_coord:";
+		for(UInt i = 0; i<nb_nodes; i++){
+			output_file <<" "<< coordinates(0,i); // writes the x coordinate
+			}
+		output_file << "\nY_coord:";
+		for(UInt i = 0; i<nb_nodes; i++){
+			output_file << " " << coordinates(1,i); // writes the y coordinate
+			}
+		}
+	output_file << "\nStep_"<<step<<":";
+	for(UInt i = 0; i<nb_nodes; i++){
+		output_file  << " "<< nodal_value[i]; // writes the y coordinate
+		}
+	assert(output_file.good());
+	output_file.close();
 	
 	}
 
-void Model ::output(const std::string & odir){
+void Model::iterate(const std::string & sim_name, std::string & odir)
+{
+	Name = sim_name;
+	
+	std::shared_ptr<NRsolver> solver;
+	solver = std::make_shared<NRsolver>(500, 1e-6);
+	registerSolver(solver);
+	
+	std::cout<<"start of iterations\n";
+	for (UInt step = 0; step<nb_steps; step++){
+		
+		this->step = step;
+		std::cout<< "\r"<<"step: "<<step+1<< std::flush;
+		assembly();
+		
+		apply_bc((step+1.)/nb_steps); // thanks to the +1. the fraction of UInts is a double
+		
+		solve();
+		
+		output(odir, phase, "Phase");
+		
+		}
+	
+	std::cout<<"\nSIMULATION FINISHED ! :) \n";
 	
 	}
 

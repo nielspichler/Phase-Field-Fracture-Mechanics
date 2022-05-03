@@ -51,6 +51,7 @@ PhaseElement::PhaseElement(Matrix<double> & loc_coordinates, std::vector<double>
 	dNdxi.resize(dim, coordinates.nbRows()); // 2x4
 	xi.resize(coordinates.nbRows());
 	J.resize(dim, dim);// 2X2
+	invJ.resize(dim, dim);
 	//invJ.resize(dim, dim);// 2X2
 	dNdx.resize(dim, coordinates.nbRows());// 2x4
 	dNdx_T.resize(coordinates.nbRows(), dim);// 4x2
@@ -71,9 +72,13 @@ void PhaseElement::GetStiffnessAndRes(Matrix<double> & Ke, std::vector<double> &
 		xi[1] = intpt(i,1);
 		ShapeFun_4lin(dNdxi, N, xi); // evaluates the shape functions at the integration point
 		J = dNdxi * coordinates; // 2x2 = 2x4*4x2
-		det = J.determinant(); // could be faster is computed "by hand"
+		det = J(0,0)*J(1,1) - J(0,1)*J(1,0);//J.determinant(); // could be faster is computed "by hand"
 		assert(det!=0);
-		J.inverse(invJ); // 2x2
+		//J.inverse(invJ); // 2x2
+		invJ(0,0) = J(1,1)/det;
+		invJ(1,0) = -J(1,0)/det;
+		invJ(0,1) = -J(0,1)/det;
+		invJ(1,1) = J(0,0)/det;
 		dNdx = invJ * dNdxi; // 2x4 = 2x2*2x4 also called B matrix
 		
 		// get d @ integration point
@@ -87,7 +92,7 @@ void PhaseElement::GetStiffnessAndRes(Matrix<double> & Ke, std::vector<double> &
 		dNdx.transpose(dNdx_T);
 		N.transpose(N_T);
 		
-		Ke += det * w *(prop[0]/prop[1]+2. * H) * N_T * N+ // 4x4 = 4x1*1x4
+		Ke += det * w *(prop[0]/prop[1] + 2. * H) * N_T * N+ // 4x4 = 4x1*1x4
 				det * w * prop[0]*prop[1] * dNdx_T * dNdx; // 4x2*2x4
 		// We compute the contribution of the node to res
 		res += (N_T.getStorage() * det * w * (prop[0]/prop[1] * d -2.*(1.-d)*H)) + // 4x1

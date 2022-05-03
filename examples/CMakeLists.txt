@@ -1,2 +1,2 @@
-add_simulation(model_example)
 
+add_simulation(basic_example)

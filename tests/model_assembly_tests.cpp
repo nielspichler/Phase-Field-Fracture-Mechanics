@@ -65,7 +65,7 @@ int main(/*int argc, char *argv[]*/){
 			}
 		}
 	if (success == true){std::cout<<"local K matrices are symmetric\nLocal and global matrices match"<< std::endl;}
-	
+	//std::cout<<Ke_u;
 	// fully damaged element i.e. d=1
 	
 	std::cout<<"When the element is fully damaged, d=1 at all 4 nodes:"<< std::endl;

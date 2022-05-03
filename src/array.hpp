@@ -37,7 +37,7 @@ public:
     UInt size = rows*cols;
     this->storage.resize(size);
   }
-
+  
   // operator to access ans assign values 
   // stored in a row major
   T& operator()(UInt i, UInt j) {

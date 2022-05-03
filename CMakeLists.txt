@@ -28,6 +28,8 @@ add_subdirectory(src)
 # ------------------------------------------------------
 # Some Macros
 
+option(TEHPC_VERBOSE "write extra information to console" OFF)
+
 # examples: define add_simulation function
 function(add_simulation SIM_EXE)
   add_executable(${SIM_EXE} ${SIM_EXE}.cpp)

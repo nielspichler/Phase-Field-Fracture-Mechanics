@@ -1,8 +1,0 @@
-<map id="DispElement::GetStiffnessAndRes" name="DispElement::GetStiffnessAndRes">
-<area shape="rect" id="node1" title=" " alt="" coords="5,99,199,141"/>
-<area shape="rect" id="node2" href="$class_matrix.html#aa0347b091217f8ea2a928efd860d4d26" title=" " alt="" coords="260,5,412,32"/>
-<area shape="rect" id="node3" href="$class_matrix.html#ac4817fa7c78a6d8cfed0f63e07e577fd" title=" " alt="" coords="276,56,396,83"/>
-<area shape="rect" id="node4" href="$class_base_matrix.html#ac036dca55e151b93b40766afdebc1b14" title=" " alt="" coords="259,107,413,133"/>
-<area shape="rect" id="node5" href="$class_element.html#aaf85d55f36f646ce9c2a387388407d78" title=" " alt="" coords="247,157,425,184"/>
-<area shape="rect" id="node6" href="$class_matrix.html#a744c7cb15d91bfd47f74e79d91c46c81" title=" " alt="" coords="268,208,404,235"/>
-</map>

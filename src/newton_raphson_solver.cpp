@@ -17,6 +17,7 @@ void NRsolver::solve(std::shared_ptr<BaseMatrix<double> > Ap,
   Matrix<double> dfdx(size,size);    
   Matrix<double> dfdx_inv(size,size);
 
+  #ifdef TEHPC_VERBOSE
   //print  x[0] to terminal
   std::cout << "initial guess " << std::endl;
   std::cout << GET_VARIABLE_NAME(x) <<"[" << 0 << "] = " << std::endl;
@@ -25,7 +26,7 @@ void NRsolver::solve(std::shared_ptr<BaseMatrix<double> > Ap,
   // print this->epsilon
   std::cout << "epsilon   =  " << this->epsilon << std::endl;
   std::cout << "-----------------------------------" << std::endl;
-
+  #endif /* THEPC_VERBOSE */
   //-------------------------------iterate ---------------------------------------
   for(int i = 0; i < this->max_iter; i++){
 
@@ -36,6 +37,7 @@ void NRsolver::solve(std::shared_ptr<BaseMatrix<double> > Ap,
     double r_norm = std::sqrt(f * f);
 
     if (r_norm < this->epsilon) {
+	  #ifdef TEHPC_VERBOSE
       std::cout << " Converged" << std::endl;
 
       // print x on each iteration
@@ -45,6 +47,7 @@ void NRsolver::solve(std::shared_ptr<BaseMatrix<double> > Ap,
       // print r
       std::cout << GET_VARIABLE_NAME(f) <<"[" << i+1 << "] = " << std::endl;
       std::cout << f << std::endl;
+      #endif /* THEPC_VERBOSE */
 
       // assign updated values to x
       x = x_next;
@@ -68,7 +71,7 @@ void NRsolver::solve(std::shared_ptr<BaseMatrix<double> > Ap,
   
   std::cout << "Convergence not reached" << std::endl;
   std::cout << "Error: Max number of iterations exceeded" << std::endl;
-
+  #ifdef TEHPC_VERBOSE
   // print final x
   std::cout << GET_VARIABLE_NAME(x_next) <<"[" << this->max_iter << "] = " << std::endl;
   std::cout << x_next << std::endl;
@@ -76,6 +79,8 @@ void NRsolver::solve(std::shared_ptr<BaseMatrix<double> > Ap,
   // print final absolute value of delta
   std::cout << GET_VARIABLE_NAME(f) <<"[" << this->max_iter << "] = " << std::endl;
   std::cout << f << std::endl;
+  #endif /* THEPC_VERBOSE */
+  
 
   return;
 }

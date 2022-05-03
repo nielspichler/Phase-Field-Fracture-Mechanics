@@ -19,7 +19,7 @@ int main(/*int argc, char *argv[]*/)
   
 	if (model.get_dim() != 2){success = false;}
 	else if (model.get_lc() != 0.1){success = false;}
-	else if (model.get_steps() != 1000){success = false;}
+	else if (model.get_nb_steps() != 1000){success = false;}
 	else if (model.get_nb_nodes() != 4){success = false;}
 	else if (model.get_nb_elements() != 1){success = false;}
 	else if (model.get_nb_nodes_per_element() != 4){success = false;}

@@ -12,7 +12,7 @@ $node 4 1.0 0.0
 
 $elements 1
 $elementtype 1 4 	# type_idx nb_nodes_per_element
-$element 1 1 2 3 4 1 210000. 0.3 0.005  # index node1 node2 node3 node4 type elastic_modulus Poisson Gc
+$element 1 1 2 3 4 1 210. 0.3 0.005  # index node1 node2 node3 node4 type elastic_modulus Poisson Gc
 
 			# Dirichlet BC
 $bcd 1 1 1 0.0		# index node direction value (imposed displacements, Dirichlet)
