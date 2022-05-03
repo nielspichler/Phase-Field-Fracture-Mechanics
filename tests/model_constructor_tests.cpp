@@ -48,7 +48,7 @@ int main(/*int argc, char *argv[]*/)
 			if(model.get_connectivity()(0,i)!=true_connectivity(0,i)){success = false;}
 		}
 	
-	if (model.get_modulus()[0] != 210000.0){success = false;}
+	if (model.get_modulus()[0] != 210.0){success = false;}
 	else if (model.get_poisson()[0] != 0.3){success = false;}
 	else if (model.get_gc()[0] != 0.005){success = false;}
 	else if (success == true){std::cout<<"Properties correctly parsed"<< std::endl;}

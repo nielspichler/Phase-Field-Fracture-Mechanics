@@ -25,7 +25,7 @@ int main(/*int argc, char *argv[]*/)
   
   model.solve();
   
-  model.output("Test_output");
+  model.output("Test_output", model.get_Phase(), "Phase");
   
 
 }
