@@ -25,7 +25,7 @@ int main(/*int argc, char *argv[]*/)
   
   model.solve();
   
-  model.output("Test_output", model.get_Phase(), "Phase");
+  model.output_nodal("Test_output", model.get_Phase(), "Phase");
   
 
 }

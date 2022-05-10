@@ -51,8 +51,10 @@ public:
   // solves the equation
   void solve(); 
   
-  // stores the phase field variable in an output directory
-  void output(const std::string & odir, const std::vector<double> & nodal_value, const std::string & field_name); 
+  // stores a nodal field variable in an output directory
+  void output_nodal(const std::string & odir, const std::vector<double> & nodal_value, const std::string & field_name); 
+  // stores a elemental field variable in an output directory
+  void output_elemental(const std::string & odir, const std::vector<double> & elemental_value, const std::string & field_name);
 
   void iterate(const std::string & sim_name, std::string & odir);
 
@@ -67,8 +69,8 @@ public:
 
   std::shared_ptr<BaseMatrix<double> > get_K_u() { return this->K_u; };
   std::shared_ptr<BaseMatrix<double> > get_K_d() { return this->K_d; };
-  std::vector<double> get_Res_u() {return this->Res_u.getStorage();};
-  std::vector<double> get_Res_d() {return this->Res_d;};
+  std::vector<double> & get_Res_u() {return this->Res_u.getStorage();};
+  std::vector<double> & get_Res_d() {return this->Res_d;};
   std::vector<double> & get_Phase() {return this->phase;};
   
   // these accessors are needed to test the parsing of the input file
@@ -117,6 +119,8 @@ private:
   UInt nb_nodes;
   Array<double> coordinates;
   Array<double> displacement;		//u
+  Array<double> ddisplacement;		//u
+  std::vector<double> dphase;
   std::vector<double> phase;		//d
 
 

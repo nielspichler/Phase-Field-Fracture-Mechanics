@@ -2,7 +2,7 @@ $version 0.1
 
 $dimensions 2
 $lc 0.1 		# length scale parameter
-$steps 1000		# number of time steps
+$steps 500		# number of time steps
 
 $nodes 4
 $node 1 0.0 0.0 # index x-coord y-coord

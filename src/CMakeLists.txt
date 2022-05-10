@@ -12,6 +12,7 @@ set(TEHPC_HEADER
   dispelement.hpp
   phaseelement.hpp
   newton_raphson_solver.hpp
+  test_tools.hpp  
   model.hpp
   )
 
@@ -23,6 +24,7 @@ set(TEHPC_SRC
   dispelement.cpp
   phaseelement.cpp
   newton_raphson_solver.cpp
+  test_tools.cpp  
   model.cpp
   )
 

@@ -158,11 +158,17 @@ void Model::readInput(const std::string & fname)
   std::fill(Res_d.begin(), Res_d.end(), 0.);
   
   phase.resize(nb_nodes);
-  std::fill(history.begin(), history.end(), 0.); // later xthe phase gets set
+  std::fill(phase.begin(), phase.end(), 0.); // later xthe phase gets set
+  
+  dphase.resize(nb_nodes);
+  std::fill(dphase.begin(), dphase.end(), 0.); // later xthe phase gets set
+  
   history.resize(nb_nodes);
   std::fill(history.begin(), history.end(), 0.);
   displacement.resize(nb_nodes, dim);
   displacement = 0.;
+  ddisplacement.resize(nb_nodes, dim);
+  ddisplacement = 0.;
   
 }
 
@@ -173,8 +179,8 @@ void Model::assembly()
   (*K_u) = 0.0;
   (*K_d) = 0.0;
   
-  //Res_u = 0.;
-  //std::fill(Res_d.begin(), Res_d.end(), 0.);
+  Res_u = 0.;
+  std::fill(Res_d.begin(), Res_d.end(), 0.);
   
   // initializing local stiffnes matrix, residue vect
   UInt local_size_u = nb_nodes_per_element*dim;
@@ -266,7 +272,8 @@ void Model::solve()
     std::cout << Res_u << std::endl;
     #endif /* THEPC_VERBOSE */
     // call the solver (and the necessary input of the solver)
-    solver->solve(K_u, Res_u.getStorage() * (-1.), displacement.getStorage());
+    solver->solve(K_u, Res_u.getStorage() * (-1.), ddisplacement.getStorage());
+    displacement.getStorage() = displacement.getStorage() + ddisplacement.getStorage();
     // print solution to terminal (next time to file)
     #ifdef TEHPC_VERBOSE
     std::cout << "solution:" << std::endl;
@@ -277,7 +284,8 @@ void Model::solve()
     #endif /* THEPC_VERBOSE */
     /* Your solution goes here */
     // call the solver (and the necessary input of the solver)
-    solver->solve(K_d, Res_d * (-1.), phase);
+    solver->solve(K_d, Res_d * (-1.), dphase);
+    phase = phase + dphase;
     // print solution to terminal (next time to file)
     #ifdef TEHPC_VERBOSE
     std::cout << "solution:" << std::endl;
@@ -285,11 +293,13 @@ void Model::solve()
     #endif /* THEPC_VERBOSE */
 	}
 
-void Model::output(const std::string & odir, const std::vector<double> & nodal_value, const std::string & field_name)
+void Model::output_nodal(const std::string & odir, const std::vector<double> & nodal_value, const std::string & field_name)
 {
 	
 	std::ofstream output_file("./" + odir + "/output_" + Name + field_name +".dat", std::ios::app);
 	assert(output_file.is_open());
+	
+	output_file.precision(10);
 	
 	if (step == 0){
 		output_file << field_name <<"_results_node_number:";
@@ -314,12 +324,37 @@ void Model::output(const std::string & odir, const std::vector<double> & nodal_v
 	
 	}
 
+void Model::output_elemental(const std::string & odir, const std::vector<double> & elemental_value, const std::string & field_name)
+{
+	
+	std::ofstream output_file("./" + odir + "/output_" + Name + field_name +".dat", std::ios::app);
+	assert(output_file.is_open());
+	
+	output_file.precision(10);
+
+	
+	if (step == 0){
+		output_file << field_name <<"_results_element_number:";
+		for(UInt i = 0; i<nb_elements; i++){
+			output_file <<" element_"<< i; // writes the x coordinate
+			}
+
+		}
+	output_file << "\nStep_"<<step<<":";
+	for(UInt i = 0; i<nb_elements; i++){
+		output_file  << " "<< elemental_value[i]; // writes the y coordinate
+		}
+	assert(output_file.good());
+	output_file.close();
+	
+	}
+
 void Model::iterate(const std::string & sim_name, std::string & odir)
 {
 	Name = sim_name;
 	
 	std::shared_ptr<NRsolver> solver;
-	solver = std::make_shared<NRsolver>(500, 1e-6);
+	solver = std::make_shared<NRsolver>(500, 1e-9);
 	registerSolver(solver);
 	
 	std::cout<<"start of iterations\n";
@@ -329,17 +364,18 @@ void Model::iterate(const std::string & sim_name, std::string & odir)
 		std::cout<< "\r"<<"step: "<<step+1<< std::flush;
 		assembly();
 		
-		output(odir, Res_u(0), "F1");
-		output(odir, Res_u(1), "F2");
+		output_nodal(odir, Res_u(0), "F1");
+		output_nodal(odir, Res_u(1), "F2");
 		
-		output(odir, displacement(0), "u1");
-		output(odir, displacement(1), "u2");
 		
-		apply_bc((step+1.)/nb_steps); // thanks to the +1. the fraction of UInts is a double
+		apply_bc((1.0)/nb_steps); // thanks to the +1.0 the fraction of UInts is a double
 		
 		solve();
 		
-		output(odir, phase, "Phase");
+		output_nodal(odir, displacement(0), "u1");
+		output_nodal(odir, displacement(1), "u2");
+		output_nodal(odir, phase, "Phase");
+		output_elemental(odir, history, "H");
 		
 		}
 	
@@ -378,7 +414,7 @@ void Model::localStiffness(int element, Matrix<double> & Ke_d, std::vector<doubl
 		loc_u[2*i] = displacement(connectivity(e, i), 0);// u_1
 		loc_u[2*i+1] = displacement(connectivity(e, i), 1);// u_2
 	}
-	
+
 	double loc_H = history[e];
 	
 	// the element is created

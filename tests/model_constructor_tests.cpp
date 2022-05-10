@@ -32,7 +32,7 @@ int main(/*int argc, char *argv[]*/)
 	true_coordinates(2,0) = 1.0; true_coordinates(2,1) = 1.0;
 	true_coordinates(3,0) = 1.0; true_coordinates(3,1) = 0.0;
 
-	for (int i = 0; i<2;i++){
+	for (int i = 0; i<4;i++){
 		for (int j = 0; j<2; j++){
 			if(abs(model.get_coordinates()(i,j)-true_coordinates(i,j))>tol){success = false;}
 			}
