@@ -1,25 +1,3 @@
-/*
- * phaseelement.cpp
- * 
- * Copyright 2022 student <student@tehpc>
- * 
- * This program is free software; you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation; either version 2 of the License, or
- * (at your option) any later version.
- * 
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
- * 
- * You should have received a copy of the GNU General Public License
- * along with this program; if not, write to the Free Software
- * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,
- * MA 02110-1301, USA.
- * 
- * 
- */
 
 
 #include "phaseelement.hpp"
@@ -52,7 +30,6 @@ PhaseElement::PhaseElement(Matrix<double> & loc_coordinates, std::vector<double>
 	xi.resize(coordinates.nbRows());
 	J.resize(dim, dim);// 2X2
 	invJ.resize(dim, dim);
-	//invJ.resize(dim, dim);// 2X2
 	dNdx.resize(dim, coordinates.nbRows());// 2x4
 	dNdx_T.resize(coordinates.nbRows(), dim);// 4x2
 	det=0.;
@@ -74,7 +51,6 @@ void PhaseElement::GetStiffnessAndRes(Matrix<double> & Ke, std::vector<double> &
 		J = dNdxi * coordinates; // 2x2 = 2x4*4x2
 		det = J(0,0)*J(1,1) - J(0,1)*J(1,0);//J.determinant(); // could be faster is computed "by hand"
 		assert(det!=0);
-		//J.inverse(invJ); // 2x2
 		invJ(0,0) = J(1,1)/det;
 		invJ(1,0) = -J(1,0)/det;
 		invJ(0,1) = -J(0,1)/det;

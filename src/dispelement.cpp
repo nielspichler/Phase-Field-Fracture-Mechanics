@@ -23,7 +23,6 @@ DispElement::DispElement(Matrix<double> & loc_coordinates, std::vector<double> &
 		intpt(3,0) = -1/pow(3,0.5);
 		intpt(3,1) = 1/pow(3,0.5);
 	}
-	
 	else{std::cout<<"Only 4 nodes element are implemnted"; return;}
 		
 	C.resize(3,3);
