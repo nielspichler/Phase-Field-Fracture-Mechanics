@@ -28,6 +28,15 @@ void NRsolver::solve(std::shared_ptr<BaseMatrix<double> > Ap,
   std::cout << "-----------------------------------" << std::endl;
   #endif /* THEPC_VERBOSE */
   //-------------------------------iterate ---------------------------------------
+  
+   // this only needs to be done once as A is constant
+   // compute values of first derivative of function f(x) = A
+   myFunDerivative(A, dfdx);
+
+   // get inverse Jacobian matrix
+   dfdx.inverse(dfdx_inv);
+  
+  
   for(int i = 0; i < this->max_iter; i++){
 
     // compute residual f = A * x_prev - b
@@ -54,12 +63,6 @@ void NRsolver::solve(std::shared_ptr<BaseMatrix<double> > Ap,
       
       return;
     }
-
-    // compute values of first derivative of function f(x) = A
-    myFunDerivative(A, dfdx);
-
-    // get inverse Jacobian matrix
-    dfdx.inverse(dfdx_inv);
 
     // update x with x_i+1 = x_i - f'(x_i)^(-1)*f(x_i)
     update(x_next,x_prev,dfdx_inv, f);

@@ -107,8 +107,8 @@ public:
   //! return determinant of matrix
   double determinant();
 
-//private: 
-//  void submatrix(Matrix<T> & sub, UInt n, UInt m);
+private: 
+  void submatrix(Matrix<T> & sub, UInt n, UInt m);
 
 public:
   //! print matrix

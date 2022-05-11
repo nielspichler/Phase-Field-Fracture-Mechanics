@@ -2,9 +2,8 @@
 
 /* -------------------------------------------------------------------------- */
 
+
 template<typename T>
-
-
 double Matrix<T>::determinant() {
 
   assert(this->rows == this->cols);
@@ -28,7 +27,7 @@ double Matrix<T>::determinant() {
 				}
 			}
 		}
-		det_K += std::pow(-1,n_reorder) * product;
+		det_K += pow(-1,n_reorder) * product;
 	} while(std::next_permutation(permutation.begin(), permutation.end()));
   return det_K;
 }
@@ -51,7 +50,7 @@ double Matrix<T>::determinant(){
 	
 	return det;
 	}
-
+*/
 
 template<typename T>
 void Matrix<T>::submatrix(Matrix<T> & sub, UInt n, UInt m){
@@ -70,7 +69,7 @@ void Matrix<T>::submatrix(Matrix<T> & sub, UInt n, UInt m){
 		}
 		
 	}
-*/
+
 /* -------------------------------------------------------------------------- */
 template<typename T>
 void Matrix<T>::inverse(Matrix<T> & inv) {

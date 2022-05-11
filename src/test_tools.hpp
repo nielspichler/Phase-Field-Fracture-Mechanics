@@ -48,6 +48,16 @@ class Test_tools
 	 * tests if the 2 matrices are equal within tol
 	 */
 	void test_matching_matrices(int size, double tol, Matrix<double> & K_1, BaseMatrix<double> & K_2);
+	
+	/*!
+	 * @param size size of the square matrices to test
+	 * @param tol tolerance accepted
+	 * @param K_1 first matrix to test
+	 * @param K_2 second matrix to be tested (can be any matrix inherited from BaseMatrix)
+	 * tests if the 2 matrices are equal within tol, only looks at the lower triangle
+	 */
+	void test_matching_matrices_LT(int size, double tol, Matrix<double> & K_1, BaseMatrix<double> & K_2);
+	
 	/*!
 	 * @param size size of the vectors to test
 	 * @param tol tolerance accepted
