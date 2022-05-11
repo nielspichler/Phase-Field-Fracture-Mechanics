@@ -5,15 +5,39 @@ from matplotlib import pyplot as plt
 
 if __name__ == '__main__':
 
+    # own results
+
     data_d = pd.read_csv("../build/examples/output/output_sim_1Phase.dat", sep = " ")
     data_s1 = pd.read_csv("../build/examples/output/output_sim_1F1.dat", sep = " ")
     data_s2 = pd.read_csv("../build/examples/output/output_sim_1F2.dat", sep = " ")
     data_u1 = pd.read_csv("../build/examples/output/output_sim_1u1.dat", sep = " ")
     data_u2 = pd.read_csv("../build/examples/output/output_sim_1u2.dat", sep = " ")
     data_h = pd.read_csv("../build/examples/output/output_sim_1H.dat", sep = " ")
+    
+    # Abaqus implementation
+    
+    data_ABQ = pd.read_csv("abaqus_results.csv", sep = ";")    
 
     fig, ax = plt.subplots(nrows=1, ncols=3, figsize = (16.8,4.8), constrained_layout = True)
     
+
+    # ABAQUS plot
+    
+    ax[0].plot(data_ABQ['_U:U2 PI: ELEM-1N: 3'][:], data_ABQ['_SDV15 PI: ELEM-1E: 3 N: 3'][:], marker = 'x', alpha = 0.5, label = "ABAQUS node 3")
+
+    ax[1].plot(data_ABQ['_U:U2 PI: ELEM-1N: 3'][:], data_ABQ['_RF:RF2 PI: ELEM-1 N: 3'][:], marker = 'x', alpha = 0.5, label = "ABAQUS node 3 Rf2")
+
+    ax[2].plot(data_ABQ['_U:U2 PI: ELEM-1N: 3'][:], data_ABQ['_SDV16 PI: ELEM-1E: 3 N: 3'][:], marker = 'x', alpha = 0.5, label = "ABAQUS node 3")
+
+    # Numerical solution
+
+    for i in ["Node_1", "Node_2",]: # ["Node_0", "Node_1", "Node_2", "Node_3",]
+        ax[0].plot(data_u2[i][2:], data_d[i][2:], '.', markerfacecolor = None, alpha = 0.2, label = i)
+        #ax[1].plot(data_u2[i][2:], data_s1[i][2:], '--', markerfacecolor = None, alpha = 0.2, label = i+"_dir1")
+        ax[1].plot(data_u2[i][2:], -data_s2[i][2:], '.', markerfacecolor = None, alpha = 0.2, label = i+"_dir2")
+
+    ax[2].plot(data_u2["Node_2"][2:], data_h["element_0"][:], '.', markerfacecolor = None, alpha = 0.2, label = "history_variable")
+
     # Analytical solution (see paper)
     c22 = 210. * (1-0.3)/((1+0.3)*(1-2*0.3))
     gc = 0.005
@@ -25,16 +49,8 @@ if __name__ == '__main__':
     sig_y = c22 * eps * (1-d)**2    
     
     ax[0].plot(eps, d, '-k', label = "analytical solution")
-    ax[1].plot(eps, sig_y, '-k', label = "analytical solution")
+    ax[1].plot(eps, sig_y/2, '-k', label = "analytical solution (half of elemental stress)")
 
-    # Numerical solution
-
-    for i in ["Node_0", "Node_1", "Node_2", "Node_3"]: # ["Node_0", "Node_1", "Node_2", "Node_3",]
-        ax[0].plot(data_u2[i][2:], data_d[i][2:], '.', markerfacecolor = None, alpha = 0.2, label = i)
-        ax[1].plot(data_u2[i][2:], data_s1[i][2:], '--', markerfacecolor = None, alpha = 0.2, label = i+"_dir1")
-        ax[1].plot(data_u2[i][2:], data_s2[i][2:], '.', markerfacecolor = None, alpha = 0.2, label = i+"_dir2")
-
-    ax[2].plot(data_u2["Node_2"][2:], data_h["element_0"][:], markerfacecolor = None, alpha = 0.2, label = "history_variable")
 
     ax[0].set_xlabel("strain")
     ax[0].set_ylabel("damage variable")
@@ -45,6 +61,11 @@ if __name__ == '__main__':
     ax[1].set_ylabel("Rf")
     ax[1].legend()
     ax[1].grid()
+    
+    ax[2].set_xlabel("strain")
+    ax[2].set_ylabel("H")
+    ax[2].legend()
+    ax[2].grid()
     
     
     plt.show()

@@ -35,21 +35,21 @@ public:
   /* ------------------------------------------------------------------------ */
 public:
   //Solution:start
-  // sets size of matrix but does not adapt the storage memory (child class)
+  //! sets size of matrix but does not adapt the storage memory (child class)
   virtual void resize(UInt rows, UInt cols) {
     this->rows = rows;
     this->cols = cols;
   }
 
-  // operator to access and assign values 
-  // stored in a column major
+  //! operator to access and assign values 
+  //! stored in a column major
   virtual T& operator()(UInt i, UInt j) = 0;
 
-  // operator to access only values
+  //! operator to access only values
   virtual T operator()(UInt i, UInt j) const = 0;
   //Solution:end
   
-  // set value to a scalar
+  //! set value to a scalar
   virtual BaseMatrix<T>& operator=(T c) = 0;
   
 public:
@@ -69,20 +69,20 @@ public:
   /* ------------------------------------------------------------------------ */
 public:
   //Solution:start
-  // accessor to member rows
+  //! accessor to member rows
   UInt nbRows() const { return this->rows; }
 
-  // accessor to member cols
+  //! accessor to member cols
   UInt nbCols() const { return this->cols; }
   //Solution:end
   
-  // size of matrix
+  //! size of matrix
   UInt size() const { return this->rows*this->cols; }
   
-  // get information about size of storage
+  //! get information about size of storage
   UInt storageSize() const { return this->storage.size(); }
 
-  // access storage
+  //! access storage
   std::vector<double> & getStorage() { return this->storage; }
   
   /* ------------------------------------------------------------------------ */
@@ -90,13 +90,13 @@ public:
   /* ------------------------------------------------------------------------ */
 protected:
   //Solution:start
-  // number of rows in the matrix
+  //! number of rows in the matrix
   UInt rows;
 
-  // number of cols in the matrix
+  //! number of cols in the matrix
   UInt cols;
 
-  // values of matrix stored in a contiguous manner
+  //! values of matrix stored in a contiguous manner
   std::vector<T> storage;
   //Solution:end
 };

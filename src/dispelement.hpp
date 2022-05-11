@@ -1,25 +1,3 @@
-/*
- * dispelement.hpp
- * 
- * Copyright 2022 student <student@tehpc>
- * k
- * This program is free software; you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation; either version 2 of the License, or
- * (at your option) any later version.
- * 
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
- * 
- * You should have received a copy of the GNU General Public License
- * along with this program; if not, write to the Free Software
- * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,
- * MA 02110-1301, USA.
- * 
- * 
- */
 
 
 #ifndef DISPELEMENT_HPP
@@ -31,24 +9,42 @@ class DispElement: public Element
 {
 	public:
 		DispElement();
-		
+		/*!
+		 * @param loc_coordinates coordinates of the nodes, each row contains the x and y coordinate of each node
+		 * @param loc_d, nodal value of the phase
+		 * @param loc_u, nodal displacements in a single vector, the first 2 are the vertical and horizontal displacement of the first node and so on
+		 * @param loc_H, elemental valur of the history variable H
+		 * @param prop a vector containing the Young modulus and the poisson ration, in that order
+		 * Constructor for the displacement element
+		 */
 		DispElement(Matrix<double> & loc_coordinates, std::vector<double> & loc_d, std::vector<double> & loc_u, double & loc_H, std::vector<double> & prop);
 		
+		/*!
+		 * @param Ke local stifness matrix
+		 * @param res local residue vector
+		 * Inherited from the element class, will set both arguments for an element
+		 */
 		void GetStiffnessAndRes(Matrix<double> & Ke, std::vector<double> & res);
 		double get_H(){
 			return H;
 			}
 		
 	private:
-		/* add your private declarations */
+		//! Strain matrix, 
 		Matrix<double> B;
+		//! Transposed strain matrix, 
 		Matrix<double> B_T;
+		//! Plane strain elastic stifness matrix (Hook's law)
 		Matrix<double> C;
-		Matrix<double> N_2d;
+		//! strain at a integration point
 		std::vector<double> eps;
+		//! stress at a integration point
 		std::vector<double> sig;
+		//! history variable of the element
 		double H;
+		//! elastic strain energy of the element
 		double psi_0;
+		//! numerical stabilizaiton factor
 		double k;
 		
 };

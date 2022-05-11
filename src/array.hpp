@@ -28,18 +28,18 @@ public:
   /* ------------------------------------------------------------------------ */
 public:
 
-  // resizing the matrix to given rows and cols
+  //! resizing the matrix to given rows and cols
   void resize(UInt rows, UInt cols) {
 
     Parent::resize(rows, cols);
 
-    // adapt memory
+    //! adapt memory
     UInt size = rows*cols;
     this->storage.resize(size);
   }
   
-  // operator to access ans assign values 
-  // stored in a row major
+  //! operator to access ans assign values 
+  //! stored in a row major
   T& operator()(UInt i, UInt j) {
     return this->storage[i*this->cols + j];
   }
@@ -47,7 +47,7 @@ public:
     return this->storage[i*this->cols + j];
   }
   
-  // gets the column of the array
+  //! gets the column of the array
   std::vector<T> operator()(UInt i) const {
 	std::vector<T> res;
 	res.resize(this->storage.size()/this->cols);
@@ -57,14 +57,14 @@ public:
     return res;
   }
 
-  // set value to a scalar
+  //! set value to a scalar
   Array<T>& operator=(T c) {
     std::for_each(this->storage.begin(), this->storage.end(), [c](T& v) { v = c; });
     return *this;
   }
 
 public:
-  // print array
+  //! print array
   virtual void print(std::ostream& stream) const;
 };
 

@@ -1,26 +1,3 @@
-/*
- * dispelement.cpp
- * 
- * Copyright 2022 student <student@tehpc>
- * 
- * This program is free software; you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation; either version 2 of the License, or
- * (at your option) any later version.
- * 
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
- * 
- * You should have received a copy of the GNU General Public License
- * along with this program; if not, write to the Free Software
- * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,
- * MA 02110-1301, USA.
- * 
- * 
- */
-
 
 #include "dispelement.hpp"
 
@@ -46,6 +23,8 @@ DispElement::DispElement(Matrix<double> & loc_coordinates, std::vector<double> &
 		intpt(3,0) = -1/pow(3,0.5);
 		intpt(3,1) = 1/pow(3,0.5);
 	}
+	
+	else{std::cout<<"Only 4 nodes element are implemnted"; return;}
 		
 	C.resize(3,3);
 	C(0,0) = prop[0]/((1+prop[1]) * (1-2*prop[1])) * (1-prop[1]);
@@ -55,7 +34,6 @@ DispElement::DispElement(Matrix<double> & loc_coordinates, std::vector<double> &
 	C(1,0) = prop[0]/((1+prop[1]) * (1-2*prop[1])) * (prop[1]);
 	
 	N.resize(1,coordinates.nbRows()); // 1x4
-	N_2d.resize(dim, dim*coordinates.nbRows()); // 2x8
 	dNdxi.resize(dim, coordinates.nbRows()); // 2x4
 	xi.resize(coordinates.nbRows()); //
 	J.resize(dim, dim);// 2X2

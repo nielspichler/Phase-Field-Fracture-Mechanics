@@ -12,7 +12,11 @@ void Model::readInput(const std::string & fname)
   
   // open the file with check
   std::ifstream read_file(fname);
-  assert(read_file.is_open());
+  
+    if (!read_file.is_open()){
+	  std::cout<<"could not open the input file\n";
+	  assert(read_file.is_open());
+	  }
 
   // loop over file as long as there is content
   while(!read_file.eof()) {
@@ -57,6 +61,7 @@ void Model::readInput(const std::string & fname)
   }
   read_file.close();
   
+  
   // check if global properties were read
   //assert(dim >= 0);
   //assert(nb_nodes >= 0);
@@ -77,6 +82,9 @@ void Model::readInput(const std::string & fname)
   poisson.resize(nb_elements);
   gc.resize(nb_elements);
   
+  phase.resize(nb_nodes);
+  std::fill(phase.begin(), phase.end(), 0.);
+  
   // BC
   bc_disp.resize(nb_nodes, dim);coordinates.resize(nb_nodes, dim);
   bc_disp_value.resize(nb_nodes, dim);
@@ -87,8 +95,9 @@ void Model::readInput(const std::string & fname)
   
   // open input file again and read array values (copy and modify from week 3)
   read_file.open(fname);
-  assert(read_file.is_open());
 
+  assert(read_file.is_open());
+  
   // loop over file as long as there is content
   while(!read_file.eof()) {
 
@@ -144,6 +153,14 @@ void Model::readInput(const std::string & fname)
       sstr >> bc_disp_value(node-1, dir-1);
       bc_disp(node-1, dir-1) = 1; // set to ON
     }
+    
+    else if (keyword == "$init") {
+      int node;
+      sstr >> node;
+      sstr >> phase[node-1];
+    }
+    
+    
   }
   read_file.close();
   
@@ -157,11 +174,8 @@ void Model::readInput(const std::string & fname)
   Res_d.resize(nb_nodes);
   std::fill(Res_d.begin(), Res_d.end(), 0.);
   
-  phase.resize(nb_nodes);
-  std::fill(phase.begin(), phase.end(), 0.); // later xthe phase gets set
-  
   dphase.resize(nb_nodes);
-  std::fill(dphase.begin(), dphase.end(), 0.); // later xthe phase gets set
+  std::fill(dphase.begin(), dphase.end(), 0.);
   
   history.resize(nb_nodes);
   std::fill(history.begin(), history.end(), 0.);

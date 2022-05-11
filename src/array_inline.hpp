@@ -1,6 +1,6 @@
 #include "array.hpp"
 
-/// standard output stream operator
+//! standard output stream operator
 template<typename T>
 inline void Array<T>::print(std::ostream& stream) const {
   Parent::print(stream);

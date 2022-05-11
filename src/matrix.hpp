@@ -60,7 +60,7 @@ public:
   }
   
   // operator multiplication increment by matrix
-Matrix<T>& operator+=(const Matrix<T>& a) {
+  Matrix<T>& operator+=(const Matrix<T>& a) {
     this->storage += a.storage;
     return *this;
   }
@@ -81,6 +81,8 @@ public:
   // return determinant of matrix
   double determinant();
 
+//private: 
+//  void submatrix(Matrix<T> & sub, UInt n, UInt m);
 
 public:
   // print matrix

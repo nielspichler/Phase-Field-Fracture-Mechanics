@@ -1,7 +1,10 @@
 #include "matrix.hpp"
 
 /* -------------------------------------------------------------------------- */
+
 template<typename T>
+
+
 double Matrix<T>::determinant() {
 
   assert(this->rows == this->cols);
@@ -14,24 +17,60 @@ double Matrix<T>::determinant() {
   // declare a double 'det_K' to store the determinant of the matrix
   double det_K = 0;
   // do while loop to compute the determinant
-  do {
-    double n_reorder = 0;
-    double product = 1;
-    for (UInt i=0; i < this->rows; ++i) {
-      product *= (*this)(i, permutation[i]);
-      for (UInt j=0; j < i; ++j) {
-        if (permutation[j]>permutation[i]) {
-          ++n_reorder;
-        }
-      }
-    }
-    det_K += std::pow(-1,n_reorder) * product;
-  } while(std::next_permutation(permutation.begin(), permutation.end()));
-
+	do {
+		double n_reorder = 0;
+		double product = 1;
+		for (UInt i=0; i < this->rows; ++i) {
+		product *= (*this)(i, permutation[i]);
+			for (UInt j=0; j < i; ++j) {
+				if (permutation[j]>permutation[i]) {
+					++n_reorder;
+				}
+			}
+		}
+		det_K += std::pow(-1,n_reorder) * product;
+	} while(std::next_permutation(permutation.begin(), permutation.end()));
   return det_K;
 }
 
+/*
+template<typename T>
+double Matrix<T>::determinant(){
+	assert(this->rows == this->cols);
+	double det=0.0;
+	if (this->rows == 1){
+		return (*this)(0,0);
+		}
+	
+	Matrix<T> A_sub(this->rows-1, this->rows-1);
+	
+	for (UInt i=0; i<this->rows; i++){
+		this->submatrix(A_sub, i, 0);
+		det += pow(-1, i) * (*this)(i, 0) * A_sub.determinant();
+		}
+	
+	return det;
+	}
 
+
+template<typename T>
+void Matrix<T>::submatrix(Matrix<T> & sub, UInt n, UInt m){
+	
+	UInt a=0, b=0;
+	
+	for (UInt i=0; i<this->rows; i++){
+		if (i==n) continue;
+		b=0;
+		for (UInt j=0; j<this->cols; j++){
+			if (j==m) continue;
+			sub(a, b) = (*this)(i, j);
+			b++;
+			}
+		a++;
+		}
+		
+	}
+*/
 /* -------------------------------------------------------------------------- */
 template<typename T>
 void Matrix<T>::inverse(Matrix<T> & inv) {
