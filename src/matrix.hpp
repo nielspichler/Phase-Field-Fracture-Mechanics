@@ -106,6 +106,9 @@ public:
 
   //! return determinant of matrix
   double determinant();
+  
+  void permute_cols(UInt i, UInt j);
+  void permute_rows(UInt i, UInt j);
 
 private: 
   void submatrix(Matrix<T> & sub, UInt n, UInt m);

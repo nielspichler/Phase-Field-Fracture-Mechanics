@@ -272,7 +272,7 @@ void Model::apply_bc(double fraction)
   }
 }
 
-void Model::registerSolver(std::shared_ptr<NRsolver> solver_set) 
+void Model::registerSolver(std::shared_ptr<NLsolver> solver_set) 
 {
     solver = solver_set;
   }
@@ -283,7 +283,7 @@ void Model::solve()
 	std::cout << "Displacement matrix: " << std::endl;
     std::cout << (*(K_u)) << std::endl;
     std::cout << "Res_u matrix: " << std::endl;
-    std::cout << Res_u << std::endl;
+    std::cout << Res_u.getStorage() << std::endl;
     #endif /* THEPC_VERBOSE */
     // call the solver (and the necessary input of the solver)
     solver->solve(K_u, Res_u.getStorage() * (-1.), ddisplacement.getStorage());
@@ -367,8 +367,8 @@ void Model::iterate(const std::string & sim_name, std::string & odir)
 {
 	Name = sim_name;
 	
-	std::shared_ptr<NRsolver> solver;
-	solver = std::make_shared<NRsolver>(500, 1e-9);
+	std::shared_ptr<LU_solver> solver;
+	solver = std::make_shared<LU_solver>(500, 1e-6);
 	registerSolver(solver);
 	
 	std::cout<<"start of iterations\n";
@@ -380,7 +380,6 @@ void Model::iterate(const std::string & sim_name, std::string & odir)
 		
 		output_nodal(odir, Res_u(0), "F1");
 		output_nodal(odir, Res_u(1), "F2");
-		
 		
 		apply_bc((1.0)/nb_steps); // thanks to the +1.0 the fraction of UInts is a double
 		

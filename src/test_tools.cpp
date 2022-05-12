@@ -20,7 +20,7 @@ void Test_tools::test_matching_matrices_LT(int size, double tol, Matrix<double> 
 {
 	for (int i = 0; i<size;i++){
 		for (int j = 0; j<i+1; j++){
-			if(abs(K_1(i,j)-K_2(i,j))>tol){this->success = false;std::cout <<i<<"\n"<<j;}
+			if(abs(K_1(i,j)-K_2(i,j))>tol){this->success = false;std::cout <<"row:"<<i<<"\ncol:"<<j<<"\n";}
 			}
 		}
 	if (this->success == false){std::cout<<"Test failed !"<< std::endl;}

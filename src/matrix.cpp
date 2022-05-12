@@ -80,7 +80,8 @@ void Matrix<T>::inverse(Matrix<T> & inv) {
 
   double det_K = this->determinant();  
   // check singularity
-  assert(det_K != 0);
+  //assert(det_K != 0); // assertion never tripped ! 
+  assert((1e-6<det_K)||(-1e-6>det_K));
 
   Matrix<T> tmp(this->rows-1, this->cols-1);
     
@@ -119,6 +120,36 @@ void Matrix<T>::transpose(Matrix<T> & a) {
     }
   }
 }
+
+
+template<typename T>
+
+void Matrix<T>::permute_cols(UInt i, UInt j){
+	
+	std::vector<T> col_tmp(this->cols);
+	
+	std::copy_n(this->storage.begin()+i*this->rows, this->cols, col_tmp.begin()); // col_tmp = col_i
+	
+	std::swap_ranges(this->storage.begin()+j*this->rows, this->storage.begin()+(j+1)*this->rows, col_tmp.begin()); //we swap col_j and col_tmp
+	
+	std::swap_ranges(this->storage.begin()+i*this->rows, this->storage.begin()+(i+1)*this->rows, col_tmp.begin()); //we swap col_i and col_tmp
+	
+	}
+
+template<typename T>
+void Matrix<T>::permute_rows(UInt i, UInt j){
+	
+	double tmp;
+	
+	for (UInt k=0; k<this->rows; k++){
+		
+		tmp = this->storage[i + k*this->cols];
+		this->storage[i + k*this->rows] = this->storage[j + k*this->rows];
+		this->storage[j + k*this->rows] = tmp;
+		
+		}
+	
+	}
 
 template class Matrix<UInt>;
 template class Matrix<double>;

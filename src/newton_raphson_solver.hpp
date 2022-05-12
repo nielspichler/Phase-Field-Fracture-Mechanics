@@ -33,27 +33,19 @@
 #include "common.hpp"
 #include "matrix.hpp"
 #include "vector.hpp" //for vector operator overloading
-
+#include "nonlinear_solver.hpp"
 #include "matrix.hpp"
 
 
 //Solution:start
-class NRsolver {
+class NRsolver : public NLsolver {
   /* ------------------------------------------------------------------------ */
   /* Constructors/Destructors                                                 */
   /* ------------------------------------------------------------------------ */
 public:
-  NRsolver() : NRsolver(100, 1e-6) {};
+  NRsolver() : NLsolver(100, 1e-6) {};
 
-  NRsolver(int max_iter,double epsilon) {
-	  
-  std::cout << "init NRsolver with "
-  << "max_iter = " << max_iter << " and "
-  << "epsilon = " << epsilon << std::endl;
-
-  this->max_iter = max_iter;
-  this->epsilon = epsilon;  
-	};
+  NRsolver(int max_iter,double epsilon) : NLsolver(max_iter,epsilon) {};
 
   ~NRsolver() = default;
   /* ------------------------------------------------------------------------ */

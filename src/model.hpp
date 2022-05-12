@@ -39,8 +39,8 @@
 
 #include "phaseelement.hpp"
 #include "dispelement.hpp"
+#include "lu_solver.hpp"
 #include "newton_raphson_solver.hpp"
-
 
 using UInt = unsigned int;
 
@@ -79,7 +79,7 @@ public:
   /*! @param solver shared pointer to an object of class NLsolver 
    * register a solver
    */
-  void registerSolver(std::shared_ptr<NRsolver> solver);
+  void registerSolver(std::shared_ptr<NLsolver> solver);
 
   //! solves the equation
   void solve(); 
@@ -246,7 +246,7 @@ private:
   std::vector<double> Res_d;
 
   //! pointer to solver used
-  std::shared_ptr<NRsolver> solver;
+  std::shared_ptr<NLsolver> solver;
 };
 
 #endif

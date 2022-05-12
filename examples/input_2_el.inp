@@ -22,9 +22,17 @@ $element 2 2 3 6 5 1 210. 0.3 0.005  # index node1 node2 node3 node4 type elasti
 			# Dirichlet BC
 $bcd 1 1 1 0.0		# index node direction value (imposed displacements, Dirichlet)
 $bcd 2 1 2 0.0		# 
-$bcd 3 4 1 0.0
-$bcd 4 4 2 0.0
-$bcd 5 3 1 0.2
-$bcd 5 6 1 0.2
+$bcd 3 2 1 0.0
+$bcd 4 2 2 0.0
+$bcd 5 3 1 0.0
+$bcd 6 3 2 0.0
+
+$bcd 7 4 1 0.0
+$bcd 8 4 2 0.2
+$bcd 9 5 1 0.0
+$bcd 10 5 2 0.2
+$bcd 11 6 1 0.0
+$bcd 12 6 2 0.2
+
 
 $init 5 0.3		# node number initial damage

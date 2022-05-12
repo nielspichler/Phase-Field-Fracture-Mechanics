@@ -31,11 +31,11 @@ $bcd 4 2 2 0.0
 $bcd 5 3 1 0.0
 $bcd 6 3 2 0.0
 
-#$bcd 7 7 1 0.0		# index node direction value (imposed displacements, Dirichlet)
+$bcd 7 7 1 0.0		# index node direction value (imposed displacements, Dirichlet)
 $bcd 8 7 2 0.2		# 
-#$bcd 9 8 1 0.0
+$bcd 9 8 1 0.0
 $bcd 10 8 2 0.2
-#$bcd 11 9 1 0.0
+$bcd 11 9 1 0.0
 $bcd 12 9 2 0.2
 
 $init 4 0.3		# node number initial damage
