@@ -316,22 +316,29 @@ void Model::output_nodal(const std::string & odir, const std::vector<double> & n
 	output_file.precision(10);
 	
 	if (step == 0){
-		output_file << field_name <<"_results_node_number:";
+		//output_file << field_name <<"_results_node_number:";
 		for(UInt i = 0; i<nb_nodes; i++){
-			output_file <<" Node_"<< i; // writes the x coordinate
+			if (i==0){output_file <<"Node_"<< i;}
+			else{output_file <<" Node_"<< i;} // writes the x coordinate
 			}
-		output_file << "\nX_coord:";
+		//output_file << "\nX_coord:";
+		output_file << "\n";
 		for(UInt i = 0; i<nb_nodes; i++){
-			output_file <<" "<< coordinates(0,i); // writes the x coordinate
+			if (i==0){output_file << coordinates(i,0);}
+			else{output_file <<" "<< coordinates(i,0);} // writes the x coordinate
 			}
-		output_file << "\nY_coord:";
+		//output_file << "\nY_coord:";
+		output_file << "\n";
 		for(UInt i = 0; i<nb_nodes; i++){
-			output_file << " " << coordinates(1,i); // writes the y coordinate
+			if (i==0){output_file << coordinates(i,1);}
+			else{output_file <<" "<< coordinates(i,1);}  // writes the y coordinate
 			}
 		}
-	output_file << "\nStep_"<<step<<":";
+	//output_file << "\nStep_"<<step<<":";
+	output_file << "\n";
 	for(UInt i = 0; i<nb_nodes; i++){
-		output_file  << " "<< nodal_value[i]; // writes the y coordinate
+		if (i==0){output_file  << nodal_value[i];} // writes the y coordinate
+		else{output_file <<" "<< nodal_value[i];}
 		}
 	assert(output_file.good());
 	output_file.close();
@@ -348,15 +355,19 @@ void Model::output_elemental(const std::string & odir, const std::vector<double>
 
 	
 	if (step == 0){
-		output_file << field_name <<"_results_element_number:";
+		//output_file << field_name <<"_results_element_number:";
+		
 		for(UInt i = 0; i<nb_elements; i++){
-			output_file <<" element_"<< i; // writes the x coordinate
+			if (i==0){output_file <<"element_"<< i;}
+			else{output_file <<" element_"<< i;} // writes the x coordinate
 			}
-
+		
 		}
-	output_file << "\nStep_"<<step<<":";
+	//output_file << "\nStep_"<<step<<":";
+	output_file << "\n";
 	for(UInt i = 0; i<nb_elements; i++){
-		output_file  << " "<< elemental_value[i]; // writes the y coordinate
+		if (i==0){output_file  << elemental_value[i];}
+		else{output_file  << " "<< elemental_value[i];} // writes the y coordinate
 		}
 	assert(output_file.good());
 	output_file.close();

@@ -181,7 +181,12 @@ if (success == true){std::cout<<"Model constructor 1 element: Test sucessful"<< 
 	else if (model_2.get_gc()[0] != 0.005){success = false;}
 	else if (success == true){std::cout<<"Properties correctly parsed"<< std::endl;}
 	else {std::cout<<"Something unexpected has happened #2"<< std::endl;}
-
+	
+	if (model_2.get_Phase()[3]!=0.3){success = false;}
+	else if (success == true){std::cout<<"initial damage ok"<< std::endl;}
+	else {std::cout<<"Something unexpected has happened #2"<< std::endl;}
+	
+	
 return 0;
 
 }
