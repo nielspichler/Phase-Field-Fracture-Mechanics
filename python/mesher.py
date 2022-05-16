@@ -4,15 +4,15 @@ from mesh_parts import *
 
 if __name__ == '__main__':
 
-    lx = 20
-    ly = 20
+    lx = 1
+    ly = 1
 
-    x_disc = 41 # nb nodes in x dir
-    y_disc = 41 # nb nodes in y dir
+    x_disc = 51 # nb nodes in x dir
+    y_disc = 51 # nb nodes in y dir
 
-    crack = [0,10,2,10] # x start, y start, x finish, y finish (needs to coincide with nodes)
+    crack = [0,0.5,0.5,0.5] # x start, y start, x finish, y finish (needs to coincide with nodes)
 
-    lc = 0.1
+    lc = 0.0075
     steps = 1000
 
     file_name = "input_file.inp"
@@ -20,7 +20,7 @@ if __name__ == '__main__':
     bc_1 = BC(0, 0, 0) # edge, direction, amplitude
     bc_2 = BC(0, 1, 0)
     bc_3 = BC(1, 0, 0)
-    bc_4 = BC(2, 1, 1)
+    bc_4 = BC(2, 1, 0.1)
     bc_5 = BC(2, 0, 0)
     bc_6 = BC(3, 0, 0)
 
@@ -54,6 +54,7 @@ if __name__ == '__main__':
         for j in range(x_disc-1):
 
             e = Element(i*x_disc+j,i*x_disc+j+1, (i+1)*x_disc+j, (i+1)*x_disc+j+1)
+            e.set_g(2.7e-3)
             element_list.append(e)
 
     nodes_to_duplicate = []

@@ -31,7 +31,7 @@ class Element:
         self.E = E
     def set_nu(self, nu):
         self.nu = nu
-    def set_E(self, g):
+    def set_g(self, g):
         self.g = g
 
     def write_element(self, f, number):
