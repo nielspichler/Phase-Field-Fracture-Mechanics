@@ -7,7 +7,7 @@ if __name__ == '__main__':
 
     # own results
 
-    sim_name = sim_1
+    sim_name = "sim_paper"
 
     data_d = pd.read_csv("../build/examples/output/output_"+sim_name+"Phase.dat", sep = " ")
     data_s1 = pd.read_csv("../build/examples/output/output_"+sim_name+"F1.dat", sep = " ")
@@ -25,20 +25,20 @@ if __name__ == '__main__':
 
     # ABAQUS plot
     
-    ax[0].plot(data_ABQ['_U:U2 PI: ELEM-1N: 3'][:], data_ABQ['_SDV15 PI: ELEM-1E: 3 N: 3'][:], marker = 'x', alpha = 0.5, label = "ABAQUS node 3")
+    ax[0].plot(data_ABQ['_U:U2 PI: ELEM-1N: 3'][:], data_ABQ['_SDV15 PI: ELEM-1E: 3 N: 3'][:], marker = 'x', markersize = 5, alpha = 0.5, label = "ABAQUS node 3",)
 
-    ax[1].plot(data_ABQ['_U:U2 PI: ELEM-1N: 3'][:], data_ABQ['_RF:RF2 PI: ELEM-1 N: 3'][:], marker = 'x', alpha = 0.5, label = "ABAQUS node 3 Rf2")
+    ax[1].plot(data_ABQ['_U:U2 PI: ELEM-1N: 3'][:], data_ABQ['_RF:RF2 PI: ELEM-1 N: 3'][:], marker = 'x', markersize = 5,alpha = 0.5, label = "ABAQUS node 3 Rf2")
 
-    ax[2].plot(data_ABQ['_U:U2 PI: ELEM-1N: 3'][:], data_ABQ['_SDV16 PI: ELEM-1E: 3 N: 3'][:], marker = 'x', alpha = 0.5, label = "ABAQUS node 3")
+    ax[2].plot(data_ABQ['_U:U2 PI: ELEM-1N: 3'][:], data_ABQ['_SDV16 PI: ELEM-1E: 3 N: 3'][:], marker = 'x', markersize = 5,alpha = 0.5, label = "ABAQUS node 3")
 
     # Numerical solution
 
-    for i in ["Node_1", "Node_2",]: # ["Node_0", "Node_1", "Node_2", "Node_3",]
-        ax[0].plot(data_u2[i][2:], data_d[i][2:], '.', markerfacecolor = None, alpha = 0.2, label = i)
-        #ax[1].plot(data_u2[i][2:], data_s1[i][2:], '--', markerfacecolor = None, alpha = 0.2, label = i+"_dir1")
-        ax[1].plot(data_u2[i][2:], -data_s2[i][2:], '.', markerfacecolor = None, alpha = 0.2, label = i+"_dir2")
+    for i in ["Node_0", "Node_1", "Node_2", "Node_3",]: # ["Node_0", "Node_1", "Node_2", "Node_3",]
+        ax[0].plot(data_u2["Node_2"][2:], data_d[i][2:], '.', markerfacecolor = None, alpha = 0.5, label = i)
+        #ax[1].plot(data_u2["Node_2"][2:], data_s1[i][2:], '.', markerfacecolor = None, alpha = 0.5, label = i+"_dir1")
+        ax[1].plot(data_u2["Node_2"][2:], data_s2[i][2:], '.', markerfacecolor = None, alpha = 0.5, label = i+"_dir2")
 
-    ax[2].plot(data_u2["Node_2"][2:], data_h["element_0"][:], '.', markerfacecolor = None, alpha = 0.2, label = "history_variable")
+    ax[2].plot(data_u2["Node_2"][2:], data_h["element_0"][:], '.', markerfacecolor = None, alpha = 0.5, label = "history_variable")
 
     # Analytical solution (see paper)
     c22 = 210. * (1-0.3)/((1+0.3)*(1-2*0.3))
@@ -60,12 +60,12 @@ if __name__ == '__main__':
     ax[0].grid()
     
     ax[1].set_xlabel("strain")
-    ax[1].set_ylabel("Rf")
+    ax[1].set_ylabel("Reaction force")
     ax[1].legend()
     ax[1].grid()
     
     ax[2].set_xlabel("strain")
-    ax[2].set_ylabel("H")
+    ax[2].set_ylabel("History variable")
     ax[2].legend()
     ax[2].grid()
     

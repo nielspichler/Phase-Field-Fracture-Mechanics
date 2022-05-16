@@ -58,3 +58,7 @@ if(TEHPC_DOC)
   add_subdirectory(docs)
 endif()
 
+# plotters
+add_subdirectory(python)
+
+

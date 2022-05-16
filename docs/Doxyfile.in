@@ -1,4 +1,4 @@
-PROJECT_NAME           = "tehpc2022"
+PROJECT_NAME           = "Phase-field FE"
 
 PREDEFINED             = __cplusplus
 

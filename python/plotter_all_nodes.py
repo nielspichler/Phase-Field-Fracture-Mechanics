@@ -7,7 +7,7 @@ if __name__ == '__main__':
 
     # own results
 
-    sim_name = 'sim_4el'
+    sim_name = 'sim_4el_small_steps'
 
     data_d = pd.read_csv("../build/examples/output/output_"+sim_name+"Phase.dat", sep = " ")
     data_s1 = pd.read_csv("../build/examples/output/output_"+sim_name+"F1.dat", sep = " ")
@@ -30,7 +30,7 @@ if __name__ == '__main__':
         ax[1].plot(disp_norm, data_s2[i][:], '.', markerfacecolor = None, alpha = 0.2, label = i+"_dir2")
        
     for i in data_h.keys():
-    	ax[2].plot(data_h[i][:], '.', markerfacecolor = None, alpha = 0.2, label = "h"+i)
+    	ax[2].plot(data_h[i][:], '.', markerfacecolor = None, alpha = 0.2, label = "h "+i)
 
 
 

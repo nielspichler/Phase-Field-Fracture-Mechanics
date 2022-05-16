@@ -80,9 +80,8 @@ void Matrix<T>::inverse(Matrix<T> & inv) {
 
   double det_K = this->determinant();  
   // check singularity
-  //assert(det_K != 0); // assertion never tripped ! 
-  assert((1e-6<det_K)||(-1e-6>det_K));
-
+  assert(det_K != 0); // assertion never tripped !
+  
   Matrix<T> tmp(this->rows-1, this->cols-1);
     
   for (UInt m=0; m < this->rows; ++m) {

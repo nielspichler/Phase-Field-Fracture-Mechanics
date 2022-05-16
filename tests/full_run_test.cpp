@@ -37,7 +37,7 @@
 int main(/*int argc, char *argv[]*/)
 {
 
-  std::string file_name = "./../../examples/input_paper.inp";
+  std::string file_name = "./../../examples/input_tests.inp";
   Model model(file_name);
 
   model.assembly();
@@ -53,7 +53,7 @@ int main(/*int argc, char *argv[]*/)
   
   model.solve();
   
-  model.output_nodal("Test_output", model.get_Phase(), "Phase");
+  model.output_nodal(".", model.get_Phase(), "Phase");
   
 
 }
