@@ -379,7 +379,7 @@ void Model::iterate(const std::string & sim_name, std::string & odir)
 	Name = sim_name;
 	
 	std::shared_ptr<LU_solver> solver;
-	solver = std::make_shared<LU_solver>(500, 1e-6);
+	solver = std::make_shared<LU_solver>(500, 1e-8);
 	registerSolver(solver);
 	
 	std::cout<<"start of iterations\n";

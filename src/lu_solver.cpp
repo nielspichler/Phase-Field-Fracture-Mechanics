@@ -47,7 +47,7 @@ void LU_solver::LUPDecompose(Matrix<double>& A, std::vector<int>& P) {
             }
 
         //if (maxA < Tol) return 0; //failure, matrix is degenerate
-		assert(maxA > epsilon);
+		//assert(maxA > epsilon);
 
         if (imax != i) {
             //pivoting P
