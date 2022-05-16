@@ -182,7 +182,8 @@ int main(/*int argc, char *argv[]*/){
 	std::cout<<"Test if displacement residual assembly"<< std::endl;
 	test.test_matching_vectors(12,tol, Res_u_true, model.get_Res_u());
 	test.test_results();
-
+	
+	assert(test.passed());
 	
 	return 0;
 }

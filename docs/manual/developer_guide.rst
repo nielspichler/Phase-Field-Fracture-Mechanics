@@ -59,7 +59,7 @@ The :cpp:class:`Model` is the main class, it calls all other classes defined in 
 
    
 Provided in the course material
-===============================
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 BaseMatrix class
 ----------------

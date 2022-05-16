@@ -1,22 +1,6 @@
 /*
- * lu_solver.hpp
- * 
- * Copyright 2022 student <student@tehpc>
- * 
- * This program is free software; you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation; either version 2 of the License, or
- * (at your option) any later version.
- * 
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
- * 
- * You should have received a copy of the GNU General Public License
- * along with this program; if not, write to the Free Software
- * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,
- * MA 02110-1301, USA.
+ * copied and adapted from wikipedia
+ * https://en.wikipedia.org/wiki/LU_decomposition
  * 
  * 
  */
@@ -39,14 +23,36 @@
 class LU_solver : public NLsolver 
 {
 	public:
+	/*!
+	 * Default constructor for the solver
+	 */
 		LU_solver() : NLsolver(100, 1e-6) {};
-		
+	/*!
+	 * @param max_iter useless in this case
+	 * @param epsilon tolerance to check if the matrix is degenerate
+	 * Constructor for the solver
+	 */
 		LU_solver(int max_iter,double epsilon) : NLsolver(max_iter,epsilon) {};
-		
+	/*!
+	 * @param A pointer to a BaseMatrix
+	 * @param b vector of residues
+	 * @param x vector of unknowns
+	 * Will solve A*x=b using LU factorization
+	 */
 		void solve(std::shared_ptr<BaseMatrix<double> > A, const std::vector<double>& b, std::vector<double>& x);
-		
+	/*!
+	 * @param A Matrix to decompose
+	 * @param P vector of permutations
+	 * Will perform LU factorization of A
+	 */
 		void LUPDecompose(Matrix<double>& A, std::vector<int>& P);
-		
+	/*!
+	 * @param A decomposed matrix using LUPDecompose() method
+	 * @param P vector of permutations filled in LUPDecompose() method
+	 * @param b vector of residues
+	 * @param x vector of unknowns
+	 * Solves LUx = b
+	 */
 		void LUPSolve(Matrix<double>& A, std::vector<int>& P, const std::vector<double>& b, std::vector<double>& x);
 		
 	private:

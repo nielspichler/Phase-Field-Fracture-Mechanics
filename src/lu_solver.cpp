@@ -1,8 +1,11 @@
-
+/*
+ * copied and adapted from wikipedia
+ * https://en.wikipedia.org/wiki/LU_decomposition
+ * 
+ * 
+ */
+ 
 #include "lu_solver.hpp"
-
-// Doolittle algo for LU decomposition
-
 
 void LU_solver::solve(std::shared_ptr<BaseMatrix<double> > Ap, const std::vector<double>& b, std::vector<double>& x)
 {
@@ -44,7 +47,7 @@ void LU_solver::LUPDecompose(Matrix<double>& A, std::vector<int>& P) {
             }
 
         //if (maxA < Tol) return 0; //failure, matrix is degenerate
-		assert(maxA > epsilon);
+		//assert(maxA > epsilon);
 
         if (imax != i) {
             //pivoting P
