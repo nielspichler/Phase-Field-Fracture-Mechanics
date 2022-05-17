@@ -42,7 +42,7 @@ DispElement::DispElement(Matrix<double> & loc_coordinates, std::vector<double> &
 	det = 0.;
 	d = 0.;
 	w = 1.; // weight in gauss integration
-	k = 1e-5; //stabilisation factor
+	k = 1e-7; //stabilisation factor
 	psi_0 = 0.;
 	eps.resize(dim);
 	sig.resize(dim);
