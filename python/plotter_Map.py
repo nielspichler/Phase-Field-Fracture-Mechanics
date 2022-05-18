@@ -44,10 +44,9 @@ if __name__ == '__main__':
     #frames = [2,5,15]
     # Numerical solution
 
-    fig, ax = plt.subplots(nrows = len(frames), ncols = 3, figsize = (14,10.8,), constrained_layout = True)
+    fig, ax = plt.subplots(nrows = len(frames), ncols = 4, figsize = (17,9.8,), constrained_layout = True)
     i=0
     
-
     for f in frames: 
         # ax[i,0].pcolormesh(x.reshape(3,3),y.reshape(3,3),data_d.values[f,:].reshape(3,3), cmap = "coolwarm", vmin = 0, vmax = 1, shading = "gouraud", alpha = 0.5)
         # ax[i,1].pcolormesh(x.reshape(3,3),y.reshape(3,3),data_u2.values[f,:].reshape(3,3), cmap = "coolwarm", vmin = 0, vmax = 0.2, shading = "gouraud", alpha = 0.5)
@@ -55,14 +54,21 @@ if __name__ == '__main__':
         im_1 = ax[i,0].scatter(x,y,c = data_d.values[f,:],s=20, cmap = "jet")#, vmin = 0, vmax = 1,
         im_2 = ax[i,1].scatter(x,y,c = data_u2.values[f,:],s=20, cmap = "jet")#, vmin = 0, vmax = 0.2,
         im_3 = ax[i, 2].scatter(x, y, c=data_u1.values[f, :], s=20, cmap="jet")  # , vmin = 0, vmax = 0.2,
+                
+        nodal_forces = np.sqrt(data_s1.values[f,:]**2 + data_s2.values[f,:]**2)
+        im_4 = ax[i, 3].scatter(x, y, c=nodal_forces, s=2, cmap="jet")  # , vmin = 0, vmax = 0.2,
+        ax[i,3].quiver(x,y, data_s1.values[f,:], data_s2.values[f,:], nodal_forces, cmap = "jet")
+
 
         ax[i,0].set_title('Damage, step: ' + str(f-2))
         ax[i,1].set_title('U2, step: ' + str(f-2))
         ax[i, 2].set_title('U1, step: ' + str(f - 2))
+        ax[i, 3].set_title('RF_resultant, step: ' + str(f - 2))
         
         fig.colorbar(im_1, ax=ax[i,0])
         fig.colorbar(im_2, ax=ax[i,1])
         fig.colorbar(im_3, ax=ax[i, 2])
+        fig.colorbar(im_4, ax=ax[i, 3])
 
         #print(data_u2.values[f,:])
         print(f)

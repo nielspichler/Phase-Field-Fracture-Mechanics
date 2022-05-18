@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.1)
-project(tehpc2022)
+project(Phase-Field_FE)
 enable_language(CXX)
 
 # flags for compilation (options)
@@ -33,7 +33,7 @@ option(TEHPC_VERBOSE "write extra information to console" OFF)
 # examples: define add_simulation function
 function(add_simulation SIM_EXE)
   add_executable(${SIM_EXE} ${SIM_EXE}.cpp)
-  target_link_libraries(${SIM_EXE} tehpc2022)
+  target_link_libraries(${SIM_EXE} Phase-Field_FE)
 endfunction()
 
 # examples: option to de/activate compilation of examples

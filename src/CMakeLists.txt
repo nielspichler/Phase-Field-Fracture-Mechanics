@@ -33,7 +33,7 @@ set(TEHPC_SRC
 
 set(TEHPC_DEPEND_FILES ${TEHPC_SRC} ${TEHPC_HEADER} PARENT_SCOPE)
 
-add_library(tehpc2022 ${TEHPC_SRC})
+add_library(Phase-Field_FE ${TEHPC_SRC})
 
 # if linking to other libraries, e.g. MPI
-target_link_libraries(tehpc2022)
+target_link_libraries(Phase-Field_FE)

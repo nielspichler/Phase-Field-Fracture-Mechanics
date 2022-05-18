@@ -2,7 +2,7 @@ find_package(Doxygen REQUIRED)
 find_package(Sphinx REQUIRED)
 
 # Find all the public headers
-get_target_property(TEHPC_PUBLIC_HEADER_DIR tehpc2022 INTERFACE_INCLUDE_DIRECTORIES)
+get_target_property(TEHPC_PUBLIC_HEADER_DIR Phase-Field_FE INTERFACE_INCLUDE_DIRECTORIES)
 file(GLOB_RECURSE TEHPC_PUBLIC_HEADERS ${TEHPC_PUBLIC_HEADER_DIR}/*.h)
 
 set(DOXYGEN_INPUT_DIR ${PROJECT_SOURCE_DIR}/src)
@@ -39,7 +39,7 @@ add_custom_command(OUTPUT ${SPHINX_INDEX_FILE}
 		COMMAND
 		${SPHINX_EXECUTABLE} -b html
 		# Tell Breathe where to find the Doxygen output
-		-Dbreathe_projects.tehpc2022=${DOXYGEN_OUTPUT_DIR}/xml
+		-Dbreathe_projects.Phase-Field_FE=${DOXYGEN_OUTPUT_DIR}/xml
 		${SPHINX_SOURCE} ${SPHINX_BUILD}
 		WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}
 		DEPENDS

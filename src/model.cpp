@@ -47,6 +47,9 @@ void Model::readInput(const std::string & fname)
     else if (keyword == "$steps") {
       sstr >> nb_steps;
     }
+	else if (keyword == "$damage") {
+      sstr >> damage;
+    }
     else if (keyword == "$nodes") {
       sstr >> nb_nodes;
     }
@@ -153,13 +156,6 @@ void Model::readInput(const std::string & fname)
       sstr >> bc_disp_value(node-1, dir-1);
       bc_disp(node-1, dir-1) = 1; // set to ON
     }
-    
-    else if (keyword == "$init") {
-      int node;
-      sstr >> node;
-      sstr >> phase[node-1];
-    }
-    
     
   }
   read_file.close();
@@ -289,6 +285,7 @@ void Model::solve()
     solver->solve(K_u, Res_u.getStorage() * (-1.), ddisplacement.getStorage());
     displacement.getStorage() = displacement.getStorage() + ddisplacement.getStorage();
     // print solution to terminal (next time to file)
+    if (damage){
     #ifdef TEHPC_VERBOSE
     std::cout << "solution:" << std::endl;
     std::cout << displacement << std::endl;
@@ -305,6 +302,7 @@ void Model::solve()
     std::cout << "solution:" << std::endl;
     std::cout << phase << std::endl;
     #endif /* THEPC_VERBOSE */
+    }
 	}
 
 void Model::output_nodal(const std::string & odir, const std::vector<double> & nodal_value, const std::string & field_name)
@@ -379,7 +377,7 @@ void Model::iterate(const std::string & sim_name, std::string & odir)
 	Name = sim_name;
 	
 	std::shared_ptr<LU_solver> solver;
-	solver = std::make_shared<LU_solver>(500, 1e-8);
+	solver = std::make_shared<LU_solver>(500, 1e-6);
 	registerSolver(solver);
 	
 	std::cout<<"start of iterations\n";

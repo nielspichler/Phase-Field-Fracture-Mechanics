@@ -15,7 +15,10 @@ if __name__ == '__main__':
     lc = 0.1
     steps = 10000
     
-    G = 2.7e-5
+    G = 2.7e-3
+    nu = 0.3
+    
+    damage = 1
 
     file_name = "input_file.inp"
 
@@ -57,6 +60,7 @@ if __name__ == '__main__':
 
             e = Element(i*x_disc+j,i*x_disc+j+1, (i+1)*x_disc+j+1, (i+1)*x_disc+j)
             e.set_g(G)
+            e.set_nu(nu)
             element_list.append(e)
 
     nodes_to_duplicate = []
@@ -81,7 +85,7 @@ if __name__ == '__main__':
 
     f = open(file_name, 'a')
 
-    f.write("$dimensions 2\n$lc " + str(lc) + "\n$steps " + str(steps) + "\n")
+    f.write("$dimensions 2\n$lc " + str(lc) + "\n$steps " + str(steps) + "\n$damage " + str(damage) + "\n")
 
     f.write("$nodes " + str(node_number) + "\n")
     for n in node_list:

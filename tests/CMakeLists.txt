@@ -8,6 +8,7 @@ endfunction()
 tehpc_add_test(model_constructor_tests)
 tehpc_add_test(model_assembly_tests)
 tehpc_add_test(model_assembly_tests_multiple_el)
+tehpc_add_test(model_applyBC_tests)
 tehpc_add_test(full_run_test)
 tehpc_add_test(matrix_operations_test)
 
