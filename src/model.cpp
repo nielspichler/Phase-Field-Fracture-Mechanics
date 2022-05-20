@@ -167,9 +167,14 @@ void Model::readInput(const std::string & fname)
 
   Res_u.resize(nb_nodes, dim);
   Res_u = 0.;
+  Res_u_prev.resize(nb_nodes, dim);
+  Res_u_prev = 0.;
+  
   Res_d.resize(nb_nodes);
   std::fill(Res_d.begin(), Res_d.end(), 0.);
-  
+  Res_d_prev.resize(nb_nodes);
+  std::fill(Res_d_prev.begin(), Res_d_prev.end(), 0.);
+
   dphase.resize(nb_nodes);
   std::fill(dphase.begin(), dphase.end(), 0.);
   
@@ -189,7 +194,10 @@ void Model::assembly()
   (*K_u) = 0.0;
   (*K_d) = 0.0;
   
+  Res_u_prev=Res_u;
   Res_u = 0.;
+  
+  Res_d_prev = Res_d;
   std::fill(Res_d.begin(), Res_d.end(), 0.);
   
   // initializing local stiffnes matrix, residue vect
@@ -211,7 +219,7 @@ void Model::assembly()
       for (UInt j = 0; j < dim; ++j) {
           global_indices_u(e, 2*i+j) = j + dim * connectivity(e,i);
       }
-      global_indices_d(e, i) = connectivity(e,i); // ???
+      global_indices_d(e, i) = connectivity(e,i);
     }
   }
   
@@ -273,36 +281,81 @@ void Model::registerSolver(std::shared_ptr<NLsolver> solver_set)
     solver = solver_set;
   }
 
-void Model::solve()
+
+/*
+void Model::solve_step()
 {
-	#ifdef TEHPC_VERBOSE
-	std::cout << "Displacement matrix: " << std::endl;
-    std::cout << (*(K_u)) << std::endl;
-    std::cout << "Res_u matrix: " << std::endl;
-    std::cout << Res_u.getStorage() << std::endl;
-    #endif /* THEPC_VERBOSE */
     // call the solver (and the necessary input of the solver)
+    
     solver->solve(K_u, Res_u.getStorage() * (-1.), ddisplacement.getStorage());
     displacement.getStorage() = displacement.getStorage() + ddisplacement.getStorage();
+    assembly();
+    apply_bc((1.0)/nb_steps);
+    res = std::sqrt((Res_d-Res_d_prev)*(Res_d-Res_d_prev)) + 
+			std::sqrt((Res_u.getStorage()-Res_u_prev.getStorage())*(Res_u.getStorage()-Res_u_prev.getStorage()));
     // print solution to terminal (next time to file)
     if (damage){
-    #ifdef TEHPC_VERBOSE
-    std::cout << "solution:" << std::endl;
-    std::cout << displacement << std::endl;
-	std::cout << "Phase matrix: " << std::endl;
-    std::cout << (*(K_d)) << std::endl;
-    std::cout << Res_d << std::endl;
-    #endif /* THEPC_VERBOSE */
-    /* Your solution goes here */
-    // call the solver (and the necessary input of the solver)
-    solver->solve(K_d, Res_d * (-1.), dphase);
-    phase = phase + dphase;
-    // print solution to terminal (next time to file)
-    #ifdef TEHPC_VERBOSE
-    std::cout << "solution:" << std::endl;
-    std::cout << phase << std::endl;
-    #endif /* THEPC_VERBOSE */
+		// call the solver (and the necessary input of the solver)
+		solver->solve(K_d, Res_d * (-1.), dphase);
+		phase = phase + dphase;
+
     }
+	}
+*/
+void Model::solve_step()
+{
+	double res = 1;
+	for (UInt i=0; i<1000; i++){
+	
+	solver->solve(K_u, Res_u.getStorage()*(-1.0), ddisplacement.getStorage());					// K du = R_u -> du = K⁻1R_u
+	
+	displacement.getStorage() = displacement.getStorage() + ddisplacement.getStorage();	// u=u+du
+	
+	if(damage){
+		//std::cout<<"solve damage";
+		solver->solve(K_d, Res_d * (-1.0), dphase);
+		phase = phase + dphase;
+	
+	}
+	
+	assembly();						// Recompute K and Res as fct of the updated u
+	apply_bc(0.0);					// reset the BC, since u has the wanted value at the boundaries, we impose du=0 there 	
+	
+	res = std::sqrt(Res_u.getStorage()*Res_u.getStorage()) + std::sqrt(Res_d*Res_d); //
+	
+	if ((nb_nodes * res)<1e-5){
+		std::cout<<" converged, iter = "<<i<<"\n";
+		return;
+		}
+
+	}
+	
+	std::cout << "Convergence not reached, res = " <<res<< std::endl;
+	
+	}
+
+
+void Model::solve()
+{
+	std::cout<<"\nstart substep"<<std::flush;
+	UInt count = 0;
+	double res = 1.0;
+	assembly();
+	apply_bc((1.0)/nb_steps);
+	do{
+		
+		solve_step();
+		count +=1;
+		
+		assembly();
+		apply_bc((1.0)/nb_steps);
+		res = std::sqrt((Res_d-Res_d_prev)*(Res_d-Res_d_prev)) + 
+			std::sqrt((Res_u.getStorage()-Res_u_prev.getStorage())*(Res_u.getStorage()-Res_u_prev.getStorage()));
+			
+		std::cout<< "\r"<<"residue: "<<res<< std::flush;
+		}
+		while(nb_nodes * res>1e-6);
+	std::cout << "\x1b[A";
 	}
 
 void Model::output_nodal(const std::string & odir, const std::vector<double> & nodal_value, const std::string & field_name)
@@ -377,7 +430,7 @@ void Model::iterate(const std::string & sim_name, std::string & odir)
 	Name = sim_name;
 	
 	std::shared_ptr<LU_solver> solver;
-	solver = std::make_shared<LU_solver>(500, 1e-6);
+	solver = std::make_shared<LU_solver>(500, 1e-20);
 	registerSolver(solver);
 	
 	std::cout<<"start of iterations\n";
@@ -392,7 +445,7 @@ void Model::iterate(const std::string & sim_name, std::string & odir)
 		
 		apply_bc((1.0)/nb_steps); // thanks to the +1.0 the fraction of UInts is a double
 		
-		solve();
+		solve_step();
 		
 		output_nodal(odir, displacement(0), "u1");
 		output_nodal(odir, displacement(1), "u2");
@@ -428,6 +481,7 @@ void Model::localStiffness(int element, Matrix<double> & Ke_d, std::vector<doubl
 	
 	for (UInt i = 0;i<nb_nodes_per_element;i++)
 	{
+		// connectivity(e, i) gives the ith node of element e
 		loc_coordinates(i,0) = coordinates(connectivity(e, i),0);// x_i
 		loc_coordinates(i,1) = coordinates(connectivity(e, i),1);// y_i
 		

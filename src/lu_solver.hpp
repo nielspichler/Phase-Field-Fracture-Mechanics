@@ -54,7 +54,10 @@ class LU_solver : public NLsolver
 	 * Solves LUx = b
 	 */
 		void LUPSolve(Matrix<double>& A, std::vector<int>& P, const std::vector<double>& b, std::vector<double>& x);
-		
+	
+	
+	double LUPDeterminant(Matrix<double>& A, std::vector<int>& P);
+	
 	private:
 		/* add your private declarations */
 };

@@ -38,4 +38,3 @@ $bcd 10 8 2 0.2
 #$bcd 11 9 1 0.0
 $bcd 12 9 2 0.2
 
-$init 4 0.3		# node number initial damage

@@ -1,0 +1,40 @@
+$version 0.1
+
+$dimensions 2
+$lc 0.1 		# length scale parameter
+$steps 1000		# number of time steps
+
+$nodes 9
+$node 1 0.0 0.0 # index x-coord y-coord
+$node 2 1.0 0.0
+$node 3 2.0 0.0
+$node 4 0.0 1.0
+$node 5 1.0 1.0
+$node 6 2.0 1.0
+$node 7 0.0 2.0
+$node 8 1.0 2.0
+$node 9 2.0 2.0
+
+
+$elements 4
+$elementtype 1 4 	# type_idx nb_nodes_per_element
+$element 1 1 2 5 4 1 210. 0.0 0.005  # index node1 node2 node3 node4 type elastic_modulus Poisson Gc
+$element 2 2 3 6 5 1 210. 0.0 0.005  # index node1 node2 node3 node4 type elastic_modulus Poisson Gc
+$element 3 4 5 8 7 1 210. 0.0 0.005  # index node1 node2 node3 node4 type elastic_modulus Poisson Gc
+$element 4 5 6 9 8 1 210. 0.0 0.005  # index node1 node2 node3 node4 type elastic_modulus Poisson Gc
+
+			# Dirichlet BC
+$bcd 1 1 1 0.0		# index node direction value (imposed displacements, Dirichlet)
+$bcd 2 1 2 0.0		# 
+#$bcd 3 2 1 0.0
+$bcd 4 2 2 0.0
+#$bcd 5 3 1 0.0
+$bcd 6 3 2 0.0
+
+#$bcd 7 7 1 0.0		# index node direction value (imposed displacements, Dirichlet)
+$bcd 8 7 2 0.2		# 
+#$bcd 9 8 1 0.0
+$bcd 10 8 2 0.2
+#$bcd 11 9 1 0.0
+$bcd 12 9 2 0.2
+
