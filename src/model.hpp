@@ -247,10 +247,8 @@ private:
   // global residue vectors 
   //! global displacement residue vector (nodal forces)
   Array<double> Res_u;
-  Array<double> Res_u_prev;
   //! global phase residue vector
   std::vector<double> Res_d;
-  std::vector<double> Res_d_prev;
 
   //! pointer to solver used
   std::shared_ptr<NLsolver> solver;

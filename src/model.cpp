@@ -167,13 +167,11 @@ void Model::readInput(const std::string & fname)
 
   Res_u.resize(nb_nodes, dim);
   Res_u = 0.;
-  Res_u_prev.resize(nb_nodes, dim);
-  Res_u_prev = 0.;
+
   
   Res_d.resize(nb_nodes);
   std::fill(Res_d.begin(), Res_d.end(), 0.);
-  Res_d_prev.resize(nb_nodes);
-  std::fill(Res_d_prev.begin(), Res_d_prev.end(), 0.);
+
 
   dphase.resize(nb_nodes);
   std::fill(dphase.begin(), dphase.end(), 0.);
@@ -194,10 +192,8 @@ void Model::assembly()
   (*K_u) = 0.0;
   (*K_d) = 0.0;
   
-  Res_u_prev=Res_u;
   Res_u = 0.;
   
-  Res_d_prev = Res_d;
   std::fill(Res_d.begin(), Res_d.end(), 0.);
   
   // initializing local stiffnes matrix, residue vect
@@ -281,79 +277,32 @@ void Model::registerSolver(std::shared_ptr<NLsolver> solver_set)
     solver = solver_set;
   }
 
-
-/*
-void Model::solve_step()
-{
-    // call the solver (and the necessary input of the solver)
-    
-    solver->solve(K_u, Res_u.getStorage() * (-1.), ddisplacement.getStorage());
-    displacement.getStorage() = displacement.getStorage() + ddisplacement.getStorage();
-    assembly();
-    apply_bc((1.0)/nb_steps);
-    res = std::sqrt((Res_d-Res_d_prev)*(Res_d-Res_d_prev)) + 
-			std::sqrt((Res_u.getStorage()-Res_u_prev.getStorage())*(Res_u.getStorage()-Res_u_prev.getStorage()));
-    // print solution to terminal (next time to file)
-    if (damage){
-		// call the solver (and the necessary input of the solver)
-		solver->solve(K_d, Res_d * (-1.), dphase);
-		phase = phase + dphase;
-
-    }
-	}
-*/
 void Model::solve_step()
 {
 	double res = 1;
+	std::cout<<"\nstart substep... \n"<<std::flush;
 	for (UInt i=0; i<1000; i++){
-	
-	solver->solve(K_u, Res_u.getStorage()*(-1.0), ddisplacement.getStorage());					// K du = R_u -> du = K⁻1R_u
-	
-	displacement.getStorage() = displacement.getStorage() + ddisplacement.getStorage();	// u=u+du
-	
-	if(damage){
-		//std::cout<<"solve damage";
-		solver->solve(K_d, Res_d * (-1.0), dphase);
-		phase = phase + dphase;
-	
-	}
-	
-	assembly();						// Recompute K and Res as fct of the updated u
-	apply_bc(0.0);					// reset the BC, since u has the wanted value at the boundaries, we impose du=0 there 	
-	
-	res = std::sqrt(Res_u.getStorage()*Res_u.getStorage()) + std::sqrt(Res_d*Res_d); //
-	
-	if ((nb_nodes * res)<1e-5){
-		std::cout<<" converged, iter = "<<i<<"\n";
-		return;
+		// K du = -R_u -> du = K⁻1(-R_u)
+		solver->solve(K_u, Res_u.getStorage()*(-1.0), ddisplacement.getStorage());
+		// u=u+du
+		displacement.getStorage() = displacement.getStorage() + ddisplacement.getStorage();
+		if(damage){
+			// K dd = -R_d -> dd = K⁻1(-R_d)
+			solver->solve(K_d, Res_d * (-1.0), dphase);
+			// d=d+dd
+			phase = phase + dphase;
 		}
-	}
-	
+		assembly();						// Recompute K and Res as fct of the updated u and d
+		apply_bc(0.0);					// reset the BC, since u has the wanted value at the boundaries, we impose du=0
+		res = std::sqrt(Res_u.getStorage()*Res_u.getStorage()) + std::sqrt(Res_d*Res_d); // Norm of both residue makes up the residual
+		if ((nb_nodes * res)<1e-5){
+			std::cout<<"converged, iter = "<<i<<"                       ";
+			std::cout << "\x1b[A";
+			std::cout << "\x1b[A";
+			return;
+			}
+		}
 	std::cout << "Convergence not reached, res = " <<res<< std::endl;
-	
-	}
-
-
-void Model::solve()
-{
-	std::cout<<"\nstart substep"<<std::flush;
-	UInt count = 0;
-	double res = 1.0;
-	assembly();
-	apply_bc((1.0)/nb_steps);
-	do{
-		
-		solve_step();
-		count +=1;
-		
-		assembly();
-		apply_bc((1.0)/nb_steps);
-		res = std::sqrt((Res_d-Res_d_prev)*(Res_d-Res_d_prev)) + 
-			std::sqrt((Res_u.getStorage()-Res_u_prev.getStorage())*(Res_u.getStorage()-Res_u_prev.getStorage()));
-			
-		std::cout<< "\r"<<"residue: "<<res<< std::flush;
-		}
-		while(nb_nodes * res>1e-6);
 	std::cout << "\x1b[A";
 	}
 
@@ -365,7 +314,7 @@ void Model::output_nodal(const std::string & odir, const std::vector<double> & n
 	
 	output_file.precision(10);
 	
-	if (step == 0){
+	if (step == 0){ // writes header
 		//output_file << field_name <<"_results_node_number:";
 		for(UInt i = 0; i<nb_nodes; i++){
 			if (i==0){output_file <<"Node_"<< i;}
@@ -383,6 +332,11 @@ void Model::output_nodal(const std::string & odir, const std::vector<double> & n
 			if (i==0){output_file << coordinates(i,1);}
 			else{output_file <<" "<< coordinates(i,1);}  // writes the y coordinate
 			}
+			
+			if(field_name[0]=='F'){
+				return; // don't writethe forces if step =0
+				}
+			
 		}
 	//output_file << "\nStep_"<<step<<":";
 	output_file << "\n";
@@ -432,11 +386,14 @@ void Model::iterate(const std::string & sim_name, std::string & odir)
 	solver = std::make_shared<LU_solver>(500, 1e-20);
 	registerSolver(solver);
 	
+	
 	std::cout<<"start of iterations\n";
+	
 	for (UInt step = 0; step<nb_steps; step++){
 		
 		this->step = step;
 		std::cout<< "\r"<<"step: "<<step+1<< std::flush;
+		
 		assembly();
 		
 		output_nodal(odir, Res_u(0), "F1");
@@ -452,6 +409,11 @@ void Model::iterate(const std::string & sim_name, std::string & odir)
 		output_elemental(odir, history, "H");
 		
 		}
+	
+	// final computation of the reaction forces
+	assembly();
+	output_nodal(odir, Res_u(0), "F1");
+	output_nodal(odir, Res_u(1), "F2");
 	
 	std::cout<<"\nSIMULATION FINISHED ! :) \n";
 	
