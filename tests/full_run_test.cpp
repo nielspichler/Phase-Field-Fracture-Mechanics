@@ -51,7 +51,7 @@ int main(/*int argc, char *argv[]*/)
   
   std::cout<<*model.get_K_u();
   
-  model.solve();
+  model.solve_step();
   
   model.output_nodal(".", model.get_Phase(), "Phase");
   

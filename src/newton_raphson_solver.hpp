@@ -23,29 +23,39 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  *}
  */
-
 #ifndef __NRSOLVER__HH__
 #define __NRSOLVER__HH__
 
-#include <string>
-#include <vector>
+//SP:#include <string>
+//SP:#include <vector>
 
-#include "common.hpp"
+//SP:#include "common.hpp"
+//SP:#include "matrix.hpp"
+//SP:#include "vector.hpp" //for vector operator overloading
+
 #include "matrix.hpp"
-#include "vector.hpp" //for vector operator overloading
+
+//Solution:start
 #include "nonlinear_solver.hpp"
-#include "matrix.hpp"
-
+//Solution:end
 
 //Solution:start
 class NRsolver : public NLsolver {
+//Solution:end
+//SP:class NRsolver {
   /* ------------------------------------------------------------------------ */
   /* Constructors/Destructors                                                 */
   /* ------------------------------------------------------------------------ */
 public:
-  NRsolver() : NLsolver(100, 1e-6) {};
+  NRsolver() : NRsolver(100, 1e-6) {};
 
+  //Solution:start
   NRsolver(int max_iter,double epsilon) : NLsolver(max_iter,epsilon) {};
+  //Solution:end
+  //SP:NRsolver(int max_iter,double epsilon) {
+    //SP:this->max_iter = max_iter;
+    //SP:this->epsilon = epsilon;  
+  //SP:};
 
   ~NRsolver() = default;
   /* ------------------------------------------------------------------------ */
@@ -57,12 +67,12 @@ public:
 	     const std::vector<double>& b, std::vector<double>& x);
 
 private:
-  // compute residual f = A * x - b
+  //! compute residual f = A * x - b
   void myFun(Matrix<double> & A,
 	     const std::vector<double>& b, std::vector<double>& x,
 	     std::vector<double>& f);
   
-  // compute f' = A
+  //! compute f' = A
   void myFunDerivative(const Matrix<double>& A,
 		       Matrix<double>& dfdx);
   
@@ -74,9 +84,12 @@ private:
   /* ------------------------------------------------------------------------ */
 public:
   void printInfo() {
-    std::cout << "Nonlinear solver:" << "\n";
-    std::cout << "  maximum number of iterations: " << this->max_iter << "\n";
-    std::cout << "  tolerance: " << std::scientific << this->epsilon << std::endl;
+    //Solution:start
+    NLsolver::printInfo();
+    //Solution:end
+    //SP:std::cout << "Nonlinear solver:" << "\n";
+    //SP:std::cout << "  maximum number of iterations: " << this->max_iter << "\n";
+    //SP:std::cout << "  tolerance: " << std::scientific << this->epsilon << std::endl;
     std::cout << "  method: newton raphson method" << std::endl;
   }
 
@@ -84,11 +97,11 @@ public:
   /* Class Members                                                            */
   /* ------------------------------------------------------------------------ */
 private:
-  // user-prescribed maximum number of iterations
-  int max_iter;
+  //SP:// user-prescribed maximum number of iterations
+  //SP:int max_iter;
 
-  // user-prescribed epsilon
-  double epsilon;  
+  //SP:// user-prescribed epsilon
+  //SP:double epsilon;  
 };
 
 #endif

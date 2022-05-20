@@ -19,7 +19,6 @@
 #include "nonlinear_solver.hpp"
 #include "matrix.hpp"
 
-
 class LU_solver : public NLsolver 
 {
 	public:
@@ -54,7 +53,14 @@ class LU_solver : public NLsolver
 	 * Solves LUx = b
 	 */
 		void LUPSolve(Matrix<double>& A, std::vector<int>& P, const std::vector<double>& b, std::vector<double>& x);
-		
+	
+	/*!
+	 * @param A decomposed matrix using LUPDecompose() method
+	 * @param P vector of permutations filled in LUPDecompose() method
+	 * returns determinant of A
+	 */
+	double LUPDeterminant(Matrix<double>& A, std::vector<int>& P);
+	
 	private:
 		/* add your private declarations */
 };

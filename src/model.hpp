@@ -82,6 +82,9 @@ public:
   void registerSolver(std::shared_ptr<NLsolver> solver);
 
   //! solves the equation
+  void solve_step(); 
+  
+  //! solves the equation
   void solve(); 
   
   /*!
@@ -196,6 +199,8 @@ private:
   UInt step = 0;
   //! simulation name
   std::string Name = "default";
+  //! sets if damage is active
+  UInt damage = 1;
 
   // nodal information
   //! number of nodes

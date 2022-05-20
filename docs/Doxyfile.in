@@ -1,4 +1,4 @@
-PROJECT_NAME           = "Phase-field FE"
+PROJECT_NAME           = "Phase-Field_FE"
 
 PREDEFINED             = __cplusplus
 

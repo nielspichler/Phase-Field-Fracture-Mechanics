@@ -10,23 +10,26 @@ if __name__ == '__main__':
     x_disc = 21 # nb nodes in x dir
     y_disc = 21 # nb nodes in y dir
 
-    crack = [0,0.5,0.5,0.5] # x start, y start, x finish, y finish (needs to coincide with nodes)
+    crack = [0,0.5,0,0.5] # x start, y start, x finish, y finish (needs to coincide with nodes)
 
     lc = 0.1
-    steps = 10000
+    steps = 100
     
-    G = 2.7e-5
+    G = 2.7e-3
+    nu = 0.0
+    
+    damage = 0
 
-    file_name = "input_file.inp"
+    file_name = "input_file_symm_BC.inp"
 
     bc_1 = BC(0, 0, 0) # edge, direction, amplitude
-    bc_2 = BC(0, 1, 0)
+    bc_2 = BC(0, 1, -0.05)
     bc_3 = BC(1, 0, 0)
     bc_4 = BC(2, 1, 0.05)
     bc_5 = BC(2, 0, 0)
     bc_6 = BC(3, 0, 0)
 
-    BC_list = [bc_1, bc_2, bc_4, ]# bc_3,bc_5,
+    BC_list = [bc_1, bc_2, bc_4, bc_5,]# bc_3,
 
     nb_nodes = x_disc*y_disc
     nb_el = (x_disc-1) * (y_disc)
@@ -57,6 +60,7 @@ if __name__ == '__main__':
 
             e = Element(i*x_disc+j,i*x_disc+j+1, (i+1)*x_disc+j+1, (i+1)*x_disc+j)
             e.set_g(G)
+            e.set_nu(nu)
             element_list.append(e)
 
     nodes_to_duplicate = []
@@ -81,7 +85,7 @@ if __name__ == '__main__':
 
     f = open(file_name, 'a')
 
-    f.write("$dimensions 2\n$lc " + str(lc) + "\n$steps " + str(steps) + "\n")
+    f.write("$dimensions 2\n$lc " + str(lc) + "\n$steps " + str(steps) + "\n$damage " + str(damage) + "\n")
 
     f.write("$nodes " + str(node_number) + "\n")
     for n in node_list:

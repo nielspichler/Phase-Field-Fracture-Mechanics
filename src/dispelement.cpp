@@ -26,9 +26,10 @@ DispElement::DispElement(Matrix<double> & loc_coordinates, std::vector<double> &
 	else{std::cout<<"Only 4 nodes element are implemnted"; return;}
 		
 	C.resize(3,3);
+	C=0.0;
 	C(0,0) = prop[0]/((1+prop[1]) * (1-2*prop[1])) * (1-prop[1]);
 	C(1,1) = prop[0]/((1+prop[1]) * (1-2*prop[1])) * (1-prop[1]);
-	C(2,2) = prop[0]/((1+prop[1]) * (1-2*prop[1])) * (1-2*prop[1])/2;
+	C(2,2) = prop[0]/(2*(1+prop[1]));
 	C(0,1) = prop[0]/((1+prop[1]) * (1-2*prop[1])) * (prop[1]);
 	C(1,0) = prop[0]/((1+prop[1]) * (1-2*prop[1])) * (prop[1]);
 	
@@ -38,7 +39,11 @@ DispElement::DispElement(Matrix<double> & loc_coordinates, std::vector<double> &
 	J.resize(dim, dim);// 2X2
 	invJ.resize(dim, dim);// 2X2
 	dNdx.resize(dim, coordinates.nbRows());// 2x4
-	B.resize((dim-1)*(dim-1)+2, dim*coordinates.nbRows()); // (dim-1)²+2 gives 3 for dim = 2 and 6 form dim = 3 (3x8)
+	if (dim == 2)
+	{
+		B.resize(3,8); // 
+	}
+	B=0.0;
 	det = 0.;
 	d = 0.;
 	w = 1.; // weight in gauss integration
@@ -52,7 +57,9 @@ void DispElement::GetStiffnessAndRes(Matrix<double> & Ke, std::vector<double> & 
 {
 	Ke = 0.;
 	std::fill(res.begin(), res.end(), 0.);
-	B=0.;
+	B=0.0;
+	
+	//std::cout<<"U \n"<<nodal_u;
 	
 	for (UInt i=0; i<intpt.nbRows(); i++) // loop over the integration points
 	{
@@ -68,7 +75,7 @@ void DispElement::GetStiffnessAndRes(Matrix<double> & Ke, std::vector<double> & 
 		invJ(0,1) = -J(0,1)/det;
 		invJ(1,1) = J(0,0)/det;
 		dNdx = invJ * dNdxi; // 2x4 = 2x2*2x4
-		
+		//std::cout<<"dNdx \n"<<dNdx;
 		for (UInt j=0;j<coordinates.nbRows();j++) // loop over N_j (each submatrix in B)
 		{
 			for (int k=0;k<dim;k++) // fill diagonals of each submatrix
@@ -77,8 +84,8 @@ void DispElement::GetStiffnessAndRes(Matrix<double> & Ke, std::vector<double> & 
 			}
 			if (dim == 2)
 			{
-				B(dim, 0) = dNdx(1, j);
-				B(dim, 1) = dNdx(0, j);
+				B(dim, 2*j) = dNdx(1, j);
+				B(dim, 2*j+1) = dNdx(0, j);
 			}
 			else // dim = 3
 			{
@@ -93,8 +100,10 @@ void DispElement::GetStiffnessAndRes(Matrix<double> & Ke, std::vector<double> & 
 		// compute stress
 		
 		eps = B * nodal_u; // 3x1 = 3x8*8x1
+		//std::cout<<"B \n"<<B;
+		//std::cout<<"eps \n"<<eps;
 		sig = C*eps; // 3x1 = 3x3*3x1
-		
+		//std::cout<<"Sigma \n"<<sig;
 		// compute elastic strain energy density
 		psi_0 += (1.0/intpt.nbRows()) * 0.5 * (eps * sig); // the elemental strain energy is the average of the integration points energy
 		

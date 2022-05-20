@@ -57,7 +57,7 @@ int main(/*int argc, char *argv[]*/){
 	
 	for (int i=0;i<6;i++){
 		phase[i] = rand();
-		for (int j=0; i<2;i++){
+		for (int j=0; j<2;j++){
 			displacement(i,j) = 0.1 * rand();
 			}
 		}

@@ -8,9 +8,11 @@ endfunction()
 tehpc_add_test(model_constructor_tests)
 tehpc_add_test(model_assembly_tests)
 tehpc_add_test(model_assembly_tests_multiple_el)
+tehpc_add_test(model_applyBC_tests)
 tehpc_add_test(full_run_test)
 tehpc_add_test(matrix_operations_test)
-
+tehpc_add_test(Resisues_tests)
+tehpc_add_test(solver_tests)
 
 configure_file(input_tests.inp input_tests.inp COPYONLY)
 configure_file(input_2_el_tests.inp input_2_el_tests.inp COPYONLY)

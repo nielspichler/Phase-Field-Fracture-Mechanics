@@ -1,4 +1,4 @@
-project = 'Phase-field FE'
+project = 'Phase-Field_FE'
 
 
 #...
@@ -37,7 +37,7 @@ primary_domain = 'cpp'
 highlight_language = 'cpp'
 
 # Breathe Configuration
-breathe_default_project = "Phase-field FE"
+breathe_default_project = "Phase-Field_FE"
 
 # Number figures
 numfig = True

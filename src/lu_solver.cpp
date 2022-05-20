@@ -17,6 +17,8 @@ void LU_solver::solve(std::shared_ptr<BaseMatrix<double> > Ap, const std::vector
 	LUPDecompose(A, P);
 
 	LUPSolve(A, P, b, x);
+	
+	//std::cout<<"det : "<<LUPDeterminant( A, P);
 
 }
 
@@ -118,20 +120,21 @@ void LUPInvert(double **A, int *P, int N, double **IA) {
     }
 }
 */
+
 /* INPUT: A,P filled in LUPDecompose; N - dimension. 
  * OUTPUT: Function returns the determinant of the initial matrix
-
+*/
  
-double LUPDeterminant(double **A, int *P, int N) {
+double LU_solver::LUPDeterminant(Matrix<double>& A, std::vector<int>& P) {
 
-    double det = A[0][0];
+    double det = A(0,0);
 
-    for (int i = 1; i < N; i++)
-        det *= A[i][i];
+    for (UInt i = 1; i < A.nbRows(); i++)
+        det *= A(i,i);
 
-    return (P[N] - N) % 2 == 0 ? det : -det;
+    return (P[A.nbRows()] - A.nbRows()) % 2 == 0 ? det : -det;
 }
- */
+
 
 
 

@@ -9,12 +9,12 @@ if __name__ == '__main__':
 
     sim_name = "sim_paper"
 
-    data_d = pd.read_csv("../build/examples/output/output_"+sim_name+"Phase.dat", sep = " ")
-    data_s1 = pd.read_csv("../build/examples/output/output_"+sim_name+"F1.dat", sep = " ")
-    data_s2 = pd.read_csv("../build/examples/output/output_"+sim_name+"F2.dat", sep = " ")
-    data_u1 = pd.read_csv("../build/examples/output/output_"+sim_name+"u1.dat", sep = " ")
-    data_u2 = pd.read_csv("../build/examples/output/output_"+sim_name+"u2.dat", sep = " ")
-    data_h = pd.read_csv("../build/examples/output/output_"+sim_name+"H.dat", sep = " ")
+    data_d = pd.read_csv("../examples/output/output_"+sim_name+"Phase.dat", sep = " ")
+    data_s1 = pd.read_csv("../examples/output/output_"+sim_name+"F1.dat", sep = " ")
+    data_s2 = pd.read_csv("../examples/output/output_"+sim_name+"F2.dat", sep = " ")
+    data_u1 = pd.read_csv("../examples/output/output_"+sim_name+"u1.dat", sep = " ")
+    data_u2 = pd.read_csv("../examples/output/output_"+sim_name+"u2.dat", sep = " ")
+    data_h = pd.read_csv("../examples/output/output_"+sim_name+"H.dat", sep = " ")
     
     # Abaqus implementation
     

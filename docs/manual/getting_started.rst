@@ -1,16 +1,16 @@
 Getting Started
 ===============
 
-Obtaining TEHPC Niels Pichler
------------------------------
+Obtaining Phase-Field_FE
+------------------------
 
 Get TEHPC Niels Pichler by cloning it from `gitlab <https://gitlab.ethz.ch>`_::
 
   > git clone https://gitlab.ethz.ch/npichler/project-tehpc-niels-pichler.git
 
 
-Requirements for TEHPC Niels Pichler
-------------------------------------
+Requirements for Phase-Field_FE
+-------------------------------
 
 The following software are required for TEHPC Niels Pichler:
 
@@ -21,8 +21,8 @@ Optional for plotting scripts:
 - `Python3 <https://www.python.org/>`_
 
 
-Compiling TEHPC Niels Pichler
------------------------------
+Compiling Phase-Field_FE
+------------------------
 
 **Ubuntu-based and macOS systems**:
 
