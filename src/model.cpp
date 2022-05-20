@@ -327,7 +327,6 @@ void Model::solve_step()
 		std::cout<<" converged, iter = "<<i<<"\n";
 		return;
 		}
-
 	}
 	
 	std::cout << "Convergence not reached, res = " <<res<< std::endl;

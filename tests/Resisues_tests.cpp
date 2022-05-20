@@ -49,6 +49,7 @@ int main(/*int argc, char *argv[]*/){
 	
 	model.assembly();
 	
+	/*
 	for (UInt e = 0; e<4; e++){
 		model.get_localStifness(e, Ke_d, res_d, Ke_u, res_u);
 	
@@ -57,6 +58,23 @@ int main(/*int argc, char *argv[]*/){
 	Res = model.get_Res_u();
 	
 	std::cout<<"Res_total: \n"<<Res;
+	*/
 	
+	std::vector<double> res_U_exp(18);
+	
+	std::fill(res_U_exp.begin(), res_U_exp.end(), 0.0);
+	
+	res_U_exp[1]= -52.5;
+	res_U_exp[3]=-105.0;
+	res_U_exp[5]=-52.5;
+	res_U_exp[13]=52.5;
+	res_U_exp[15]=105.0;
+	res_U_exp[17]=-52.5;
+	
+	std::cout<<"Test if expected res vector"<< std::endl;
+	test.test_matching_vectors(18,tol, res_U_exp, model.get_Res_u());
+	test.test_results();
+	
+	assert(test.passed());
 	
 }
