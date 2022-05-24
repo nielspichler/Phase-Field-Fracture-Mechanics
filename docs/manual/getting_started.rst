@@ -70,14 +70,14 @@ A 4 element model under similar boundary conditions is also provided, to run it 
 To visualize the results, use another provided script::
 
   > cd ../python
-  > python3 plotter_Map.py output sim_4_el 0 500 999
+  > python3 plotter_Map.py output sim_4_el 0 100 999
 
 It should produce the following result:
 
 .. image:: figures/Figure_plotter_Map.png
    :align: center
    
-From top to bottom the results of each step (0, 333, 666, 999) and from left to right the nodal value of the damage variable, displacement in the y direction, displacement in x direction, the resilting nodal displecement represented by a quived plot and the reaction forces at the boundaries.
+From top to bottom the results of each step (0, 100 999) and from left to right the nodal value of the damage variable, displacement in the y direction, displacement in x direction, the resilting nodal displecement represented by a quived plot and the reaction forces at the boundaries.
 
 A mesher script is provided as well. Without going into the details of its use (see dedicated section in user guide) a last example example can is shown. make sure you are in `build/python` ::
 
@@ -89,7 +89,7 @@ A mesher script is provided as well. Without going into the details of its use (
 The code will take some time to run here Nonethless the results can be visualized bfore the simulation reached the final step. Wait until step 135 is completed and in a new termimal do::
 
   > cd ../python
-  > python3 plotter_Map.py output sim_20x20_crack_damage python3 plotter_Map.py output sim_20x20_crack_damage 0 50 131 132
+  > python3 plotter_Map.py output sim_20x20_crack_damage python3 plotter_Map.py output sim_20x20_crack_damage 0 131 132
   
 .. image:: figures/Figure_plotter_final.png
    :align: center

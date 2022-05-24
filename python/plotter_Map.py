@@ -34,7 +34,7 @@ if __name__ == '__main__':
     y = data_d.values[1,:]
     
 
-    fig, ax = plt.subplots(nrows = len(frames), ncols = 5, figsize = (17,9.8,), constrained_layout = True)
+    fig, ax = plt.subplots(nrows = len(frames), ncols = 5, figsize = (17,8,), constrained_layout = True)
     i=0
     
     for f in frames: 
