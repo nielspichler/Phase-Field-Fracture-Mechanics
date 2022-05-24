@@ -81,11 +81,8 @@ public:
    */
   void registerSolver(std::shared_ptr<NLsolver> solver);
 
-  //! solves the equation
+  //! solves the 2 nonlinear equation systems
   void solve_step(); 
-  
-  //! solves the equation
-  void solve(); 
   
   /*!
    * @param odir output directory name

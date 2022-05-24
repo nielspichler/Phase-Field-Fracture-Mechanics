@@ -32,9 +32,22 @@
 #include <iostream> // print to console (cout)
 
 
+// parallelization
+
+#include <chrono>
+#include <cstdio>
+#include <cmath>
+#include <omp.h>
+
+using clk = std::chrono::high_resolution_clock;
+using second = std::chrono::duration<double>;
+using time_point = std::chrono::time_point<clk>;
+
 
 int main(int argc, char *argv[])
 {
+
+  auto t1 = clk::now();
 
   // read simulation name and output directory from arguments
   std::string sname;
@@ -54,5 +67,9 @@ int main(int argc, char *argv[])
 	Model model(fname);
 	
 	model.iterate(sname, odir);
+	
+	
+	second elapsed = clk::now() - t1;  
+	std::printf("wall clock time (chrono)        = %.4gs\n", elapsed.count());
 	
 }

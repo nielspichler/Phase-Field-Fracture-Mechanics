@@ -8,6 +8,8 @@ Welcome to Niels TEHPC's Project documentation!
 
    ./manual/getting_started.rst
    ./manual/description.rst
+   ./manual/user_guide.rst
    ./manual/developer_guide.rst
+   ./manual/joss.rst
 
 

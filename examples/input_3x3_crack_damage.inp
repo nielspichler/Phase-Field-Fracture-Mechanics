@@ -1,0 +1,37 @@
+$dimensions 2				# dimension of the problem
+$lc 0.1				# length scale parameter
+$steps 1000				# number of steps
+$damage 1				# option to activate damage (1 is actove, 0 not active)
+
+$nodes 10				# number of nodes
+$node 1 0.0 0.0			# $node node_number x_coord y_coord 
+$node 2 0.5 0.0
+$node 3 1.0 0.0
+$node 4 0.0 0.5
+$node 5 0.5 0.5
+$node 6 1.0 0.5
+$node 7 0.0 1.0
+$node 8 0.5 1.0
+$node 9 1.0 1.0
+$node 10 0.0 0.5
+
+$elements 4 				# number of elements
+$elementtype 1 4 			
+$element 1 1 2 5 4 1 210.0 0.3 0.0027 # $element elment_number node_1 node_2 node_3 node_4 E_modulus Poisson_ratio Critical_ERR
+$element 2 2 3 6 5 1 210.0 0.3 0.0027
+$element 3 10 5 8 7 1 210.0 0.3 0.0027
+$element 4 5 6 9 8 1 210.0 0.3 0.0027
+
+# boundary conditions (Dirchlet only)
+$bcd 0 1 1 0				# $bcd 0 node_number direction amplitude
+$bcd 0 2 1 0
+$bcd 0 3 1 0
+$bcd 0 1 2 0
+$bcd 0 2 2 0
+$bcd 0 3 2 0
+$bcd 0 7 2 0.05
+$bcd 0 8 2 0.05
+$bcd 0 9 2 0.05
+$bcd 0 7 1 0
+$bcd 0 8 1 0
+$bcd 0 9 1 0
