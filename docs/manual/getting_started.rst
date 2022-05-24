@@ -11,7 +11,7 @@ Get Phase-Field_FE by cloning it from `gitlab <https://gitlab.ethz.ch>`_::
 Requirements for Phase-Field_FE
 -------------------------------
 
-The following software are required for TEHPC Niels Pichler:
+The following software are required for Phase-Field_FE:
 
 - `CMake <https://cmake.org/>`_ (3.1.0 or higher)
   

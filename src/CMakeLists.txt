@@ -1,5 +1,5 @@
 # list of header files to compile
-set(TEHPC_HEADER
+set(PFFE_HEADER
   common.hpp
   base_matrix.hpp
   array.hpp
@@ -19,7 +19,7 @@ set(TEHPC_HEADER
   )
 
 # list of cpp files to compile
-set(TEHPC_SRC
+set(PFFE_SRC
   array.cpp
   matrix.cpp
   element.cpp
@@ -31,9 +31,9 @@ set(TEHPC_SRC
   model.cpp
   )
 
-set(TEHPC_DEPEND_FILES ${TEHPC_SRC} ${TEHPC_HEADER} PARENT_SCOPE)
+set(PFFE_DEPEND_FILES ${PFFE_SRC} ${PFFE_HEADER} PARENT_SCOPE)
 
-add_library(Phase-Field_FE ${TEHPC_SRC})
+add_library(Phase-Field_FE ${PFFE_SRC})
 
 # if linking to other libraries, e.g. MPI
 target_link_libraries(Phase-Field_FE)
