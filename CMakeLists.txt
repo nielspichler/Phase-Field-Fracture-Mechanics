@@ -22,6 +22,12 @@ set(TEHPC_INCLUDE_DIRS
   )
 include_directories(${TEHPC_INCLUDE_DIRS})
 
+# OPENMP
+option(TEHPC_USE_OPENMP "Use OPENMP (shared memory)" OFF)
+if (TEHPC_USE_OPENMP)
+   set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fopenmp")
+endif (TEHPC_USE_OPENMP)
+
 # source directory
 add_subdirectory(src)
 

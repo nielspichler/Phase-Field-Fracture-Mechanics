@@ -228,6 +228,7 @@ void Model::assembly()
   #endif /* THEPC_VERBOSE */
   
   // for loop over elements starts here
+
   for (UInt e = 0; e < nb_elements; ++e) {
     
     // here: call the "localStiffness" function to fill Ke_s and res_s
@@ -407,6 +408,7 @@ void Model::iterate(const std::string & sim_name, std::string & odir)
 		output_nodal(odir, displacement(1), "u2");
 		output_nodal(odir, phase, "Phase");
 		output_elemental(odir, history, "H");
+		
 		
 		}
 	

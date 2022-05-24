@@ -4,32 +4,45 @@ from mesh_parts import *
 
 if __name__ == '__main__':
 
-    lx = 1
-    ly = 1
+    ####################################################################################################################################
+    #                Mofdify the parameters from here....
 
-    x_disc = 21 # nb nodes in x dir
-    y_disc = 21 # nb nodes in y dir
+    lx = 1 # length of the domain
+    ly = 1 # height of the domain
 
-    crack = [0,0.5,0,0.5] # x start, y start, x finish, y finish (needs to coincide with nodes)
+    x_disc = 21 # nb nodes in x direction
+    y_disc = 21 # nb nodes in y direction
 
-    lc = 0.1
-    steps = 100
+    crack = [0,0.5,0.5,0.5] # x start, y start, x finish, y finish (needs to coincide with nodes), origin is in the lower left corner
+
+    lc = 0.1 # length scale parameter
+    steps = 1000 # number of steps
     
-    G = 2.7e-3
-    nu = 0.0
+    E = 210.0 # E modulus in Kn/mm²
+    G = 2.7e-3 # Critical ERR in kN/mm
+    nu = 0.3 # poisson ratio
     
-    damage = 0
+    damage = 1 # option to activate or deactivate the damage
 
-    file_name = "input_file_symm_BC.inp"
+    file_name = "input_20x20_crack_damage.inp" # name of the input file to be writter Take care this will append to the file
 
-    bc_1 = BC(0, 0, 0) # edge, direction, amplitude
-    bc_2 = BC(0, 1, -0.05)
+    # Boundary conditions definitions, (0)lower edge, (1)right edge, (2)top edge, (3)left edge
+    
+    bc_1 = BC(0, 0, 0) # edge, direction, amplitude (final)
+    bc_2 = BC(0, 1, 0)
     bc_3 = BC(1, 0, 0)
     bc_4 = BC(2, 1, 0.05)
     bc_5 = BC(2, 0, 0)
     bc_6 = BC(3, 0, 0)
 
+    # easily put or remove BCs
     BC_list = [bc_1, bc_2, bc_4, bc_5,]# bc_3,
+
+    # end of the parameters definition 
+    
+    #                ... to here.
+    ####################################################################################################################################
+
 
     nb_nodes = x_disc*y_disc
     nb_el = (x_disc-1) * (y_disc)
@@ -59,6 +72,7 @@ if __name__ == '__main__':
         for j in range(x_disc-1):
 
             e = Element(i*x_disc+j,i*x_disc+j+1, (i+1)*x_disc+j+1, (i+1)*x_disc+j)
+            e.set_E(E)
             e.set_g(G)
             e.set_nu(nu)
             element_list.append(e)
