@@ -16,17 +16,17 @@ set(CMAKE_BUILD_TYPE "${CMAKE_BUILD_TYPE}" CACHE STRING
   FORCE )
 
 # include directories
-set(TEHPC_INCLUDE_DIRS
+set(PFFE_INCLUDE_DIRS
   "${CMAKE_CURRENT_BINARY_DIR}/src"
   "${CMAKE_CURRENT_SOURCE_DIR}/src"
   )
-include_directories(${TEHPC_INCLUDE_DIRS})
+include_directories(${PFFE_INCLUDE_DIRS})
 
 # OPENMP
-option(TEHPC_USE_OPENMP "Use OPENMP (shared memory)" OFF)
-if (TEHPC_USE_OPENMP)
+option(PFFE_USE_OPENMP "Use OPENMP (shared memory)" OFF)
+if (PFFE_USE_OPENMP)
    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fopenmp")
-endif (TEHPC_USE_OPENMP)
+endif (PFFE_USE_OPENMP)
 
 # source directory
 add_subdirectory(src)
@@ -34,7 +34,7 @@ add_subdirectory(src)
 # ------------------------------------------------------
 # Some Macros
 
-option(TEHPC_VERBOSE "write extra information to console" OFF)
+option(PFFE_VERBOSE "write extra information to console" OFF)
 
 # examples: define add_simulation function
 function(add_simulation SIM_EXE)
@@ -43,15 +43,15 @@ function(add_simulation SIM_EXE)
 endfunction()
 
 # examples: option to de/activate compilation of examples
-option(TEHPC_EXAMPLES "examples" OFF)
-if(TEHPC_EXAMPLES)
+option(PFFE_EXAMPLES "examples" OFF)
+if(PFFE_EXAMPLES)
   add_subdirectory(examples)
 endif()
 
 # ------------------------------------------------------
 # test
-option(TEHPC_TESTS "tests" OFF)
-if(TEHPC_TESTS)
+option(PFFE_TESTS "tests" OFF)
+if(PFFE_TESTS)
   enable_testing()
   add_subdirectory(tests)
 endif()
@@ -59,8 +59,8 @@ endif()
 
 # Add the cmake folder so the FindSphinx module is found
 set(CMAKE_MODULE_PATH "${PROJECT_SOURCE_DIR}/cmake" ${CMAKE_MODULE_PATH})
-option(TEHPC_DOC "documentation" OFF)
-if(TEHPC_DOC)
+option(PFFE_DOC "documentation" OFF)
+if(PFFE_DOC)
   add_subdirectory(docs)
 endif()
 
