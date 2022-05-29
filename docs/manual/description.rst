@@ -30,19 +30,19 @@ Theoretical foundation
 Energetics
 ----------
 
-The total potential energy of an elastic body is defined as **Pi** = **U**-**F**, where **U** is the elastic strain energy and **F** the work of external forces. In case a crack is present in the body, the total energy of the body is **Psi** = **Pi** + **Ws** where **Ws** is the energy spent on crack propagation.
+The total potential energy of an elastic body is defined as **:math:`\Pi`** = **:math:`U-F`**, where **:math:`U`** is the elastic strain energy and **F** the work of external forces. In case a crack is present in the body, the total energy of the body is **:math:`\Psi`** = **:math:`\Pi + W_s`** where **:math:`W_s`** is the energy spent on crack propagation.
 
-Contrary to usual approaches to fracture mechanics, where the crack is seen as a sharp notch, a damage variable *d* is defined on the whole domain and represents the state of damage at every material point. *d* is 1 in the crack and 0 away from it. Along with *d*, a crack density function *gamma*(*d, grad d*) is also defined and used to compute **Ws** on the whole body. 
+Contrary to usual approaches to fracture mechanics, where the crack is seen as a sharp notch, a damage variable :math:`d` is defined on the whole domain and represents the state of damage at every material point. :math:`d` is 1 in the crack and 0 away from it. Along with :math:`d`, a crack density function :math:`\gamma (d, \Nabla d)` is also defined and used to compute **:math:`W_s`** on the whole body. 
 
-The strain energy **U** is computed by integrating the strain energy density, weighted by a degradation factor (a function of *d*) such that the strain energy density on the crack is 0. **F** is computed the classical way as the summation of the work of external forces.
+The strain energy **:math:`U`** is computed by integrating the strain energy density, weighted by a degradation factor (a function of :math:`d`) such that the strain energy density on the crack is 0. **:math:`F`** is computed the classical way as the summation of the work of external forces.
 
 The scheme porposed in [1]_ decomposes the problem in two parts. First the the interal energy must be at equilibrium: 
-
-* **U** + **Ws**
+.. math::
+   **U+W_s**
 
 Second, the external and internal energy must be at equilibrium: 
-
-* **U**-**F**
+.. math::
+   **U-F**
 
 In the first step, the strain energy drives the evolution of *d*, in the second step, the boundary conditions drive the evolution of the dicplacement field, affected by *d* through the degradation of the strain energy density field. Then the loop repeats with small increments on the applied boundary conditions.
 
@@ -51,11 +51,11 @@ Finite elements
 
 The weak form of both problems can be formulated and turned into 2 finite element problem. The mathematical details can be found in [1]_. 
 
-One stifness matrix is computed the phase, the matrix depends on the value of *d* and *H*, a field variable depending on the strain energy (*H* records the maximal strain energy density of the material point in time). The associated residue vector depends on the same variables. 
+One stifness matrix is computed the phase, the matrix depends on the value of :math:`d` and :math:`H`, a field variable depending on the strain energy (:math:`H` records the maximal strain energy density of the material point in time). The associated residue vector depends on the same variables. 
 
-One stifness matrix is computed for the displacements, since the degraded strain energy enters in its formulation, the stifness matrix is directly dependent on *d*. Since only Dirichlet boundary conditions are applied, the residual vector is comprised of the internal forces residues.
+One stifness matrix is computed for the displacements, since the degraded strain energy enters in its formulation, the stifness matrix is directly dependent on :math:`d`. Since only Dirichlet boundary conditions are applied, the residual vector is comprised of the internal forces residues.
 
-Since both stifness matrices are depend on *d*, the element stifness matrices (phase and displacement) are different for each element and need to be computed locally.
+Since both stifness matrices are depend on :math:`d`, the element stifness matrices (phase and displacement) are different for each element and need to be computed locally.
 
 
 References

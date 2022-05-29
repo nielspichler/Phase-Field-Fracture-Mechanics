@@ -2,16 +2,16 @@ Phase-Field_FE: Brittle fracture in linear elastic material
 ===========================================================
 
 Keywords
---------
+''''''''
 Fracture Mechanics; Non-linear Finite Elements; C++
 
 Author
-------
+''''''
 
 Niels Pichler
 
 Affilitions
------------
+'''''''''''
 
 Empa, Swiss Federal Laboratories for Materials Science and Technology
 Institute of Structural Engineering, Department of Civil, Environmental and Geomatic Engineering, ETH Zürich
@@ -47,13 +47,25 @@ The analytical solution is given in [9].
    d =& \varepsilon² \frac{c_{22}}{G/l_c + \varepsilon² c_{22}}\\
    \sigma_{22} =& 2R_f = c_{22} \varepsilon (1-d)²\\
    
-On a single element, we see the implementation recovers the theoric value, the accuraccy is even greater than the ABAQUS UELs proposed in [9]. Further qualitative validation is obtained when the on a bigger domain. In the following, the under pure Mode I and mode II applied as described below: 
+On a single element, we see the implementation recovers the theoric value, the accuraccy is even greater than the ABAQUS UELs proposed in [9]. 
+
+Further qualitative validation is obtained when the on a bigger domain. In the following, the same material parameters were used, 24x24 elements were used to discretize the domain. Pure Mode I and Mode II was applied as described below: 
 
 .. image:: joss_figures/Loading_modes.svg
 
-**Here text about the Mode I and II results**
+In Mode I the results are displayed below. In each row a different time-step is displayed and each column displays the field value of specific variables, interpolated between nodes. The damage accumulation at the crack tip is visible from step 0, since :math:`l_c` has a rather large value compared to the domain, the size of tha damaged zone is as well. However, once the damage at the crack tip reaches values closer to 1, in step XXX, we see the damage amplitude decreases rapidly. Between step XXX and XXX+1 the crack propagates through the whole domain as the boundary conditions lead to unstable crack propagation. This propagation step is typically characterizied by a significant number of iterations of the non-linear solver. Here, one could easily detect such cases and resuce the imposed displacements in order to capture the propagation phenomenon. Before damage, in step 0 the displacements fields follow the expected behavior, i.e. discontinuous :math:`u_2` on the crack and a transition zone getting smaller as the crack tip is approcahed in the undamaged part. The vertical displacement field :math:`u_1` is symmetric with regards to the crack plane. After fracture, the two sepratte parts of the domain are visible from the :math:`u_2` field with the two distincs regions, no deformations occur anymore.
 
-Nonetheless the code structure and architecture has some drawbacks that need to addressed as well. A nonlinear solver class was implemented to increase the code modularity and separate the model construction from the solver but the solver class is used only to solve linear systems and the nonlinear aspect is confined to the model class. This is a drawback that should be adress in further developments in order to work safely on optimizing the solver from the model construction. 
+
+.. image:: joss_figures/Res_Mode_I
+
+In Mode II, damage is more localized from the beginning, and the displacement fields :math:`u_2` and :math:`u_1` have the opposite expected features as in Mode I. ...
+
+
+.. image:: joss_figures/Res_Mode_II
+
+Due to the code limitatitons the implementation could only be tested on a limited number of nodes and such approach actually requires very fine mesh to capture the sharp gradient of the damage variable. There is room for improvment to accelerate the code. In the current stape the code is very accurate as it recovers the analytical solution almost perfectly. There is a tradepoff between speed of excecution and accuracy to find. In [9], a step in this direction is taken as some degree of error is tolerated for a faster execution. This could be for instance implemented with different solver types, such as quasi-Newton where the tengant stifness mateices are only computed and inversed once per step. 
+
+Before that, the code structure and architecture has some drawbacks that need to addressed. A nonlinear solver class was implemented to increase the code modularity and separate the model construction from the solver but the solver class is used only to solve linear systems and the nonlinear aspect is confined to the model class. This should be adressed in further developments in order to work safely on optimizing the solver or solvers from the model construction.
 
 
 Outlook
@@ -63,9 +75,10 @@ Further development of the code sould include:
 
 	* The use of triangular elements that to allow for local refinments and thus faster execution
 	* The possibility to include nonlinear elasticity or plastic material behavior would be of great interest
-	* Code parallelization
+	* While the resolution is incremental, parts of the code can be parallelized, the matrix assembly for instance
 	* Use the current model to investigate the mode mixity at the crack tip in the case of bi-material interface (a challenging problem in FM [12]_)
 	* Use the current model to simulate a soft material layered between two stiffer materials to mimic an adhesive layer bonding 2 steel parts
+	* Crack interactions 
 
 References
 ----------
@@ -92,7 +105,7 @@ References
 
 .. [11] Kaczmarczyk et al., (2020). MoFEM: An open source, parallel finite element library. Journal of Open Source Software, 5(45), 1441, https://doi.org/10.21105/joss.01441
 
-.. [12] Suo, Zhigang, and John W. Hutchinson. Interface Crack between Two Elastic Layers. International Journal of Fracture 43, no. 1 (May 1990): `<https://doi.org/10.1007/BF00018123>`
+.. [12] Suo, Zhigang, and John W. Hutchinson. Interface Crack between Two Elastic Layers. International Journal of Fracture 43, no. 1 (May 1990): `https://doi.org/10.1007/BF00018123`
 
 
 
