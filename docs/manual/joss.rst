@@ -58,7 +58,7 @@ In Mode I the results are displayed below. In each row a different time-step is 
 
 .. image:: joss_figures/Res_Mode_I.svg
 
-In Mode II, damage is more localized from the beginning, and the displacement fields :math:`u_2` and :math:`u_1` have the opposite expected features as in Mode I. Qualitatively the crack propagates with an angle, similarly to other results from the literature [9].
+In Mode II, damage is more localized from the beginning, and the displacement fields :math:`u_2` and :math:`u_1` have the opposite expected features as in Mode I. The crack does not propagate with an angle, as expected from other other results in the literature [9]. It is likely that the spatial discretization and regularity of the mesh orients that crack and hinders an angled propagation. 
 
 .. image:: joss_figures/Res_Mode_II.svg
 
