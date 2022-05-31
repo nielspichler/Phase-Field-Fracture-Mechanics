@@ -1,4 +1,4 @@
-```# Phase-Field_FE
+# Phase-Field_FE
 
 This project is an implementation of a finite element phase-field fracture mechanics scheme. The approach was successfully implemented in ABAQUS using 2 UEL and a UMAT (10.1016/j.finel.2017.03.002). 
 
