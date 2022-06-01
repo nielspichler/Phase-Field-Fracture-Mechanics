@@ -383,8 +383,8 @@ void Model::iterate(const std::string & sim_name, std::string & odir)
 {
 	Name = sim_name;
 	
-	std::shared_ptr<LU_solver> solver;
-	solver = std::make_shared<LU_solver>(500, 1e-20);
+	std::shared_ptr<ArmadilloSolver> solver;
+	solver = std::make_shared<ArmadilloSolver>(500, 1e-20);
 	registerSolver(solver);
 	
 	

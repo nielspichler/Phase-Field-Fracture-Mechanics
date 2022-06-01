@@ -41,6 +41,7 @@
 #include "dispelement.hpp"
 #include "lu_solver.hpp"
 #include "newton_raphson_solver.hpp"
+#include "armadillo_solver.hpp"
 
 using UInt = unsigned int;
 

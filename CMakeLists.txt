@@ -22,6 +22,12 @@ set(PFFE_INCLUDE_DIRS
   )
 include_directories(${PFFE_INCLUDE_DIRS})
 
+option(USE_ARMA "use armadillo" OFF)
+if(USE_ARMA)
+  find_package(Armadillo REQUIRED)
+  include_directories(${ARMADILLO_INCLUDE_DIRS})
+endif()
+
 # OPENMP
 option(PFFE_USE_OPENMP "Use OPENMP (shared memory)" OFF)
 if (PFFE_USE_OPENMP)

@@ -14,6 +14,7 @@ set(PFFE_HEADER
   nonlinear_solver.hpp
   lu_solver.hpp
   newton_raphson_solver.hpp
+  armadillo_solver.hpp
   test_tools.hpp  
   model.hpp
   )
@@ -27,6 +28,7 @@ set(PFFE_SRC
   phaseelement.cpp
   lu_solver.cpp
   newton_raphson_solver.cpp
+  armadillo_solver.cpp
   test_tools.cpp  
   model.cpp
   )
@@ -36,4 +38,4 @@ set(PFFE_DEPEND_FILES ${PFFE_SRC} ${PFFE_HEADER} PARENT_SCOPE)
 add_library(Phase-Field_FE ${PFFE_SRC})
 
 # if linking to other libraries, e.g. MPI
-target_link_libraries(Phase-Field_FE)
+target_link_libraries(Phase-Field_FE ${ARMADILLO_LIBRARIES})
