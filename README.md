@@ -4,9 +4,9 @@ This project is an implementation of a finite element phase-field fracture mecha
 
 ## Getting started
 
-Get Phase-Field_FE by cloning it from [gitlab](https://gitlab.ethz.ch):
+Get Phase-Field_FE by cloning it from [github](https://github.com/nielspichler/Phase-Field-Fracture-Mechanics):
 
-    git clone https://gitlab.ethz.ch/npichler/project-tehpc-niels-pichler.git
+    https://github.com/nielspichler/Phase-Field-Fracture-Mechanics.git
 
 ## Requirements for Phase-Field_FE
 
