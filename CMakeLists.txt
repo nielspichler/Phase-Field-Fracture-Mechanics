@@ -14,6 +14,8 @@ mark_as_advanced(BUILD_SHARED_LIBS)
 set(CMAKE_BUILD_TYPE "${CMAKE_BUILD_TYPE}" CACHE STRING
   "Build options: None Debug Release RelWithDebInfo MinSizeRel."
   FORCE )
+  
+
 
 # include directories
 set(PFFE_INCLUDE_DIRS

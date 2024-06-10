@@ -13,25 +13,31 @@ if __name__ == '__main__':
     x_disc = 21 # nb nodes in x direction
     y_disc = 21 # nb nodes in y direction
 
-    crack = [0,0.5,0.5,0.5] # x start, y start, x finish, y finish (needs to coincide with nodes), origin is in the lower left corner
+    cracks = [
+        [0,0.2,0.3,0.2], # x start, y start, x finish, y finish (needs to coincide with nodes), origin is in the lower left corner
+        [0.8,0.8,1.0,0.8]
+            ]
 
-    lc = 0.1 # length scale parameter
-    steps = 1000 # number of steps
+    lc = 0.1 # length scale parameter at least 2x bigger than the smallest element
+    steps = 500 # number of steps
     
     E = 210.0 # E modulus in Kn/mm²
     G = 2.7e-3 # Critical ERR in kN/mm
     nu = 0.3 # poisson ratio
     
+    variable_properties = 1 # the material properties are randomly sampled (gaussian)
+    sigma = 0.1
+    
     damage = 1 # option to activate or deactivate the damage
 
     file_name = "input_20x20_crack_damage.inp" # name of the input file to be writter Take care this will append to the file
 
-    # Boundary conditions definitions, (0)lower edge, (1)right edge, (2)top edge, (3)left edge
+    # Boundary conditions definitions, (0)lower edge, (1)right edge, (2)top edge, (3)left edge, (4)left edge, upper half (remove first bc node in .inp file if used)
     
     bc_1 = BC(0, 0, 0) # edge, direction, amplitude (final)
     bc_2 = BC(0, 1, 0)
     bc_3 = BC(1, 0, 0)
-    bc_4 = BC(2, 1, 0.05)
+    bc_4 = BC(2, 1, 0.02)
     bc_5 = BC(2, 0, 0)
     bc_6 = BC(3, 0, 0)
 
@@ -72,16 +78,24 @@ if __name__ == '__main__':
         for j in range(x_disc-1):
 
             e = Element(i*x_disc+j,i*x_disc+j+1, (i+1)*x_disc+j+1, (i+1)*x_disc+j)
-            e.set_E(E)
-            e.set_g(G)
-            e.set_nu(nu)
+            
+            if variable_properties: # the material properties are randomly sampled
+                e.set_E(E * np.random.normal(loc=1, scale=sigma))
+                e.set_g(G * np.random.normal(loc=1, scale=sigma))
+                e.set_nu(nu * np.random.normal(loc=1, scale=sigma))
+            else: 
+                e.set_E(E)
+                e.set_g(G)
+                e.set_nu(nu)
             element_list.append(e)
 
     nodes_to_duplicate = []
 
-    for n in node_list:
-        if (crack[0]-el_size_x/2<=n.x<crack[2] and crack[1]-el_size_y/2<=n.y<=crack[3]+el_size_y/2):
-            nodes_to_duplicate.append(n)
+    for crack in cracks:
+        for n in node_list:
+            if (crack[0]-el_size_x/2<=n.x<crack[2] and crack[1]-el_size_y/2<=n.y<=crack[3]+el_size_y/2):
+                nodes_to_duplicate.append(n)
+
 
     for n_dupl in nodes_to_duplicate:
         n_dupl.set_twin(node_number)

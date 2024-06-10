@@ -67,13 +67,13 @@ if __name__ == '__main__':
         ax[i,3].quiver(x,y, data_u1.values[f,:], data_u2.values[f,:], nodal_disp, cmap = cmap)
         
                 
-        nodal_forces = np.sqrt(data_s1.values[f,:].astype(np.float)**2 + data_s2.values[f,:].astype(np.float)**2)
+        nodal_forces = np.sqrt(data_s1.values[f,:].astype(float)**2 + data_s2.values[f,:].astype(float)**2)
         im_5 = ax[i,4].tricontourf(x,y,nodal_forces, cmap = cmap, alpha = 0.3, levels = levels)
         for c in im_5.collections:
             c.set_edgecolor("face")
             c.set_linewidth(0.01)
         im_5 = ax[i, 4].scatter(x, y, c=nodal_forces, s=2, cmap=cmap)  # , vmin = 0, vmax = 0.2,
-        ax[i,4].quiver(x,y, data_s1.values[f,:].astype(np.float), data_s2.values[f,:].astype(np.float), nodal_forces, cmap = cmap)
+        ax[i,4].quiver(x,y, data_s1.values[f,:].astype(float), data_s2.values[f,:].astype(float), nodal_forces, cmap = cmap)
 
 
         ax[i, 0].set_title('Damage, step: ' + str(f-2))

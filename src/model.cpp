@@ -296,7 +296,7 @@ void Model::solve_step()
 		assembly();						// Recompute K and Res as fct of the updated u and d
 		apply_bc(0.0);					// reset the BC, since u has the wanted value at the boundaries, we impose du=0
 		res = std::sqrt(Res_u.getStorage()*Res_u.getStorage()) + std::sqrt(Res_d*Res_d); // Norm of both residue makes up the residual
-		if ((nb_nodes * res)<1e-5){
+		if ((res/nb_nodes)<1e-8){
 			std::cout<<"converged, iter = "<<i<<"                       ";
 			std::cout << "\x1b[A";
 			std::cout << "\x1b[A";

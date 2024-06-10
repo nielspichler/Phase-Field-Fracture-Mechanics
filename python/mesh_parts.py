@@ -77,6 +77,14 @@ class BC:
             for n in node_list:
                 if n.x == 0:
                     self.bcd_list.append(n.number)
+                    
+                    
+        if self.edge == 4:	# edge 4, left, upper half
+            for n in node_list:
+                if n.x == 0 and n.y >= ly/2:
+                    self.bcd_list.append(n.number)
+
+
 
     def write_bcd(self, f):
 
