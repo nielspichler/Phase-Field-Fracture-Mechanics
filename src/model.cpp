@@ -409,7 +409,13 @@ void Model::iterate(const std::string & sim_name, std::string & odir)
 		output_nodal(odir, phase, "Phase");
 		output_elemental(odir, history, "H");
 		
-		
+		// test if full fracture has happened, i.e. damage does not propagate and we only simulate rigid body motions
+		// this means d does not evolve anymore
+		if (std::sqrt(dphase*dphase)<1e-7*nb_nodes &&  // nothing on the damage field
+			std::count_if(phase.begin(), phase.end(), [](double i) { return i > 0.999; }) > 4){ // at least 5 node are fully damaged
+				std::cout<<"\nEarly stopping \n";
+				break;
+				}
 		}
 	
 	// final computation of the reaction forces

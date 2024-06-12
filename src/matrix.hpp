@@ -59,8 +59,11 @@ public:
 
     Parent::resize(rows, cols);
 
-    //! adapt memory
+    //! adapt memory /!\ if the problem is too big this will crash
     UInt size = rows*cols;
+    
+    assert(size<1e9);
+    
     this->storage.resize(size);
   }
 

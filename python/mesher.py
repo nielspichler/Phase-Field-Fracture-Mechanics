@@ -15,7 +15,7 @@ if __name__ == '__main__':
 
     cracks = [
         [0,0.2,0.3,0.2], # x start, y start, x finish, y finish (needs to coincide with nodes), origin is in the lower left corner
-        [0.8,0.8,1.0,0.8]
+        [0.8,0.8,1.1,0.8]
             ]
 
     lc = 0.1 # length scale parameter at least 2x bigger than the smallest element
