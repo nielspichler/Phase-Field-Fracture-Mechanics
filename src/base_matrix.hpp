@@ -111,6 +111,26 @@ public:
   //! access storage
   std::vector<double> & getStorage() { return this->storage; }
   
+	/*!
+	* @param row_indices
+	* @param col_indices
+	* @param valued
+	* Sets the row index, col indes and value vectors to express the matrox as a sparse matrix
+	* Ideally should be defined in base_matrix.cpp but it does not exist
+	*/
+  void getSparseStorage(std::vector<UInt> & row_indices, std::vector<UInt> & col_indices, std::vector<double> & values){
+	  for (UInt i=0; i < this->rows; ++i) {
+		  for (UInt j=0; j<this->cols; j++) {
+			  double tmp_val = storage[i + j*this->rows];
+			  if (tmp_val !=0.0) {
+				  row_indices.push_back(i);
+				  col_indices.push_back(j);
+				  values.push_back(tmp_val);
+				  }
+			  }
+		  }
+	  }
+  
   /* ------------------------------------------------------------------------ */
   /* Class Members                                                            */
   /* ------------------------------------------------------------------------ */
@@ -126,6 +146,7 @@ protected:
   std::vector<T> storage;
   //Solution:end
 };
+
 
 
 /* -------------------------------------------------------------------------- */
