@@ -82,8 +82,8 @@ public:
    */
   void registerSolver(std::shared_ptr<NLsolver> solver);
 
-  //! solves the 2 nonlinear equation systems
-  void solve_step(); 
+  //! solves the 2 nonlinear equation systems, returns the number of substeps required
+  UInt solve_step(); 
   
   /*!
    * @param odir output directory name
